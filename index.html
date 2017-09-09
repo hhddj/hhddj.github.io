@@ -343,37 +343,21 @@
       
         
           
-            <p>使用php从web访问mysql数据库<br>1.粗略的第一部分<br><!-- 
-$searchterm=trim($_POST($searchterm));
-if(!$searchterm)
-{
-    echo "you have not enter anything.please try again.";
-    exit;
-}
-if(!get_magic_quotes_gpc()){
-    $searchterm=addslashes($searchterm);
-}
- --></p>
-<p>2.粗略的第二部分<br><!-- 
-@$db=new mysqli('lovalhost','用户名'，'密码','数据库');
-if(!mysqli_connect_errno())
-{
-    echo 'could not connect to database.';
-    exit;
-}
- --><br>apache修改配置：httpd.conf中的MaxCients参数<br>mysql修改配置：my.conf中的max_connections参数</p>
-<p>3.粗略的第三部分<br><!-- 
-$db->select_db(dbname);
- --></p>
-<p>4.粗略的第四部分<br>&lt;!–<br>$query=”select * from books where”.$seartype.”like %’”.$searchterm.”$’”;<br>$result=$db-&gt;query($query);</p>
+            <p>使用php从web访问mysql数据库<br>1.粗略的第一部分</p>
+<p>$searchterm=trim($_POST($searchterm));<br>if(!$searchterm)<br>{<br>    echo “you have not enter anything.please try again.”;<br>    exit;<br>}<br>if(!get_magic_quotes_gpc()){<br>    $searchterm=addslashes($searchterm);<br>}</p>
+<p>2.粗略的第二部分</p>
+<p>@$db=new mysqli(‘lovalhost’,’用户名’，’密码’,’数据库’);<br>if(!mysqli_connect_errno())<br>{<br>    echo ‘could not connect to database.’;<br>    exit;<br>}</p>
+<p>apache修改配置：httpd.conf中的MaxCients参数<br>mysql修改配置：my.conf中的max_connections参数</p>
+<p>3.粗略的第三部分</p>
+<p>$db-&gt;select_db(dbname);</p>
+<p>4.粗略的第四部分</p>
+<p>$query=”select * from books where”.$seartype.”like %’”.$searchterm.”$’”;<br>$result=$db-&gt;query($query);</p>
 <p>$num_results=$result-&gt;num_rows;<br>for($i=0;$i&lt;$num_results;$i++)<br>{<br>    $row=$result-&gt;fetch_assoc;<br>    echo stripslashes($row[‘关键字’]);</p>
 <pre><code>$row=$result-&gt;fetch_row($result);
 echo stripslashes($row[0]);
-</code></pre><p>}<br> –&gt;</p>
-<p> 5.粗略的第五部分<br><!-- 
-$result->free();
-$db->close();
- --></p>
+</code></pre><p>}</p>
+<p> 5.粗略的第五部分</p>
+<p>$result-&gt;free();<br>$db-&gt;close();</p>
 <p>就到这，睡了一下午起来保存一下….</p>
 
           
