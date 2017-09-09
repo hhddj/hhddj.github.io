@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="使用php从web访问mysql数据库1.粗略的第一部分 $searchterm=trim($_POST($searchterm));if(!$searchterm){    echo “you have not enter anything.please try again.”;    exit;}if(!get_magic_quotes_gpc()){    $searchterm=addsl">
+<meta name="description" content="使用php从web访问mysql数据库1.粗略的第一部分 123456789$searchterm=trim($_POST($searchterm));if(!$searchterm)&amp;#123;	echo &amp;quot;you have not enter anything.please try again.&amp;quot;;	exit;&amp;#125;if(!get_magic_quotes_gpc()">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php第三篇">
 <meta property="og:url" content="http://yoursite.com/2017/09/09/php第三篇/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="使用php从web访问mysql数据库1.粗略的第一部分 $searchterm=trim($_POST($searchterm));if(!$searchterm){    echo “you have not enter anything.please try again.”;    exit;}if(!get_magic_quotes_gpc()){    $searchterm=addsl">
+<meta property="og:description" content="使用php从web访问mysql数据库1.粗略的第一部分 123456789$searchterm=trim($_POST($searchterm));if(!$searchterm)&amp;#123;	echo &amp;quot;you have not enter anything.please try again.&amp;quot;;	exit;&amp;#125;if(!get_magic_quotes_gpc()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-09T12:37:36.202Z">
+<meta property="og:updated_time" content="2017-09-09T12:41:42.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php第三篇">
-<meta name="twitter:description" content="使用php从web访问mysql数据库1.粗略的第一部分 $searchterm=trim($_POST($searchterm));if(!$searchterm){    echo “you have not enter anything.please try again.”;    exit;}if(!get_magic_quotes_gpc()){    $searchterm=addsl">
+<meta name="twitter:description" content="使用php从web访问mysql数据库1.粗略的第一部分 123456789$searchterm=trim($_POST($searchterm));if(!$searchterm)&amp;#123;	echo &amp;quot;you have not enter anything.please try again.&amp;quot;;	exit;&amp;#125;if(!get_magic_quotes_gpc()">
 
 
 
@@ -340,20 +340,15 @@
 
       
         <p>使用php从web访问mysql数据库<br>1.粗略的第一部分</p>
-<p>$searchterm=trim($_POST($searchterm));<br>if(!$searchterm)<br>{<br>    echo “you have not enter anything.please try again.”;<br>    exit;<br>}<br>if(!get_magic_quotes_gpc()){<br>    $searchterm=addslashes($searchterm);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$searchterm=trim($_POST($searchterm));</div><div class="line">if(!$searchterm)</div><div class="line">&#123;</div><div class="line">	echo &quot;you have not enter anything.please try again.&quot;;</div><div class="line">	exit;</div><div class="line">&#125;</div><div class="line">if(!get_magic_quotes_gpc())&#123;</div><div class="line">	$searchterm=addslashes($searchterm);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>2.粗略的第二部分</p>
-<p>@$db=new mysqli(‘lovalhost’,’用户名’，’密码’,’数据库’);<br>if(!mysqli_connect_errno())<br>{<br>    echo ‘could not connect to database.’;<br>    exit;<br>}</p>
-<p>apache修改配置：httpd.conf中的MaxCients参数<br>mysql修改配置：my.conf中的max_connections参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@$db=new mysqli(&apos;lovalhost&apos;,&apos;用户名&apos;，&apos;密码&apos;,&apos;数据库&apos;);</div><div class="line">if(!mysqli_connect_errno())</div><div class="line">&#123;</div><div class="line">	echo &apos;could not connect to database.&apos;;</div><div class="line">	exit;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apache修改配置：httpd.conf中的MaxCients参数</div><div class="line">mysql修改配置：my.conf中的max_connections参数</div></pre></td></tr></table></figure>
 <p>3.粗略的第三部分</p>
 <p>$db-&gt;select_db(dbname);</p>
 <p>4.粗略的第四部分</p>
-<p>$query=”select * from books where”.$seartype.”like %’”.$searchterm.”$’”;<br>$result=$db-&gt;query($query);</p>
-<p>$num_results=$result-&gt;num_rows;<br>for($i=0;$i&lt;$num_results;$i++)<br>{<br>    $row=$result-&gt;fetch_assoc;<br>    echo stripslashes($row[‘关键字’]);</p>
-<pre><code>$row=$result-&gt;fetch_row($result);
-echo stripslashes($row[0]);
-</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$query=&quot;select * from books where&quot;.$seartype.&quot;like %&apos;&quot;.$searchterm.&quot;$&apos;&quot;;</div><div class="line">$result=$db-&gt;query($query);</div><div class="line"></div><div class="line">$num_results=$result-&gt;num_rows;</div><div class="line">for($i=0;$i&lt;$num_results;$i++)</div><div class="line">&#123;</div><div class="line">	$row=$result-&gt;fetch_assoc;</div><div class="line">	echo stripslashes($row[&apos;关键字&apos;]);</div><div class="line"></div><div class="line">	$row=$result-&gt;fetch_row($result);</div><div class="line">	echo stripslashes($row[0]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 5.粗略的第五部分</p>
-<p>$result-&gt;free();<br>$db-&gt;close();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$result-&gt;free();</div><div class="line">$db-&gt;close();</div></pre></td></tr></table></figure>
 <p>就到这，睡了一下午起来保存一下….</p>
 
       
