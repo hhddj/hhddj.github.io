@@ -343,7 +343,8 @@
       
         
           
-            <p>使用php从web访问mysql数据库<br>1.粗略的第一部分</p>
+            <p><strong>使用php从web访问mysql数据库</strong></p>
+<p>1.粗略的第一部分</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$searchterm=trim($_POST($searchterm));</div><div class="line">if(!$searchterm)</div><div class="line">&#123;</div><div class="line">	echo &quot;you have not enter anything.please try again.&quot;;</div><div class="line">	exit;</div><div class="line">&#125;</div><div class="line">if(!get_magic_quotes_gpc())&#123;</div><div class="line">	$searchterm=addslashes($searchterm);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>2.粗略的第二部分</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@$db=new mysqli(&apos;lovalhost&apos;,&apos;用户名&apos;，&apos;密码&apos;,&apos;数据库&apos;);</div><div class="line">if(!mysqli_connect_errno())</div><div class="line">&#123;</div><div class="line">	echo &apos;could not connect to database.&apos;;</div><div class="line">	exit;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apache修改配置：httpd.conf中的MaxCients参数</div><div class="line">mysql修改配置：my.conf中的max_connections参数</div></pre></td></tr></table></figure>
@@ -353,7 +354,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$query=&quot;select * from books where&quot;.$seartype.&quot;like %&apos;&quot;.$searchterm.&quot;$&apos;&quot;;</div><div class="line">$result=$db-&gt;query($query);</div><div class="line"></div><div class="line">$num_results=$result-&gt;num_rows;</div><div class="line">for($i=0;$i&lt;$num_results;$i++)</div><div class="line">&#123;</div><div class="line">	$row=$result-&gt;fetch_assoc;</div><div class="line">	echo stripslashes($row[&apos;关键字&apos;]);</div><div class="line"></div><div class="line">	$row=$result-&gt;fetch_row($result);</div><div class="line">	echo stripslashes($row[0]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 5.粗略的第五部分</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$result-&gt;free();</div><div class="line">$db-&gt;close();</div></pre></td></tr></table></figure>
-<p>就到这，睡了一下午起来保存一下….</p>
+<p><strong>prepared语句一定程度上可以免受sql注入攻击</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$query=&quot;insert into books value(?,?,?,?)&quot;;</div><div class="line">$stmt=$db-&gt;prepare($query);</div><div class="line">$stmt-&gt;bind_param(&quot;sssd&quot;,&quot;isbn&quot;,&quot;author&quot;,&quot;title&quot;,&quot;price&quot;);</div><div class="line">$stmt-&gt;excute();</div><div class="line">echo $stmt-&gt;affected_rows.&apos;book inserted into database&apos;;</div><div class="line">$stmt-&gt;close();</div></pre></td></tr></table></figure>
+<p>用来查询结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$stmt-&gt;bind_result()；</div><div class="line">￥stmt-&gt;excute();</div></pre></td></tr></table></figure></p>
+<p>每一行一个结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$stmt-&gt;fetch();</div></pre></td></tr></table></figure>
+<p>就是这样，打游戏去耶耶耶！</p>
 
           
         
