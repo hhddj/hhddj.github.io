@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="使用php从web访问mysql数据库 1.粗略的第一部分 123456789$searchterm=trim($_POST($searchterm));if(!$searchterm)&amp;#123;	echo &amp;quot;you have not enter anything.please try again.&amp;quot;;	exit;&amp;#125;if(!get_magic_quotes_gpc(">
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263简单粗暴的身份验证&amp;lt;?php $name=trim($_POST[&amp;apos;name&amp;apos;]);$passwd=trim($_POST[&amp;apos;pa">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php第三篇">
-<meta property="og:url" content="http://yoursite.com/2017/09/09/php第三篇/index.html">
+<meta property="og:title" content="php第四篇">
+<meta property="og:url" content="http://yoursite.com/2017/09/11/php第四篇/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="使用php从web访问mysql数据库 1.粗略的第一部分 123456789$searchterm=trim($_POST($searchterm));if(!$searchterm)&amp;#123;	echo &amp;quot;you have not enter anything.please try again.&amp;quot;;	exit;&amp;#125;if(!get_magic_quotes_gpc(">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263简单粗暴的身份验证&amp;lt;?php $name=trim($_POST[&amp;apos;name&amp;apos;]);$passwd=trim($_POST[&amp;apos;pa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-11T09:14:36.795Z">
+<meta property="og:updated_time" content="2017-09-11T09:14:33.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php第三篇">
-<meta name="twitter:description" content="使用php从web访问mysql数据库 1.粗略的第一部分 123456789$searchterm=trim($_POST($searchterm));if(!$searchterm)&amp;#123;	echo &amp;quot;you have not enter anything.please try again.&amp;quot;;	exit;&amp;#125;if(!get_magic_quotes_gpc(">
+<meta name="twitter:title" content="php第四篇">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263简单粗暴的身份验证&amp;lt;?php $name=trim($_POST[&amp;apos;name&amp;apos;]);$passwd=trim($_POST[&amp;apos;pa">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/09/php第三篇/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/11/php第四篇/"/>
 
 
 
 
 
-  <title>php第三篇 | hhd</title>
+  <title>php第四篇 | hhd</title>
   
 
 
@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/09/php第三篇/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/11/php第四篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -267,7 +267,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">php第三篇</h1>
+          <h1 class="post-title" itemprop="name headline">php第四篇</h1>
         
 
         <div class="post-meta">
@@ -279,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T10:26:36+08:00">
-                2017-09-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T00:00:00+08:00">
+                2017-09-11
               </time>
             
 
@@ -339,23 +339,8 @@
       
 
       
-        <p><strong>使用php从web访问mysql数据库</strong></p>
-<p>1.粗略的第一部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$searchterm=trim($_POST($searchterm));</div><div class="line">if(!$searchterm)</div><div class="line">&#123;</div><div class="line">	echo &quot;you have not enter anything.please try again.&quot;;</div><div class="line">	exit;</div><div class="line">&#125;</div><div class="line">if(!get_magic_quotes_gpc())&#123;</div><div class="line">	$searchterm=addslashes($searchterm);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>2.粗略的第二部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@$db=new mysqli(&apos;loalhost&apos;,&apos;用户名&apos;，&apos;密码&apos;,&apos;数据库&apos;);</div><div class="line">if(mysqli_connect_errno())</div><div class="line">&#123;</div><div class="line">	echo &apos;could not connect to database.&apos;;</div><div class="line">	exit;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apache修改配置：httpd.conf中的MaxCients参数</div><div class="line">mysql修改配置：my.conf中的max_connections参数</div></pre></td></tr></table></figure>
-<p>3.粗略的第三部分</p>
-<p>$db-&gt;select_db(dbname);</p>
-<p>4.粗略的第四部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$query=&quot;select * from books where&quot;.$seartype.&quot;like %&apos;&quot;.$searchterm.&quot;$&apos;&quot;;</div><div class="line">$result=$db-&gt;query($query);</div><div class="line"></div><div class="line">$num_results=$result-&gt;num_rows;</div><div class="line">for($i=0;$i&lt;$num_results;$i++)</div><div class="line">&#123;</div><div class="line">	$row=$result-&gt;fetch_assoc;</div><div class="line">	echo stripslashes($row[&apos;关键字&apos;]);</div><div class="line"></div><div class="line">	$row=$result-&gt;fetch_row($result);</div><div class="line">	echo stripslashes($row[0]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 5.粗略的第五部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$result-&gt;free();</div><div class="line">$db-&gt;close();</div></pre></td></tr></table></figure>
-<p><strong>prepared语句一定程度上可以免受sql注入攻击</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$query=&quot;insert into books value(?,?,?,?)&quot;;</div><div class="line">$stmt=$db-&gt;prepare($query);</div><div class="line">$stmt-&gt;bind_param(&quot;sssd&quot;,&quot;isbn&quot;,&quot;author&quot;,&quot;title&quot;,&quot;price&quot;);</div><div class="line">$stmt-&gt;excute();</div><div class="line">echo $stmt-&gt;affected_rows.&apos;book inserted into database&apos;;</div><div class="line">$stmt-&gt;close();</div></pre></td></tr></table></figure>
-<p>用来查询结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$stmt-&gt;bind_result()；</div><div class="line">￥stmt-&gt;excute();</div></pre></td></tr></table></figure></p>
-<p>每一行一个结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$stmt-&gt;fetch();</div></pre></td></tr></table></figure>
-<p>就是这样，打游戏去耶耶耶！</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">简单粗暴的身份验证</div><div class="line">&lt;?php </div><div class="line">$name=trim($_POST[&apos;name&apos;]);</div><div class="line">$passwd=trim($_POST[&apos;password&apos;]);</div><div class="line">if(!$name||!$passwd)</div><div class="line">&#123;</div><div class="line">	echo &quot;用户名或密码为空，请重新登录！&quot;;</div><div class="line">	exit;</div><div class="line"></div><div class="line">?&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;Login In&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h1&gt;Login In&lt;/h1&gt;</div><div class="line">	&lt;form action=&quot;shenfenyanzheng.php&quot; method=&quot;post&quot;&gt;</div><div class="line">		&lt;table border=&quot;0&quot;&gt;</div><div class="line">		&lt;tr&gt;</div><div class="line">			&lt;td&gt;用户名&lt;/td&gt;</div><div class="line">			&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;name&quot; maxlength=&quot;13&quot; size=&quot;13&quot;&gt;&lt;/td&gt;</div><div class="line">		&lt;/tr&gt;</div><div class="line">		&lt;tr&gt;</div><div class="line">			&lt;td&gt;密码&lt;/td&gt;</div><div class="line">			&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;password&quot; maxlength=&quot;13&quot; size=&quot;13&quot;&gt;&lt;/td&gt;</div><div class="line">		&lt;/tr&gt;</div><div class="line">		&lt;tr&gt;</div><div class="line">			&lt;td colspan=&quot;18&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt;&lt;/td&gt;</div><div class="line">		&lt;/tr&gt;	</div><div class="line">		&lt;/table&gt;</div><div class="line">	&lt;/form&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">&lt;?php</div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;</div><div class="line">	@$db=new mysqli(&apos;localhost&apos;,&apos;root&apos;,&apos;&apos;,&apos;users&apos;);</div><div class="line">	if(mysqli_connect_errno())</div><div class="line">	&#123;</div><div class="line">		echo &quot;无法与服务器连接&quot;;</div><div class="line">		exit;</div><div class="line">	&#125;</div><div class="line">	$db-&gt;select_db(&apos;users&apos;);</div><div class="line">	$query=&quot;select count(*) from users where name = &apos;&quot;.$name.&quot;&apos; and passwd = &apos;&quot;.$passwd.&quot;&apos;&quot;;</div><div class="line">	$result=$db-&gt;query($query);</div><div class="line">	if(!$result)</div><div class="line">	&#123;</div><div class="line">		echo &quot;无法进行数据库操作&quot;;</div><div class="line">		exit;</div><div class="line">	&#125;</div><div class="line">	$row=mysqli_fetch_row($result);</div><div class="line">	$count=$row[0];</div><div class="line">	if($count&gt;0)</div><div class="line">	&#123;</div><div class="line">		echo &quot;成功登录&quot;;</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		echo &quot;登录失败&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>试了好久，发现如果用户名密码包含中文就不行，不知道错在哪。。。</p>
 
       
     </div>
@@ -386,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/07/sql注入总结/" rel="next" title="sql注入总结">
-                <i class="fa fa-chevron-left"></i> sql注入总结
+              <a href="/2017/09/09/php第三篇/" rel="next" title="php第三篇">
+                <i class="fa fa-chevron-left"></i> php第三篇
               </a>
             
           </div>
@@ -395,10 +380,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/11/php第四篇/" rel="prev" title="php第四篇">
-                php第四篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
