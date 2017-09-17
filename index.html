@@ -245,6 +245,150 @@
   
   
 
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/ctf-web-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/17/ctf-web-2/" itemprop="url">ctf.web.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T11:31:58+08:00">
+                2017-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cft-web/" itemprop="url" rel="index">
+                    <span itemprop="name">cft.web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一个网页的源码：<br>&lt;?php<br>$md51 = md5(‘QNKCDZO’);<br>$a = @$_GET[‘a’];<br>$md52 = @md5($a);<br>if(isset($a)){<br>if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52) {<br>    echo “nctf{<strong><strong><strong><strong>*</strong></strong></strong></strong>}”;<br>} else {<br>    echo “false!!!”;<br>}}<br>else{echo “please input a”;}<br>?&gt;</p>
+<p>可知他需要在后缀网址输入?a=…<br>重点是这句：if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52)<br>同样md5加密后的结果某种程度上相同但是原先的字符串不同<br>首先，我们将QNKCDZO这个字符串md5加密，得到：0e830400451993494058024219903391<br>0e表示0，则我们只需要找0e开头的即可，网上搜到有aabg7XSs</p>
+<p>后来我犯了个错，我在a=加了引号，其实不用，看源代码，我们无需加引号<br>去掉引号就得到flag了…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1623,7 +1767,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
