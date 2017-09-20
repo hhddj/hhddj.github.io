@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,加密" />
+  <meta name="keywords" content="sql.fun," />
 
 
 
@@ -95,14 +95,14 @@
 
 
 <meta name="description" content="文章访问密码：password">
-<meta name="keywords" content="Hexo,加密">
+<meta name="keywords" content="sql.fun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好玩的sql第一篇">
 <meta property="og:url" content="http://yoursite.com/2017/09/19/sql-1/index.html">
 <meta property="og:site_name" content="hhd">
 <meta property="og:description" content="文章访问密码：password">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-20T15:02:28.464Z">
+<meta property="og:updated_time" content="2017-09-20T15:09:17.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好玩的sql第一篇">
 <meta name="twitter:description" content="文章访问密码：password">
@@ -348,7 +348,17 @@
 <p>第三步：?id=1’–+<br>利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释</p>
 <p>第四步：?id=0’ union  select 1,2,3–+  或者 ?id=0’ union select * from users order by猜解<br>测试关于字段的个数</p>
 <p>第五步：?id=0’ union select 1,group_concat(schema_name),3 from information_schema.schemata–+<br>最后查看所有库，也可以加些其他操作…由于本人小白，就不多说了…</p>
-
+<script>
+    if("woshilinhanyi021"==prompt("请输入密码"))
+    {
+        alert("正确");
+    }
+    else
+    {
+        alert("错误");
+        location="http://baidu.com"; #返回网站，请自定义
+    }
+</script>
       
     </div>
     
@@ -378,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/17/ctf-web-3/" rel="next" title="ctf.web.3">
-                <i class="fa fa-chevron-left"></i> ctf.web.3
+              <a href="/2017/09/17/ctf-web-2/" rel="next" title="ctf.web.2">
+                <i class="fa fa-chevron-left"></i> ctf.web.2
               </a>
             
           </div>
