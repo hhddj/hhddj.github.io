@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="if(&quot;woshilinhanyi021&quot;==prompt(&quot;请输入密码&quot;))     {         alert(&quot;正确&quot;);     }     else     {         alert(&quot;错误&quot;);         location=&quot;http://baidu.com&quot;; #返回网站，请自定义     }    第一步：?id=1正常显示 第二步：?id=1’显示错误：">
+<meta name="description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）这告诉我们需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=0’ union  select 1,2,3–+  或者 ?id=">
 <meta name="keywords" content="sql.fun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好玩的sql第一篇">
 <meta property="og:url" content="http://yoursite.com/2017/09/19/sql-1/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="if(&quot;woshilinhanyi021&quot;==prompt(&quot;请输入密码&quot;))     {         alert(&quot;正确&quot;);     }     else     {         alert(&quot;错误&quot;);         location=&quot;http://baidu.com&quot;; #返回网站，请自定义     }    第一步：?id=1正常显示 第二步：?id=1’显示错误：">
+<meta property="og:description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）这告诉我们需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=0’ union  select 1,2,3–+  或者 ?id=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T08:44:40.365Z">
+<meta property="og:updated_time" content="2017-09-22T08:47:29.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好玩的sql第一篇">
-<meta name="twitter:description" content="if(&quot;woshilinhanyi021&quot;==prompt(&quot;请输入密码&quot;))     {         alert(&quot;正确&quot;);     }     else     {         alert(&quot;错误&quot;);         location=&quot;http://baidu.com&quot;; #返回网站，请自定义     }    第一步：?id=1正常显示 第二步：?id=1’显示错误：">
+<meta name="twitter:description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）这告诉我们需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=0’ union  select 1,2,3–+  或者 ?id=">
 
 
 
@@ -339,20 +339,7 @@
       
 
       
-        <script>
-    if("woshilinhanyi021"==prompt("请输入密码"))
-    {
-        alert("正确");
-    }
-    else
-    {
-        alert("错误");
-        location="http://baidu.com"; #返回网站，请自定义
-    }
-</script>
-
-
-<p>第一步：?id=1<br>正常显示</p>
+        <p>第一步：?id=1<br>正常显示</p>
 <p>第二步：?id=1’<br>显示错误：LIMIT 0,1’ 这表示切片<br>（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）<br>这告诉我们需要将后面的注释掉</p>
 <p>第三步：?id=1’–+<br>利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释</p>
 <p>第四步：?id=0’ union  select 1,2,3–+  或者 ?id=0’ union select * from users order by猜解<br>测试关于字段的个数</p>
@@ -387,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/17/ctf-web-3/" rel="next" title="ctf.web.3">
-                <i class="fa fa-chevron-left"></i> ctf.web.3
+              <a href="/2017/09/17/ctf-web-2/" rel="next" title="ctf.web.2">
+                <i class="fa fa-chevron-left"></i> ctf.web.2
               </a>
             
           </div>
