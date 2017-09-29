@@ -649,6 +649,10 @@
 <hr>
 <p>今天主要讲sql注入的利用，明天学sql盲注<br>一.识别数据库<br>识别DBMS是很重要的，因为不同的系统注入还是有差别的。<br>asp和.net一般用sql server 做后台数据库；php很可能是mysql；应用如果是java写的，一般是oracle或者mysql；安装IIS的很可能是sql server；运行apache和php的linux服务器很可能是开源的mysql。<br>如果DBMS处于非盲态，那通过错误反馈一般可以知道DBMS的类型，但是如果处于盲态，必须通过一些查询注入才能得知。<br>1.非盲态跟踪<br>加引号，sqlserver和mysql都会在错误反馈中直接显示，oracle则会显示ORA，因为oracle有一个oracle错误消息库<br>关于sql server的几个内置变量：<br>@@version 数据库版本  @@servername 安装sql server的服务器名称   @@language 当前所使用语言的名称   @@spid 当前用户的进程ID（记住这个我也不懂怎么注入sql server呀！）<br>2.盲跟踪<br>一些简单的语法知识就不讲了<br>详细讲一下union查询<br>用union查询最重要的一点就是必须要两条语句列数相同，从本篇最上面的猜解字段我们可以判断列数,easy~接着就是类型相同，大多是字符串类型，所以一般不需要太注意<br>三种DBMS都可使用order by,也可以使用select 1,2,3…不过前者速度更快，而且在数据库日志中留下的痕迹少…<br>哦，对了，%2B是加好的意思，因为加号在html里面会被注释<br>有些时候你必须保证这个数据是字符串类型，需要用到强制转换，虽然我觉得不怎么用到，反正我做了一点点注入是没遇到过，但是还是记录下。<br>sql server:select cast(‘123’,varchar)<br>mysql:select cast(‘123’,char)<br>oracle:select cast(1,varchar) from dual<br>还有一个注意点，就是如果是返回几行数据的，你需要注意,union前面的条件需要为假才能使你这个查询有效。</p>
 <p>好吧，其实还有很多内容，但是今天看来学不完了，下次更新…溜了溜了</p>
+<hr>
+<p>这次讲基于时间的盲注<br>我真的学的是龟速我发现<br>mysql中if(条件，ture怎么办，false怎么办)<br>然后在true或false里面加sleep() 从时间长度判断是否正确<br>因为之前那个第六关发现无法基于布尔盲注，所以采用时间盲注</p>
+<p>除了时间盲注，布尔盲注在学长的指导下发现可以用burpsuite suite的读音也是很清奇<br>burpsuite中的intruder可以让你不用手工一个一个输入判断，这样就十分方便</p>
+<p>之后打算全面认识一下sqlmap还有看懂一些Python脚本吧…</p>
 
           
         
