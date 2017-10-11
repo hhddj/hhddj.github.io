@@ -1165,6 +1165,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf中的编码与加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/ctf中的编码与加密/" itemprop="url">ctf中的编码与加密</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf-编码与加密/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf.编码与加密</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>以“wy is pig”来表现各种编码的不同。目的是看到这种类型的字符串大概认得是哪种编码</p>
+<p>1.ascii码<br>119 121 32 105 115 32 112 105 103 </p>
+<p>2.base64编码<br>d3kgaXMgcGln</p>
+<p>3.shellcode编码<br>\x77\x79\x7f\x69\x73\x7f\x70\x69\x67</p>
+<p>4.quoted printable编码<br><a href="http://www.mxcz.net/tools/QuotedPrintable.aspx" target="_blank" rel="external">http://www.mxcz.net/tools/QuotedPrintable.aspx</a><br>无法知晓，大概是这种类型<br>=E6=95=8F=E6=8D=B7=E7=9A=84=E6=A3=95=E8=89=B2=E7=8B=90=E7=8B=B8=E8=B7=B3=E8<br>=BF=87=E4=BA=86=E6=87=92=E6=83=B0=E7=9A=84=E7=8B=97</p>
+<p>5.xxencode编码<br><a href="http://web.chacuo.net/charsetxxencode" target="_blank" rel="external">http://web.chacuo.net/charsetxxencode</a></p>
+<p>8RrYUOLAUQ4Zb0U++</p>
+<p>它所选择的可打印字符是：+-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz，一共64个字符。跟base64打印字符相比，就是UUencode多一个“-” 字符，少一个”/” 字符。</p>
+<p>6.uuencode编码<br><a href="http://web.chacuo.net/charsetuuencode" target="_blank" rel="external">http://web.chacuo.net/charsetuuencode</a><br>所产生的结果刚好落在ASCII字符集中可打印字符（32-空白…95-底线）的范围之中。<br>*=WD@:7,@&lt;&amp;EG”@``</p>
+<p>7.url编码<br>个人建议用burp<br>%77%79%20%69%73%20%70%69%67</p>
+<p>8.unicode编码<br><a href="http://www.mxcz.net/tools/Unicode.aspx" target="_blank" rel="external">http://www.mxcz.net/tools/Unicode.aspx</a><br>&#x0077;&#x0079;&#x0020;&#x0069;&#x0073;&#x0020;&#x0070;&#x0069;&#x0067;</p>
+<p>9.escape编码<br><a href="http://web.chacuo.net/charsetescape" target="_blank" rel="external">http://web.chacuo.net/charsetescape</a><br>%u0077%u0079%u0020%u0069%u0073%u0020%u0070%u0069%u0067</p>
+<p>10.html实体编码<br><a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_entities.html</a><br>这…懒得看</p>
+<p>感觉生病了，所以写不下去了…难受</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/03/php第二篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1606,156 +1761,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/23/ctf.web.1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/23/ctf.web.1/" itemprop="url">ctf.web.1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T11:31:58+08:00">
-                2017-08-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cft-web/" itemprop="url" rel="index">
-                    <span itemprop="name">cft.web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ctf-web-1"><a href="#ctf-web-1" class="headerlink" title="ctf.web.1"></a>ctf.web.1</h2><p><strong>题目网址</strong>：<a href="http://218.2.197.232:18001/" target="_blank" rel="external">http://218.2.197.232:18001/</a><br>进入网址后发现提示：渗透测试大法：第一招，扫端口；第二招，… 。</p>
-<p>这告诉我们需要扫描网站进行渗透测试，所以我用burpsuite中的scanner进行扫描。发现有robots.txt。然后对每个Php文件进行查看，发现flag在rob0t.php中。</p>
-<p>因为是热身题所以很简单。</p>
-<p>又得去学车了，伤感。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1803,7 +1813,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1814,7 +1824,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1825,7 +1835,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/tags.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
