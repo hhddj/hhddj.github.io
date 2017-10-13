@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="hhd">
 <meta property="og:description" content="以“wy is pig”来表现各种编码的不同。目的是看到这种类型的字符串大概认得是哪种编码 1.ascii码119 121 32 105 115 32 112 105 103  2.base64编码d3kgaXMgcGln 3.shellcode编码\x77\x79\x7f\x69\x73\x7f\x70\x69\x67 4.quoted printable编码http://www.mxcz.ne">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-11T09:26:08.216Z">
+<meta property="og:updated_time" content="2017-10-13T01:36:10.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ctf中的编码与加密">
 <meta name="twitter:description" content="以“wy is pig”来表现各种编码的不同。目的是看到这种类型的字符串大概认得是哪种编码 1.ascii码119 121 32 105 115 32 112 105 103  2.base64编码d3kgaXMgcGln 3.shellcode编码\x77\x79\x7f\x69\x73\x7f\x70\x69\x67 4.quoted printable编码http://www.mxcz.ne">
@@ -352,7 +352,34 @@
 <p>8.unicode编码<br><a href="http://www.mxcz.net/tools/Unicode.aspx" target="_blank" rel="external">http://www.mxcz.net/tools/Unicode.aspx</a><br>&#x0077;&#x0079;&#x0020;&#x0069;&#x0073;&#x0020;&#x0070;&#x0069;&#x0067;</p>
 <p>9.escape编码<br><a href="http://web.chacuo.net/charsetescape" target="_blank" rel="external">http://web.chacuo.net/charsetescape</a><br>%u0077%u0079%u0020%u0069%u0073%u0020%u0070%u0069%u0067</p>
 <p>10.html实体编码<br><a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_entities.html</a><br>这…懒得看</p>
-<p>感觉生病了，所以写不下去了…难受</p>
+<p>11.敲击码<br>个人觉得这很神奇<br>敲击码表如下</p>
+<p>  1  2  3  4  5<br>1 A  B C/K D  E<br>2 F  G  H  I  J<br>3 L  M  N  O  P<br>4 Q  R  S  T  U<br>5 V  W  X  Y  Z</p>
+<p>5，2  5，4  2,4  4,3  3,5  2,4  2,2</p>
+<p>12.莫尔斯电码<br><a href="http://rumkin.com/tools/cipher/morse.php" target="_blank" rel="external">http://rumkin.com/tools/cipher/morse.php</a><br>莫尔斯 电码表如下</p>
+<p>A  .-    N  -.    .  .-.-.-  +  .-.-.    1  .—-<br>B  -…  O  —   ,  –..–  _  ..–.-   2  ..—<br>C  -.-.  P  .–.  :  —…  $  …-..-  3  …–<br>D  -..   Q  –.-  “  .-..-.  &amp;  .-…    4  ….-<br>E  .     R  .-.   ‘  .—-.  /  -..-.    5  …..<br>F  ..-.  S  …   !  -.-.–              6  -….<br>G  –.   T  -     ?  ..–..              7  –…<br>H  ….  U  ..-   @  .–.-.              8  —..<br>I  ..   V  …-  -  -….-              9  —-.<br>J  .—  W  .–   ;  -.-.-.              0  —–<br>K  -.-   X  -..-  (  -.–.<br>L  .-..  Y  -.–  )  -.–.-<br>M  –    Z  –..  =  -…-     </p>
+<p>.– -.– / .. … / .–. .. –.</p>
+<p>13.文本加密为盲文<br><a href="http://www.qqxiuzi.cn/bianma/wenbenjiami.php" target="_blank" rel="external">http://www.qqxiuzi.cn/bianma/wenbenjiami.php</a><br>未用密码的情况下：揪晕疆枨嚼疆停枨撺=</p>
+<p>14.栅栏密码<br><a href="http://www.practicalcryptography.com/ciphers/classical-era/rail-fence/" target="_blank" rel="external">http://www.practicalcryptography.com/ciphers/classical-era/rail-fence/</a><br>栅栏密码(Rail-fence Cipher)就是把要加密的明文分成N个一组，然后把每组的第1个字符组合，每组第2个字符组合…每组的第N(最后一个分组可能不足N个)个字符组合，最后把他们全部连接起来就是密文，这里以2栏栅栏加密为例。</p>
+<p>15.曲路密码<br>曲路密码(Curve Cipher)是一种换位密码，需要事先双方约定密钥(也就是曲路路径)。</p>
+<p>明文：The quick brown fox jumps over the lazy dog</p>
+<p>填入5行7列表(事先约定填充的行列数)</p>
+<p>加密的回路线(事先约定填充的行列数)</p>
+<p>密文：gesfc inpho dtmwu qoury zejre hbxva lookT</p>
+<p>16.列移位密码<br><a href="http://www.practicalcryptography.com/ciphers/classical-era/columnar-transposition/" target="_blank" rel="external">http://www.practicalcryptography.com/ciphers/classical-era/columnar-transposition/</a><br>就是利用密钥=列数按字母表排序，然后将密码排成几行几列，按顺序将列排序。</p>
+<p>17.埃特巴什码<br><a href="http://www.practicalcryptography.com/ciphers/classical-era/atbash-cipher/" target="_blank" rel="external">http://www.practicalcryptography.com/ciphers/classical-era/atbash-cipher/</a><br>按字母倒序<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>ZYXWVUTSRQPONMLKJIHGFEDCBA</p>
+<p>18.凯撒密码<br>向后偏移x位<br><a href="http://planetcalc.com/1434/" target="_blank" rel="external">http://planetcalc.com/1434/</a></p>
+<p>19.ROT5/13/18/47</p>
+<pre><code>ROT5 是 rotate by 5 places 的简写，意思是旋转5个位置，其它皆同。下面分别说说它们的编码方式：
+
+ROT5：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字，例如当前为0，编码后变成5，当前为1，编码后变成6，以此类推顺序循环。
+
+ROT13：只对字母进行编码，用当前字母往前数的第13个字母替换当前字母，例如当前为A，编码后变成N，当前为B，编码后变成O，以此类推顺序循环。
+
+ROT18：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起，为了好称呼，将其命名为ROT18。
+
+ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符，例如当前为小写字母z，编码后变成大写字母K，当前为数字0，编码后变成符号_。用于ROT47编码的字符其ASCII值范围是33－126，具体可参考ASCII编码，下面以rot13以例。
+</code></pre><p>20.简单替换密码<br><a href="https://quipqiup.com/" target="_blank" rel="external">https://quipqiup.com/</a><br>简单换位密码(Simple Substitution Cipher)加密方式是以每个明文字母被与之唯一对应且不同的字母替换的方式实现的，它不同于恺撒密码，因为密码字母表的字母不是简单的移位，而是完全是混乱的。</p>
+<p>21.</p>
 
       
     </div>
@@ -465,7 +492,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -476,7 +503,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -487,7 +514,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/tags.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
