@@ -1309,6 +1309,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/盲注小解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/盲注小解/" itemprop="url">盲注小解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql注入/" itemprop="url" rel="index">
+                    <span itemprop="name">sql注入</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: 盲注小解<br>date: 2017-09-07 19:04:30<br>categories: sql注入</p>
+<h2 id="tags-sql注入"><a href="#tags-sql注入" class="headerlink" title="tags: sql注入"></a>tags: sql注入</h2><blockquote>
+<p>一.基于布尔的SQL注入</p>
+</blockquote>
+<ol>
+<li><p>left(database(),1) 截取该数据库前1位。</p>
+</li>
+<li><p>ascii(substr((select table_name information_schema.tables where tables_schema =database()limit 0,1),1,1))  substr表示从第几位截取多少长度</p>
+</li>
+<li><p>ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id limit 0,1),1,1))   mid表示从第几位截取到第几位 ord=ascii</p>
+</li>
+<li><p>正则暂时不介绍。</p>
+</li>
+<li><p>select user() like ‘ro%’   like表示模糊匹配</p>
+</li>
+</ol>
+<blockquote>
+<p>基于时间的SQL盲注</p>
+</blockquote>
+<ol>
+<li><p>If(ascii(substr(database(),1,1))&gt;115,0,sleep(5)) 如果错误延时五秒。</p>
+</li>
+<li><p>BENCHMARK(100000,MD5(1))可以代替sleep(5)，不过需要占用很多的cpu资源。</p>
+</li>
+</ol>
+<blockquote>
+<p>基于报错的SQL注入（暂时不讲）</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf中的编码与加密/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1620,148 +1790,6 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/26/PHP第一篇/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/26/PHP第一篇/" itemprop="url">php第一篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T14:15:00+08:00">
-                2017-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>练车回来的猪<br>1.echo 打印东西到屏幕<br>2.// /* 都表示注释<br>3.作为字符串连接符.<br>4.date（）返回当前时间，一般用法：date(H:i,js,F,Y)<br>5.接受html值，有其一；；；<br>6.特殊类型：NULL和resource<br>7.phpinfo:查看系统自带常量<br>8.define（，）定义常量<br>9.注意！==与！= ===与==<br>10.执行操作符：’’<br>11.错误抑制符：@<br>12.instanceof：判断是否是属于某个特定类<br>13.is_numeric:判断是否是数字类型<br>14.number_format()：保留小数，位数自定<br>15.gettype:得到变量类型<br>16.settype:确定变量类型<br>17.isset（）判断变量是否存在<br>18.unset（）：销毁变量</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1814,7 +1842,7 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
             
               <a href="/archives">
             
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

