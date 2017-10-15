@@ -250,6 +250,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/ctf-web-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/17/ctf-web-3/" itemprop="url">ctf.web.3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T11:31:58+08:00">
+                2017-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cft-web/" itemprop="url" rel="index">
+                    <span itemprop="name">cft.web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>让我们输入zhimakaimen</p>
+<p>但是源代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;</div><div class="line">尚未登录或口令错误&lt;form action=&quot;./index.php&quot; method=&quot;post&quot;&gt;</div><div class="line">	&lt;p&gt;输入框：&lt;input type=&quot;password&quot; value=&quot;&quot; name=&quot;text1&quot; maxlength=&quot;10&quot;&gt;&lt;br&gt;</div><div class="line">	请输入口令：zhimakaimen</div><div class="line">	&lt;input type=&quot;submit&quot; value=&quot;开门&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>可以看到maxlength=10，是小于zhimakaimen的<br>我们可以利用firebug,将10改的大一点，就可以了。。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/ctf-web-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -347,150 +492,6 @@
 <p>今天写的一道题，就是虽然是post进参数，但是又没有地方让你Post,用burpsuite死活不行，然后终于在某大神指示下用了浏览器某插件，然后就修改了Post就可以了。<br>0e字符串md5(‘s878926199a’)=0e545993274517709034328855841020</p>
 <pre><code>md5(&apos;s155964671a&apos;)=0e342768416822451524974117254469：
 </code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/ctf-web-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/17/ctf-web-2/" itemprop="url">ctf.web.2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T11:31:58+08:00">
-                2017-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cft-web/" itemprop="url" rel="index">
-                    <span itemprop="name">cft.web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个网页的源码：<br>&lt;?php<br>$md51 = md5(‘QNKCDZO’);<br>$a = @$_GET[‘a’];<br>$md52 = @md5($a);<br>if(isset($a)){<br>if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52) {<br>    echo “nctf{<strong><strong><strong><strong>*</strong></strong></strong></strong>}”;<br>} else {<br>    echo “false!!!”;<br>}}<br>else{echo “please input a”;}<br>?&gt;</p>
-<p>可知他需要在后缀网址输入?a=…<br>重点是这句：if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52)<br>同样md5加密后的结果某种程度上相同但是原先的字符串不同<br>首先，我们将QNKCDZO这个字符串md5加密，得到：0e830400451993494058024219903391<br>0e表示0，则我们只需要找0e开头的即可，网上搜到有aabg7XSs</p>
-<p>后来我犯了个错，我在a=加了引号，其实不用，看源代码，我们无需加引号<br>去掉引号就得到flag了…</p>
-
           
         
       
@@ -1546,9 +1547,7 @@
       
         
           
-            <hr>
-<p>title: 盲注小解<br>date: 2017-09-07 19:04:30<br>categories: sql注入</p>
-<h2 id="tags-sql注入"><a href="#tags-sql注入" class="headerlink" title="tags: sql注入"></a>tags: sql注入</h2><blockquote>
+            <blockquote>
 <p>一.基于布尔的SQL注入</p>
 </blockquote>
 <ol>
