@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/盲注小解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/07/sql注入总结/" itemprop="url">sql注入总结</a></h1>
+                <a class="post-title-link" href="/2017/09/07/盲注小解/" itemprop="url">盲注小解</a></h1>
         
 
         <div class="post-meta">
@@ -343,35 +343,33 @@
       
         
           
-            <p>重新来写这个总结。<br>发现以前写的太机械，其实在做题过程中，很多种情况有不同的方法。<br>我之前写的感觉不像ctf方向，这次就从 <strong><em>ctf方向</em></strong> 写起。</p>
-<hr>
-<blockquote>
-<p><strong><em>一些心得</em></strong>（无前后顺序）</p>
+            <blockquote>
+<p>一.基于布尔的SQL注入</p>
 </blockquote>
-<p>1.看<strong>页面代码</strong>，一般里面会有一些特殊的信息。</p>
-<p>2.判断是否直接打印出<strong>query结果</strong>，这很重要，在我看来，如果直接打印就比较方便，可以很快得出你想要的结果。但是如果不是，可能需要通过盲注等方法获取</p>
-<p>3.一些存着的语句，其实每次sql打字都很费时啊，要是直接可以复制粘贴岂不是美滋滋。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">判断字段数：?id=0&apos; union select * from 表名 order by 数字 #</div><div class="line"></div><div class="line">判断字段数：?id=0&apos; union select 1,2,3--+</div><div class="line"></div><div class="line">得出数据库等信息：?id=0&apos; union select 1,group_concat(schema_name),3 from information_schema.schemata--+</div><div class="line"></div><div class="line">判断数据库版本：?id=1&apos; and left(select version(),1)=4--+</div><div class="line"></div><div class="line">判断数据库名：?id=1&apos; and left(database(),1)=&apos;u&apos;--+</div><div class="line"></div><div class="line">判断表名：?id=1&apos; and ascii(substr((select table_name from information_schema.tables where table_schema=database()limit 0,1),1,1)))=数字（这些盲注很多可以利用burpsuite）</div><div class="line"></div><div class="line">判断库名：?id=1&apos; and if(ascii(substr(database(),1,1))=115,1,sleep(5))</div><div class="line">利用时间盲注</div></pre></td></tr></table></figure>
-<p>其实以上语句只是为了给我方便，但很多时候他都需要有一些灵活的改变，比如id那里可能本身他就是整数类型，也可能这个程序他过滤了引号等等等等。所以还是需要根本情况而定，耐心很重要。</p>
-<p>4.一些注意点，关于url及其他语言的小知识</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">若空格被过滤，可以用%a0或者/**/代替，注释--+也可以用%23代替</div><div class="line">我们通常需要在尾部加注释，平常的注释用的是#或者是-- 但是在url里面使用--+</div></pre></td></tr></table></figure>
-<hr>
+<ol>
+<li><p>left(database(),1) 截取该数据库前1位。</p>
+</li>
+<li><p>ascii(substr((select table_name information_schema.tables where tables_schema =database()limit 0,1),1,1))  substr表示从第几位截取多少长度</p>
+</li>
+<li><p>ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id limit 0,1),1,1))   mid表示从第几位截取到第几位 ord=ascii</p>
+</li>
+<li><p>正则暂时不介绍。</p>
+</li>
+<li><p>select user() like ‘ro%’   like表示模糊匹配</p>
+</li>
+</ol>
 <blockquote>
-<p><strong><em>一些书本知识</em></strong></p>
+<p>基于时间的SQL盲注</p>
 </blockquote>
-<p>一.识别数据库<br>识别DBMS是很重要的，因为不同的系统注入还是有差别的。<br>asp和.net一般用sql server 做后台数据库；php很可能是mysql；应用如果是java写的，一般是oracle或者mysql；安装IIS的很可能是sql server；运行apache和php的linux服务器很可能是开源的mysql。<br>如果DBMS处于非盲态，那通过错误反馈一般可以知道DBMS的类型，但是如果处于盲态，必须通过一些查询注入才能得知。<br>1.非盲态跟踪<br>加引号，sqlserver和mysql都会在错误反馈中直接显示，oracle则会显示ORA，因为oracle有一个oracle错误消息库<br>关于sql server的几个内置变量：<br>@@version 数据库版本  @@servername 安装sql server的服务器名称   @@language 当前所使用语言的名称   @@spid 当前用户的进程ID（记住这个我也不懂怎么注入sql server呀！）<br>2.盲跟踪<br>一些简单的语法知识就不讲了<br>详细讲一下union查询<br>用union查询最重要的一点就是必须要两条语句列数相同，从本篇最上面的猜解字段我们可以判断列数,easy~接着就是类型相同，大多是字符串类型，所以一般不需要太注意<br>三种DBMS都可使用order by,也可以使用select 1,2,3…不过前者速度更快，而且在数据库日志中留下的痕迹少…<br>哦，对了，%2B是加好的意思，因为加号在html里面会被注释<br>有些时候你必须保证这个数据是字符串类型，需要用到强制转换，虽然我觉得不怎么用到，反正我做了一点点注入是没遇到过，但是还是记录下。<br>sql server:select cast(‘123’,varchar)<br>mysql:select cast(‘123’,char)<br>oracle:select cast(1,varchar) from dual<br>还有一个注意点，就是如果是返回几行数据的，你需要注意,union前面的条件需要为假才能使你这个查询有效。</p>
-<hr>
+<ol>
+<li><p>If(ascii(substr(database(),1,1))&gt;115,0,sleep(5)) 如果错误延时五秒。</p>
+</li>
+<li><p>BENCHMARK(100000,MD5(1))可以代替sleep(5)，不过需要占用很多的cpu资源。</p>
+</li>
+</ol>
 <blockquote>
-<p><strong><em>基于时间的盲注</em></strong></p>
+<p>基于报错的SQL注入（暂时不讲）</p>
 </blockquote>
-<p><em>基本套路</em>：if(条件，ture怎么办，false怎么办)<br>sleep()：从时间长度判断是否正确，一般加在false里面<br>无法基于布尔盲注的情况下采用时间盲注</p>
-<hr>
-<blockquote>
-<p><strong><em>burpsuite下的sql注入</em></strong></p>
-</blockquote>
-<p>burpsuite中的intruder：手工帮你爆破，在猜解数据库名，表名，字段数时尤为有用，不过便捷程度小于sqlmap</p>
-<hr>
-<p>还有一些要补充的，比如绕过之类的，晚上回来重点学文件包含和sql注入绕过以及sqlmap的使用。</p>
 
           
         

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行利用make来进行一次性调试例子，编写实验。 c源码：shu.c #include #include “jisuan.h” #include #includeint">
+<meta name="description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
 <meta name="keywords" content="linuxc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux c">
 <meta property="og:url" content="http://yoursite.com/2017/09/20/linux-c/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行利用make来进行一次性调试例子，编写实验。 c源码：shu.c #include #include “jisuan.h” #include #includeint">
+<meta property="og:description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-15T03:50:56.246Z">
+<meta property="og:updated_time" content="2017-10-15T08:35:41.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux c">
-<meta name="twitter:description" content="安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行利用make来进行一次性调试例子，编写实验。 c源码：shu.c #include #include “jisuan.h” #include #includeint">
+<meta name="twitter:description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
 
 
 
@@ -339,28 +339,33 @@
       
 
       
-        <p>安装build-essential软件包<br>$sudo apt-get install build-essential</p>
+        <blockquote>
+<p>gcc编译</p>
+</blockquote>
+<p>安装build-essential软件包<br>$sudo apt-get install build-essential</p>
 <p>编辑了一个c文件后，开始编译</p>
 <p>gcc 文件名 -o 执行名字</p>
 <p>./执行名字</p>
-<h2 id="gcc-c-表示只进行编译，不链接可执行"><a href="#gcc-c-表示只进行编译，不链接可执行" class="headerlink" title="gcc -c 表示只进行编译，不链接可执行"></a>gcc -c 表示只进行编译，不链接可执行</h2><p>利用make来进行一次性调试<br>例子，编写实验。</p>
-<p>c源码：<br>shu.c</p>
-<p>#include<stdio.h></stdio.h></p>
-<p>#include “jisuan.h”</p>
-<p>#include<string.h></string.h></p>
-<p>#include<stdlib.h><br>int main()<br>{<br>    char a[100];<br>    int i,s=0,sum;<br>    printf(“please input tow numbers,first smaller than second:\n”);<br>    scanf(“%s”,a);<br>    for(i=0;i<strlen(a);i++) {="" if(a[i]="='" ')="" s++;="" if(a[i]<'0'||a[i]="">‘9’)<br>        {<br>            printf(“输入的不为数字!bye!\n”);<br>            exit(0);<br>        }<br>    }<br>    if(s!=1)<br>    {<br>        printf(“输入太多了！猪头！\n”);<br>        exit(0);<br>    }<br>    else<br>    {<br>        sum=jisuan(a);<br>        printf(“the sum is %d\n”,sum);<br>    }<br>    return 0;<br>}</strlen(a);i++)></stdlib.h></p>
-<p>jisuan.h<br>int jisuan(char a[]);</p>
-<p>jisuan.c</p>
-<p>#include<stdio.h></stdio.h></p>
-<p>#include<string.h></string.h></p>
-<p>#include<stdlib.h><br>int jisuan(char a[])<br>{<br>    int i,flag,a1=0,a2=0;<br>    for(i=0;i&lt;strlen(a);i++)<br>    {<br>        if(a[i]==’/‘)<br>            flag=i;<br>    }<br>    for(i=0;i&lt;flag;i++)<br>        a1=a1<em>10+a[i]-48;<br>    for(i=flag+1;i&lt;strlen(a);i++)<br>        a2=a2</em>10+a[i]-48;<br>    return a1+a2;<br>}</stdlib.h></p>
-<p>被引用程序需要写.h文件。<br>make -f makefile文件名 /指定makefile文件名<br>     -i /忽略错误<br>     -s /表示执行但是不显示执行状况<br>     -d /Debug模式，显示文件详细信息和检测时间</p>
-<p>makefile大致文件内容：<br>shu:shu.o jisuan.o<br>    gcc shu.o jisuan.o shu<br>shu.o:shu.c jisuan.h<br>    gcc -c shu.c<br>jisuan.o:jisuan.c jisuan.h<br>    gcc -c jisuan.c<br>clean:<br>    rm -f shu*.o</p>
+<p><strong><em>gcc -c 表示只进行编译，不链接可执行</em></strong></p>
 <hr>
-<p>makefile规则：<br>1）如果这个工程没有编译过，那么我们的所有c文件都要编译并被链接。</p>
-<p>2）如果这个工程的某几个c文件被修改，那么我们只编译被修改的c文件，并链接目标程序。</p>
-<p>3）如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的c文件，并链接目标程序。 </p>
-
+<h2 id="例子，编写实验。"><a href="#例子，编写实验。" class="headerlink" title="例子，编写实验。"></a>例子，编写实验。</h2><blockquote>
+<p>c源码：</p>
+</blockquote>
+<p>shu.c<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include &quot;jisuan.h&quot;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[100];</div><div class="line">	int i,s=0,sum;</div><div class="line">	printf(&quot;please input tow numbers,first smaller than second:\n&quot;);</div><div class="line">	scanf(&quot;%s&quot;,a);</div><div class="line">	for(i=0;i&lt;strlen(a);i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==&apos; &apos;)</div><div class="line">			s++;</div><div class="line">		if(a[i]&lt;&apos;0&apos;||a[i]&gt;&apos;9&apos;)</div><div class="line">		&#123;</div><div class="line">			printf(&quot;输入的不为数字!bye!\n&quot;);</div><div class="line">			exit(0);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	if(s!=1)</div><div class="line">	&#123;</div><div class="line">		printf(&quot;输入太多了！猪头！\n&quot;);</div><div class="line">		exit(0);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		sum=jisuan(a);</div><div class="line">		printf(&quot;the sum is %d\n&quot;,sum);</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">jisuan.h</div><div class="line">int jisuan(char a[]);</div><div class="line"></div><div class="line"></div><div class="line">jisuan.c</div><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">int jisuan(char a[])</div><div class="line">&#123;</div><div class="line">	int i,flag,a1=0,a2=0;</div><div class="line">	for(i=0;i&lt;strlen(a);i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==&apos;/&apos;)</div><div class="line">			flag=i;</div><div class="line">	&#125;</div><div class="line">	for(i=0;i&lt;flag;i++)</div><div class="line">		a1=a1*10+a[i]-48;</div><div class="line">	for(i=flag+1;i&lt;strlen(a);i++)</div><div class="line">		a2=a2*10+a[i]-48;</div><div class="line">	return a1+a2;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p>make相关</p>
+</blockquote>
+<p>  <strong>被引用程序需要写.h文件。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">make -f makefile文件名 /指定makefile文件名 </div><div class="line">-i /忽略错误</div><div class="line">-s /表示执行但是不显示执行状况</div><div class="line">-d /Debug模式，显示文件详细信息和检测时间</div></pre></td></tr></table></figure>
+<blockquote>
+<p>makefile大致文件内容：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">shu:shu.o jisuan.o</div><div class="line">	gcc shu.o jisuan.o shu</div><div class="line">shu.o:shu.c jisuan.h</div><div class="line">	gcc -c shu.c</div><div class="line">jisuan.o:jisuan.c jisuan.h</div><div class="line">	gcc -c jisuan.c</div><div class="line">clean:</div><div class="line">	rm -f shu*.o</div></pre></td></tr></table></figure>
+<blockquote>
+<p>makefile规则：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1）如果这个工程没有编译过，那么我们的所有c文件都要编译并被链接。</div><div class="line"></div><div class="line">2）如果这个工程的某几个c文件被修改，那么我们只编译被修改的c文件，并链接目标程序。</div><div class="line"></div><div class="line">3）如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的c文件，并链接目标程序。</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -390,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/sql-6/" rel="next" title="好玩的sql第六篇">
-                <i class="fa fa-chevron-left"></i> 好玩的sql第六篇
+              <a href="/2017/09/20/ctf-web-6/" rel="next" title="ctf.web.6">
+                <i class="fa fa-chevron-left"></i> ctf.web.6
               </a>
             
           </div>
@@ -400,8 +405,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/sql-2/" rel="prev" title="好玩的sql第二篇">
-                好玩的sql第二篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/sql-3/" rel="prev" title="好玩的sql第三篇">
+                好玩的sql第三篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -538,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-c-表示只进行编译，不链接可执行"><span class="nav-number">1.</span> <span class="nav-text">gcc -c 表示只进行编译，不链接可执行</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子，编写实验。"><span class="nav-number">1.</span> <span class="nav-text">例子，编写实验。</span></a></li></ol></div>
             
 
           </div>
