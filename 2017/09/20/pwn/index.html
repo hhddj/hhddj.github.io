@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="汇编语言," />
+  <meta name="keywords" content="pwn," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。  物理地址=段地址*16+偏移量  内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。  mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址">
-<meta name="keywords" content="汇编语言">
+<meta name="description" content="C与C++安全编码 有关字符串的一些概念  字符串c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。sizeof  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。 宽字节简单来说就是大一点的字符，需要更多空间。 字符串字面值就是这个字符串">
+<meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="汇编语言学习">
-<meta property="og:url" content="http://yoursite.com/2017/09/20/汇编语言学习/index.html">
+<meta property="og:title" content="pwn学习">
+<meta property="og:url" content="http://yoursite.com/2017/09/20/pwn/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。  物理地址=段地址*16+偏移量  内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。  mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址">
+<meta property="og:description" content="C与C++安全编码 有关字符串的一些概念  字符串c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。sizeof  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。 宽字节简单来说就是大一点的字符，需要更多空间。 字符串字面值就是这个字符串">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T09:35:30.091Z">
+<meta property="og:updated_time" content="2017-10-21T08:59:38.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="汇编语言学习">
-<meta name="twitter:description" content="8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。  物理地址=段地址*16+偏移量  内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。  mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址">
+<meta name="twitter:title" content="pwn学习">
+<meta name="twitter:description" content="C与C++安全编码 有关字符串的一些概念  字符串c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。sizeof  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。 宽字节简单来说就是大一点的字符，需要更多空间。 字符串字面值就是这个字符串">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/20/汇编语言学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/20/pwn/"/>
 
 
 
 
 
-  <title>汇编语言学习 | hhd</title>
+  <title>pwn学习 | hhd</title>
   
 
 
@@ -245,12 +245,12 @@
   
   
 
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/汇编语言学习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/pwn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -267,7 +267,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">汇编语言学习</h1>
+          <h1 class="post-title" itemprop="name headline">pwn学习</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/汇编语言/" itemprop="url" rel="index">
-                    <span itemprop="name">汇编语言</span>
+                  <a href="/categories/pwn/" itemprop="url" rel="index">
+                    <span itemprop="name">pwn</span>
                   </a>
                 </span>
 
@@ -339,14 +339,27 @@
       
 
       
-        <p>8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。</p>
-<blockquote>
-<p>物理地址=段地址*16+偏移量</p>
+        <h2 id="C与C-安全编码"><a href="#C与C-安全编码" class="headerlink" title="C与C++安全编码"></a>C与C++安全编码</h2><blockquote>
+<p>有关字符串的一些概念</p>
 </blockquote>
-<p>内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。</p>
+<p><strong>字符串</strong><br>c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。<br><em>sizeof</em>  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。</p>
+<p><strong>宽字节</strong>简单来说就是大一点的字符，需要更多空间。</p>
+<p><strong>字符串字面值</strong>就是这个字符串的值，宽字符串前缀是L</p>
+<p><strong>字符串类型</strong>：C语言中字符串常量类型为int<br>以下结果是4,1.告诉我们C语言中神奇的存储，我以前都没怎么注意说实话…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#define  x &apos;a&apos;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[1];</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(x));</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(a));</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>计算字符串大小</strong><br>strlen函数是我们经常用来计算字符串元素个数的，但是如果应用于宽字节，就会导致错误。strlen函数一旦遇到空字节就判断字符串结束，但是宽字符包含空字节。所以会产生错误。</p>
 <blockquote>
-<p>mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址</p>
+<p>字符串的常见错误</p>
 </blockquote>
+<p>最常见的字符串错误：无界字符串复制错误，差一错误，空结尾错误，字符串截断错误。</p>
+<p>一、无界字符串复制<br>例如gets就是一个很麻烦的例子。<br>当定义数组小于输入字符串时，就会发生错误。<br>同样的，命令行参数输入，如果复制进定义的数组，但是定义数组空间不够的话，就会发生错误。</p>
+<p>二、差一错误<br>与数组越界类似，预定数组长度不够的情况下会发生。</p>
+<p>三、空字符结尾错误<br>指的是字符串数组没有以正确的空字符结尾。<br>比如，strncpy复制不超过n个字符，很可能为复制进空字符结尾，这样会导致数组很大很大，超过想象，那么对另一个数组进行操作时，就会发生错误。有时候编译器不会告诉你错误，但是漏洞就会存在。</p>
+<p>四、字符串截断<br>数组长度不足以容纳一个字符串的内容时，会发生字符串截取，程序员为了防止缓冲区溢出，可能会用到字符串截取，有可能会导致丢失数据或者出现漏洞。</p>
+<p>五、与函数无关的字符串错误<br>这个我感觉发生的概率比前几个高。<br>简略版代码：（略略略）buff[128] buff[i]=a[i] buff[i]=’\0’</p>
+<blockquote>
+<p>字符串漏洞及其利用</p>
+</blockquote>
+<p>（暂时先到这里吧，吃饭了）</p>
 
       
     </div>
@@ -364,7 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/汇编语言/" rel="tag"># 汇编语言</a>
+            <a href="/tags/pwn/" rel="tag"># pwn</a>
           
         </div>
       
@@ -377,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/sql-6/" rel="next" title="好玩的sql第六篇">
-                <i class="fa fa-chevron-left"></i> 好玩的sql第六篇
+              <a href="/2017/09/20/linux-c/" rel="next" title="linux c">
+                <i class="fa fa-chevron-left"></i> linux c
               </a>
             
           </div>
@@ -387,8 +400,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/ctf-逆向-1/" rel="prev" title="ctf.逆向.1">
-                ctf.逆向.1 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/sql-6/" rel="prev" title="好玩的sql第六篇">
+                好玩的sql第六篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -441,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -506,6 +528,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C与C-安全编码"><span class="nav-number">1.</span> <span class="nav-text">C与C++安全编码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

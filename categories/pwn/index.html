@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="汇编语言," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,16 @@
 
 
 
-<meta name="description" content="8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。  物理地址=段地址*16+偏移量  内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。  mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址">
-<meta name="keywords" content="汇编语言">
-<meta property="og:type" content="article">
-<meta property="og:title" content="汇编语言学习">
-<meta property="og:url" content="http://yoursite.com/2017/09/20/汇编语言学习/index.html">
+<meta name="description" content="i&apos;m a good man.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hhd">
+<meta property="og:url" content="http://yoursite.com/categories/pwn/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。  物理地址=段地址*16+偏移量  内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。  mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址">
+<meta property="og:description" content="i&apos;m a good man.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T09:35:30.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="汇编语言学习">
-<meta name="twitter:description" content="8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。  物理地址=段地址*16+偏移量  内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。  mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址">
+<meta name="twitter:title" content="hhd">
+<meta name="twitter:description" content="i&apos;m a good man.">
 
 
 
@@ -135,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/20/汇编语言学习/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/pwn/"/>
 
 
 
 
 
-  <title>汇编语言学习 | hhd</title>
+  <title>分类: pwn | hhd</title>
   
 
 
@@ -160,7 +158,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,180 +234,55 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
   
   
   
+  <div class="post-block category">
 
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/汇编语言学习/">
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>pwn<small>分类</small>
+        </h1>
+      </div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">汇编语言学习</h1>
+      
         
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2017/09/20/pwn/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">pwn学习</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-09-20T00:00:00+08:00"
+              content="2017-09-20" >
+          09-20
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/汇编语言/" itemprop="url" rel="index">
-                    <span itemprop="name">汇编语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。</p>
-<blockquote>
-<p>物理地址=段地址*16+偏移量</p>
-</blockquote>
-<p>内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。</p>
-<blockquote>
-<p>mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址</p>
-</blockquote>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/汇编语言/" rel="tag"># 汇编语言</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/09/20/sql-6/" rel="next" title="好玩的sql第六篇">
-                <i class="fa fa-chevron-left"></i> 好玩的sql第六篇
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/20/ctf-逆向-1/" rel="prev" title="ctf.逆向.1">
-                ctf.逆向.1 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -417,10 +290,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -634,10 +503,10 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-
+  
 
   
 
