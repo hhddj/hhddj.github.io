@@ -543,7 +543,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/文件包含小解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/ctf-web-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -562,7 +562,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/17/文件包含小解/" itemprop="url">文件包含小解</a></h1>
+                <a class="post-title-link" href="/2017/09/17/ctf-web-2/" itemprop="url">ctf.web.2</a></h1>
         
 
         <div class="post-meta">
@@ -597,8 +597,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文件包含/" itemprop="url" rel="index">
-                    <span itemprop="name">文件包含</span>
+                  <a href="/categories/cft-web/" itemprop="url" rel="index">
+                    <span itemprop="name">cft.web</span>
                   </a>
                 </span>
 
@@ -636,7 +636,10 @@
       
         
           
-            
+            <p>一个网页的源码：<br>&lt;?php<br>$md51 = md5(‘QNKCDZO’);<br>$a = @$_GET[‘a’];<br>$md52 = @md5($a);<br>if(isset($a)){<br>if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52) {<br>    echo “nctf{<strong><strong><strong><strong>*</strong></strong></strong></strong>}”;<br>} else {<br>    echo “false!!!”;<br>}}<br>else{echo “please input a”;}<br>?&gt;</p>
+<p>可知他需要在后缀网址输入?a=…<br>重点是这句：if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52)<br>同样md5加密后的结果某种程度上相同但是原先的字符串不同<br>首先，我们将QNKCDZO这个字符串md5加密，得到：0e830400451993494058024219903391<br>0e表示0，则我们只需要找0e开头的即可，网上搜到有aabg7XSs</p>
+<p>后来我犯了个错，我在a=加了引号，其实不用，看源代码，我们无需加引号<br>去掉引号就得到flag了…</p>
+
           
         
       
@@ -973,7 +976,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/ctf-web-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/文件包含小解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -992,7 +995,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/17/ctf-web-2/" itemprop="url">ctf.web.2</a></h1>
+                <a class="post-title-link" href="/2017/09/17/文件包含小解/" itemprop="url">文件包含小解</a></h1>
         
 
         <div class="post-meta">
@@ -1027,8 +1030,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cft-web/" itemprop="url" rel="index">
-                    <span itemprop="name">cft.web</span>
+                  <a href="/categories/文件包含/" itemprop="url" rel="index">
+                    <span itemprop="name">文件包含</span>
                   </a>
                 </span>
 
@@ -1066,10 +1069,7 @@
       
         
           
-            <p>一个网页的源码：<br>&lt;?php<br>$md51 = md5(‘QNKCDZO’);<br>$a = @$_GET[‘a’];<br>$md52 = @md5($a);<br>if(isset($a)){<br>if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52) {<br>    echo “nctf{<strong><strong><strong><strong>*</strong></strong></strong></strong>}”;<br>} else {<br>    echo “false!!!”;<br>}}<br>else{echo “please input a”;}<br>?&gt;</p>
-<p>可知他需要在后缀网址输入?a=…<br>重点是这句：if ($a != ‘QNKCDZO’ &amp;&amp; $md51 == $md52)<br>同样md5加密后的结果某种程度上相同但是原先的字符串不同<br>首先，我们将QNKCDZO这个字符串md5加密，得到：0e830400451993494058024219903391<br>0e表示0，则我们只需要找0e开头的即可，网上搜到有aabg7XSs</p>
-<p>后来我犯了个错，我在a=加了引号，其实不用，看源代码，我们无需加引号<br>去掉引号就得到flag了…</p>
-
+            
           
         
       

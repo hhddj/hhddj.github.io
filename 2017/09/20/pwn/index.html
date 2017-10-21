@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="hhd">
 <meta property="og:description" content="C与C++安全编码 有关字符串的一些概念  字符串c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。sizeof  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。 宽字节简单来说就是大一点的字符，需要更多空间。 字符串字面值就是这个字符串">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T08:59:38.535Z">
+<meta property="og:updated_time" content="2017-10-21T14:11:55.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pwn学习">
 <meta name="twitter:description" content="C与C++安全编码 有关字符串的一些概念  字符串c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。sizeof  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。 宽字节简单来说就是大一点的字符，需要更多空间。 字符串字面值就是这个字符串">
@@ -359,7 +359,10 @@
 <blockquote>
 <p>字符串漏洞及其利用</p>
 </blockquote>
-<p>（暂时先到这里吧，吃饭了）</p>
+<p><strong>一、缓冲区溢出</strong><br>名字虽然很高深的样子，其实就是数组或者特定分配的内存空间外写进数据，就称为缓冲区溢出。未进行隐式的边界检查。</p>
+<p><strong>二、栈管理及栈溢出</strong><br><em>基本概念</em>：从C语言来说就是 <em>先进后出</em> 的某个对内存的操作后的内存（= =）<br>一般来说，弹 <em>出栈</em> 意味着栈指针需要 <em>递增</em> 。栈在压入变量之后一般还会在最后压入返回地址，这意味着一旦这一段结束即可返回。（可能是错的，只是暂时的总结）<br><em>栈溢出</em>：由于栈在内存中按顺序存储，一个栈可能存储许多不同类型的数据，包括变量，指针，地址等等。如果用户恶意输入，很可能使得数据泄露或者越过某些数据检验。比如，简单的弧注入攻击。<br><em>代码注入</em>：被恶意注入的代码也叫外壳代码，攻击者往往利用某个子例程的返回地址导致栈混乱，从而获取该程序相同的权限，如果是root权限，即是开一个远程shell，获取最高权限。<br>恶意参数的特征：（感觉很有趣）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">有漏洞的程序必须接受它作为合法的输入</div><div class="line">参数，以及其他可控制的输入，必须导致有漏洞的代码路径得到执行</div><div class="line">参数不能在程序将控制权转移到shellcode之前导致程序异常中止</div></pre></td></tr></table></figure>
+<p>个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。</p>
 
       
     </div>
@@ -390,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/linux-c/" rel="next" title="linux c">
-                <i class="fa fa-chevron-left"></i> linux c
+              <a href="/2017/09/20/sql-4/" rel="next" title="好玩的sql第四篇">
+                <i class="fa fa-chevron-left"></i> 好玩的sql第四篇
               </a>
             
           </div>
@@ -400,8 +403,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/sql-6/" rel="prev" title="好玩的sql第六篇">
-                好玩的sql第六篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/sql-3/" rel="prev" title="好玩的sql第三篇">
+                好玩的sql第三篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
