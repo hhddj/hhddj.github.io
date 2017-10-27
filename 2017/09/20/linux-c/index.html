@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="hhd">
 <meta property="og:description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T13:17:02.827Z">
+<meta property="og:updated_time" content="2017-10-27T12:59:12.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux c">
 <meta name="twitter:description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
@@ -382,7 +382,25 @@
 <p>以下是有关stat的详细信息</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">stat（取得文件状态）     </div><div class="line">相关函数     fstat，lstat，chmod，chown，readlink，utime </div><div class="line">  </div><div class="line">表头文件     #include &lt;sys/stat.h&gt; </div><div class="line">#include &lt;unistd.h&gt; </div><div class="line">  </div><div class="line">定义函数     int   stat(const   char   *   file_name,struct   stat   *buf); </div><div class="line">  </div><div class="line">函数说明     stat()用来将参数file_name所指的文件状态，复制到参数buf所指的结构中。 </div><div class="line">下面是struct   stat内各参数的说明 </div><div class="line">struct   stat </div><div class="line">&#123; </div><div class="line">dev_t   st_dev;   /*device*/ </div><div class="line">ino_t   st_ino;   /*inode*/ </div><div class="line">mode_t   st_mode;   /*protection*/ </div><div class="line">nlink_t   st_nlink;   /*number   of   hard   links   */ </div><div class="line">uid_t   st_uid;   /*user   ID   of   owner*/ </div><div class="line">gid_t   st_gid;   /*group   ID   of   owner*/ </div><div class="line">dev_t   st_rdev;   /*device   type   */ </div><div class="line">off_t   st_size;   /*total   size,   in   bytes*/ </div><div class="line">unsigned   long   st_blksize;   /*blocksize   for   filesystem   I/O   */ </div><div class="line">unsigned   long   st_blocks;   /*number   of   blocks   allocated*/ </div><div class="line">time_t   st_atime;   /*   time   of   lastaccess*/ </div><div class="line">time_t   st_mtime;   /*   time   of   last   modification   */ </div><div class="line">time_t   st_ctime;   /*   time   of   last   change   */ </div><div class="line">&#125;; </div><div class="line">st_dev   文件的设备编号 </div><div class="line">st_ino   文件的i-node </div><div class="line">st_mode   文件的类型和存取的权限 </div><div class="line">st_nlink   连到该文件的硬连接数目，刚建立的文件值为1。 </div><div class="line">st_uid   文件所有者的用户识别码 </div><div class="line">st_gid   文件所有者的组识别码 </div><div class="line">st_rdev   若此文件为装置设备文件，则为其设备编号 </div><div class="line">st_size   文件大小，以字节计算 </div><div class="line">st_blksize   文件系统的I/O   缓冲区大小。 </div><div class="line">st_blcoks   占用文件区块的个数，每一区块大小为512   个字节。 </div><div class="line">st_atime   文件最近一次被存取或被执行的时间，一般只有在用mknod、utime、read、write与tructate时改变。 </div><div class="line">st_mtime   文件最后一次被修改的时间，一般只有在用mknod、utime和write时才会改变 </div><div class="line">st_ctime   i-node最近一次被更改的时间，此参数会在文件所有者、组、权限被更改时更新先前所描述的st_mode   则定义了下列数种情况 </div><div class="line">S_IFMT   0170000   文件类型的位遮罩 </div><div class="line">S_IFSOCK   0140000   scoket </div><div class="line">S_IFLNK   0120000   符号连接 </div><div class="line">S_IFREG   0100000   一般文件 </div><div class="line">S_IFBLK   0060000   区块装置 </div><div class="line">S_IFDIR   0040000   目录 </div><div class="line">S_IFCHR   0020000   字符装置 </div><div class="line">S_IFIFO   0010000   先进先出 </div><div class="line">S_ISUID   04000   文件的（set   user-id   on   execution）位 </div><div class="line">S_ISGID   02000   文件的（set   group-id   on   execution）位 </div><div class="line">S_ISVTX   01000   文件的sticky位 </div><div class="line">S_IRUSR（S_IREAD）   00400   文件所有者具可读取权限 </div><div class="line">S_IWUSR（S_IWRITE）00200   文件所有者具可写入权限 </div><div class="line">S_IXUSR（S_IEXEC）   00100   文件所有者具可执行权限 </div><div class="line">S_IRGRP   00040   用户组具可读取权限 </div><div class="line">S_IWGRP   00020   用户组具可写入权限 </div><div class="line">S_IXGRP   00010   用户组具可执行权限 </div><div class="line">S_IROTH   00004   其他用户具可读取权限 </div><div class="line">S_IWOTH   00002   其他用户具可写入权限 </div><div class="line">S_IXOTH   00001   其他用户具可执行权限 </div><div class="line">上述的文件类型在POSIX   中定义了检查这些类型的宏定义 </div><div class="line">S_ISLNK   （st_mode）   判断是否为符号连接 </div><div class="line">S_ISREG   （st_mode）   是否为一般文件 </div><div class="line">S_ISDIR   （st_mode）是否为目录 </div><div class="line">S_ISCHR   （st_mode）是否为字符装置文件 </div><div class="line">S_ISBLK   （s3e）   是否为先进先出 </div><div class="line">S_ISSOCK   （st_mode）   是否为socket </div><div class="line">若一目录具有sticky   位（S_ISVTX），则表示在此目录下的文件只能被该文件所有者、此目录所有者或root来删除或改名。 </div><div class="line">  </div><div class="line">返回值     执行成功则返回0，失败返回-1，错误代码存于errno </div><div class="line">  </div><div class="line">错误代码     ENOENT   参数file_name指定的文件不存在 </div><div class="line">ENOTDIR   路径中的目录存在但却非真正的目录 </div><div class="line">ELOOP   欲打开的文件有过多符号连接问题，上限为16符号连接 </div><div class="line">EFAULT   参数buf为无效指针，指向无法存在的内存空间 </div><div class="line">EACCESS   存取文件时被拒绝 </div><div class="line">ENOMEM   核心内存不足 </div><div class="line">ENAMETOOLONG   参数file_name的路径名称太长</div></pre></td></tr></table></figure>
-
+<hr>
+<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><blockquote>
+<p>进程的概念</p>
+</blockquote>
+<p>具有一定功能的关于一个数据集合的一次运行活动，是处于活动状态的计算机程序。</p>
+<blockquote>
+<p>linux的进程</p>
+</blockquote>
+<p>每个进程用一个task_struct数据结构来表示，数组task包含指向系统所有task_struct结构的指针。最大512个。当前进程用current指针来指示。<br>每一个进程都要唯一的进程的识别号。（暂时不讲）关于进程调度我不知道有没有学的必要，先放一边。</p>
+<blockquote>
+<p>进程控制</p>
+</blockquote>
+<p>内核创建新进程：并不用fork,vfork调用，属于系统启动一部分。<br>一般来说，创建新进程，调用fork，vfork函数。</p>
+<ol>
+<li>fork函数<br>创建子进程，完全复制父进程，与其共享数据段和堆栈区域。创建成功返回0，失败返回-1.<br>需要sys/types.h与unistd.h<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	pid_t pid;</div><div class="line">	printf(&quot;start the testing&quot;);</div><div class="line">	pid=fork();</div><div class="line">	printf(&quot;create successfully!pid=%d&quot;,pid);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上例子创建了一个新的进程，并可看出，成功则返回0。pid是专门的 <strong><em>pid_t</em></strong> 类型，fork的返回值是 <strong><em>pid</em></strong> ，fork <strong><em>无需参数</em></strong> 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line">#include&lt;sys/ipc.h&gt;</div><div class="line">#include&lt;sys/shm.h&gt;</div><div class="line">#define size 1024</div><div class="line">#define key 99</div><div class="line">int shmid;</div><div class="line">int j=5;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int i,*pint;</div><div class="line">	pid_t pid;</div><div class="line">	char *addr;</div><div class="line">	</div><div class="line">	i=10;</div><div class="line">	shmid=shmget(size,key,	ipc_creat|0777);</div><div class="line">	pint=shmat(shmid,0,0);</div><div class="line">	*pint=100;</div><div class="line">	printf(&quot;start the test!\n&quot;);</div><div class="line">	pid=fork();</div><div class="line">	i++;</div><div class="line">	j++;</div><div class="line">	*pint+=1;</div><div class="line">	printf(&quot;pid=%d\n&quot;,pif);</div><div class="line">	printf(&quot;i=%d,j=%d\n&quot;,i,j);</div><div class="line">	printf(&quot;*pint=%d&quot;,*pint);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -412,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/sql-5/" rel="next" title="好玩的sql第五篇">
-                <i class="fa fa-chevron-left"></i> 好玩的sql第五篇
+              <a href="/2017/09/20/汇编语言学习/" rel="next" title="汇编语言学习">
+                <i class="fa fa-chevron-left"></i> 汇编语言学习
               </a>
             
           </div>
@@ -422,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/ctf-逆向-1/" rel="prev" title="ctf.逆向.1">
-                ctf.逆向.1 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/sql-5/" rel="prev" title="好玩的sql第五篇">
+                好玩的sql第五篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子，编写实验。"><span class="nav-number">1.</span> <span class="nav-text">例子，编写实验。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子，编写实验。"><span class="nav-number">1.</span> <span class="nav-text">例子，编写实验。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程操作"><span class="nav-number">2.</span> <span class="nav-text">进程操作</span></a></li></ol></div>
             
 
           </div>

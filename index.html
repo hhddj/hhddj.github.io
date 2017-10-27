@@ -506,12 +506,12 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-逆向-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -530,7 +530,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/ctf-逆向-1/" itemprop="url">ctf.逆向.1</a></h1>
+                <a class="post-title-link" href="/2017/09/20/sql-4/" itemprop="url">好玩的sql第四篇</a></h1>
         
 
         <div class="post-meta">
@@ -565,8 +565,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ctf-逆向/" itemprop="url" rel="index">
-                    <span itemprop="name">ctf.逆向</span>
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
                   </a>
                 </span>
 
@@ -604,16 +604,10 @@
       
         
           
-            <p> 这次是对上次某被日平台未继续的比赛的总结。</p>
-<blockquote>
-<p>简单apk逆向</p>
-</blockquote>
-<p>做题的时候，对逆向完全不懂的我，打开了IDA然后一脸懵逼。<br>学长提示用 <strong><em>jadX.jar</em></strong> ,然后打开了flag.apk。<br>在目录中看到这个包： <strong><em>com.example.administrator.flag</em></strong><br>这直接告诉我们看这个包就能找到flag。</p>
-<blockquote>
-<p>以下列出重点代码</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">if (MainActivity.this.check(&quot;***admin***&quot;.trim(), MainActivity.this.pas.getText().toString().trim()))</div><div class="line"></div><div class="line">private boolean check(String user, String pass) throws NoSuchAlgorithmException &#123;</div><div class="line">        MessageDigest md5 = MessageDigest.getInstance(&quot;MD5&quot;);</div><div class="line">        md5.reset();</div><div class="line">        md5.update(user.getBytes());</div><div class="line">        String hexstr = bytes2hexstr(***md5***.digest());</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 0; i &lt; hexstr.length(); ***i += 2***) &#123;</div><div class="line">            sb.append(hexstr.charAt(i));</div><div class="line">        &#125;</div><div class="line">        return sb.toString().equals(pass);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>以上三个加粗的地方就是核心，告诉我们需要将<strong><em>admin</em></strong> <strong><em>MD5加密</em></strong>，然后<strong><em>再隔一位取</em></strong>就是flag。</p>
+            <p>输入?id=1<br>显示正常</p>
+<p>输入？id=1’<br>显示正常</p>
+<p>输入?id=1”<br>发现异常，从错误反馈可知依然需要加)</p>
+<p>第一二三四篇告诉我们简单攻击也有多种情况，要全面。</p>
 
           
         
@@ -657,12 +651,12 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/linux-c/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -681,7 +675,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/linux-c/" itemprop="url">linux c</a></h1>
+                <a class="post-title-link" href="/2017/09/20/sql-6/" itemprop="url">好玩的sql第六篇</a></h1>
         
 
         <div class="post-meta">
@@ -716,8 +710,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linuxc/" itemprop="url" rel="index">
-                    <span itemprop="name">linuxc</span>
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
                   </a>
                 </span>
 
@@ -755,50 +749,150 @@
       
         
           
-            <blockquote>
-<p>gcc编译</p>
-</blockquote>
-<p>安装build-essential软件包<br>$sudo apt-get install build-essential</p>
-<p>编辑了一个c文件后，开始编译</p>
-<p>gcc 文件名 -o 执行名字</p>
-<p>./执行名字</p>
-<p><strong><em>gcc -c 表示只进行编译，不链接可执行</em></strong></p>
-<hr>
-<h2 id="例子，编写实验。"><a href="#例子，编写实验。" class="headerlink" title="例子，编写实验。"></a>例子，编写实验。</h2><blockquote>
-<p>c源码：</p>
-</blockquote>
-<p>shu.c<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include &quot;jisuan.h&quot;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[100];</div><div class="line">	int i,s=0,sum;</div><div class="line">	printf(&quot;please input tow numbers,first smaller than second:\n&quot;);</div><div class="line">	scanf(&quot;%s&quot;,a);</div><div class="line">	for(i=0;i&lt;strlen(a);i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==&apos; &apos;)</div><div class="line">			s++;</div><div class="line">		if(a[i]&lt;&apos;0&apos;||a[i]&gt;&apos;9&apos;)</div><div class="line">		&#123;</div><div class="line">			printf(&quot;输入的不为数字!bye!\n&quot;);</div><div class="line">			exit(0);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	if(s!=1)</div><div class="line">	&#123;</div><div class="line">		printf(&quot;输入太多了！猪头！\n&quot;);</div><div class="line">		exit(0);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		sum=jisuan(a);</div><div class="line">		printf(&quot;the sum is %d\n&quot;,sum);</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">jisuan.h</div><div class="line">int jisuan(char a[]);</div><div class="line"></div><div class="line"></div><div class="line">jisuan.c</div><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">int jisuan(char a[])</div><div class="line">&#123;</div><div class="line">	int i,flag,a1=0,a2=0;</div><div class="line">	for(i=0;i&lt;strlen(a);i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==&apos;/&apos;)</div><div class="line">			flag=i;</div><div class="line">	&#125;</div><div class="line">	for(i=0;i&lt;flag;i++)</div><div class="line">		a1=a1*10+a[i]-48;</div><div class="line">	for(i=flag+1;i&lt;strlen(a);i++)</div><div class="line">		a2=a2*10+a[i]-48;</div><div class="line">	return a1+a2;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>
-<blockquote>
-<p>make相关</p>
-</blockquote>
-<p>  <strong>被引用程序需要写.h文件。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">make -f makefile文件名 /指定makefile文件名 </div><div class="line">-i /忽略错误</div><div class="line">-s /表示执行但是不显示执行状况</div><div class="line">-d /Debug模式，显示文件详细信息和检测时间</div></pre></td></tr></table></figure>
-<blockquote>
-<p>makefile大致文件内容：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">shu:shu.o jisuan.o</div><div class="line">	gcc shu.o jisuan.o shu</div><div class="line">shu.o:shu.c jisuan.h</div><div class="line">	gcc -c shu.c</div><div class="line">jisuan.o:jisuan.c jisuan.h</div><div class="line">	gcc -c jisuan.c</div><div class="line">clean:</div><div class="line">	rm -f shu*.o</div></pre></td></tr></table></figure>
-<blockquote>
-<p>makefile规则：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1）如果这个工程没有编译过，那么我们的所有c文件都要编译并被链接。</div><div class="line"></div><div class="line">2）如果这个工程的某几个c文件被修改，那么我们只编译被修改的c文件，并链接目标程序。</div><div class="line"></div><div class="line">3）如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的c文件，并链接目标程序。</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>文件操作<br>文件描述符，文件的标识符。0表示标准输入文件，1表示标准输出文件，2表示标准错误输出文件。</p>
-</blockquote>
-<p>1、open函数<br> 三个参数：路径名或文件名；打开方式，包括O_RDONLY,O_WRONLY,O_RDWR；<br> 打开失败返回-1<br> 管道方法（个人认为比较有用的）：O_TRUNC、O_CREAT<br> 头文件：#include<sys types.h=""> #include<sys stat.h=""> #include<fcntl.h></fcntl.h></sys></sys></p>
-<p> 2、close函数<br> 参数为fd，文件描述符<br>关闭文件，成功返回0，失败返回-1<br>头文件：#include<unistd.h></unistd.h></p>
-<p> 3、read函数<br>第一个参数文件描述符，第二个参数输入缓冲区指针（将指定文件内容输出到这里）相当于一个char类型的数组，第三个参数要输入的字节数。<br>成功时返回读取的字节数，失败返回-1<br>头文件：#include<unistd.h></unistd.h></p>
-<p>4、write函数<br>第一个参数文件描述符，第二个参数（要写入文件的缓冲区），第三个参数一次写入的字节数。<br>成功时返回字节数，错误时返回-1<br>头文件：#include<unistd.h></unistd.h></p>
-<p>5、creat函数<br> 个人觉得并没有用…</p>
-<p>6、lseek函数<br>第一个参数文件描述符，第二个参数偏移量，第三个参数是当前位置的基点。<br>SEEK_SET：开头<br>SEEK_CUR：当前<br>SEEK_END：末尾<br>头文件：#include<sys types.h=""> #include<unistd.h><br>成功返回从文件开始到当前的偏移量，失败返回-1</unistd.h></sys></p>
-<p>7、ftruncate或者truncate函数<br>第一个参数文件名或路径或文件描述符（看是哪个函数）<br>成功返回0，失败返回-1<br>头文件：#include<unistd.h></unistd.h></p>
-<p>注：argc与argv[]是有关命令行参数</p>
-<blockquote>
-<p>以下是有关stat的详细信息</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">stat（取得文件状态）     </div><div class="line">相关函数     fstat，lstat，chmod，chown，readlink，utime </div><div class="line">  </div><div class="line">表头文件     #include &lt;sys/stat.h&gt; </div><div class="line">#include &lt;unistd.h&gt; </div><div class="line">  </div><div class="line">定义函数     int   stat(const   char   *   file_name,struct   stat   *buf); </div><div class="line">  </div><div class="line">函数说明     stat()用来将参数file_name所指的文件状态，复制到参数buf所指的结构中。 </div><div class="line">下面是struct   stat内各参数的说明 </div><div class="line">struct   stat </div><div class="line">&#123; </div><div class="line">dev_t   st_dev;   /*device*/ </div><div class="line">ino_t   st_ino;   /*inode*/ </div><div class="line">mode_t   st_mode;   /*protection*/ </div><div class="line">nlink_t   st_nlink;   /*number   of   hard   links   */ </div><div class="line">uid_t   st_uid;   /*user   ID   of   owner*/ </div><div class="line">gid_t   st_gid;   /*group   ID   of   owner*/ </div><div class="line">dev_t   st_rdev;   /*device   type   */ </div><div class="line">off_t   st_size;   /*total   size,   in   bytes*/ </div><div class="line">unsigned   long   st_blksize;   /*blocksize   for   filesystem   I/O   */ </div><div class="line">unsigned   long   st_blocks;   /*number   of   blocks   allocated*/ </div><div class="line">time_t   st_atime;   /*   time   of   lastaccess*/ </div><div class="line">time_t   st_mtime;   /*   time   of   last   modification   */ </div><div class="line">time_t   st_ctime;   /*   time   of   last   change   */ </div><div class="line">&#125;; </div><div class="line">st_dev   文件的设备编号 </div><div class="line">st_ino   文件的i-node </div><div class="line">st_mode   文件的类型和存取的权限 </div><div class="line">st_nlink   连到该文件的硬连接数目，刚建立的文件值为1。 </div><div class="line">st_uid   文件所有者的用户识别码 </div><div class="line">st_gid   文件所有者的组识别码 </div><div class="line">st_rdev   若此文件为装置设备文件，则为其设备编号 </div><div class="line">st_size   文件大小，以字节计算 </div><div class="line">st_blksize   文件系统的I/O   缓冲区大小。 </div><div class="line">st_blcoks   占用文件区块的个数，每一区块大小为512   个字节。 </div><div class="line">st_atime   文件最近一次被存取或被执行的时间，一般只有在用mknod、utime、read、write与tructate时改变。 </div><div class="line">st_mtime   文件最后一次被修改的时间，一般只有在用mknod、utime和write时才会改变 </div><div class="line">st_ctime   i-node最近一次被更改的时间，此参数会在文件所有者、组、权限被更改时更新先前所描述的st_mode   则定义了下列数种情况 </div><div class="line">S_IFMT   0170000   文件类型的位遮罩 </div><div class="line">S_IFSOCK   0140000   scoket </div><div class="line">S_IFLNK   0120000   符号连接 </div><div class="line">S_IFREG   0100000   一般文件 </div><div class="line">S_IFBLK   0060000   区块装置 </div><div class="line">S_IFDIR   0040000   目录 </div><div class="line">S_IFCHR   0020000   字符装置 </div><div class="line">S_IFIFO   0010000   先进先出 </div><div class="line">S_ISUID   04000   文件的（set   user-id   on   execution）位 </div><div class="line">S_ISGID   02000   文件的（set   group-id   on   execution）位 </div><div class="line">S_ISVTX   01000   文件的sticky位 </div><div class="line">S_IRUSR（S_IREAD）   00400   文件所有者具可读取权限 </div><div class="line">S_IWUSR（S_IWRITE）00200   文件所有者具可写入权限 </div><div class="line">S_IXUSR（S_IEXEC）   00100   文件所有者具可执行权限 </div><div class="line">S_IRGRP   00040   用户组具可读取权限 </div><div class="line">S_IWGRP   00020   用户组具可写入权限 </div><div class="line">S_IXGRP   00010   用户组具可执行权限 </div><div class="line">S_IROTH   00004   其他用户具可读取权限 </div><div class="line">S_IWOTH   00002   其他用户具可写入权限 </div><div class="line">S_IXOTH   00001   其他用户具可执行权限 </div><div class="line">上述的文件类型在POSIX   中定义了检查这些类型的宏定义 </div><div class="line">S_ISLNK   （st_mode）   判断是否为符号连接 </div><div class="line">S_ISREG   （st_mode）   是否为一般文件 </div><div class="line">S_ISDIR   （st_mode）是否为目录 </div><div class="line">S_ISCHR   （st_mode）是否为字符装置文件 </div><div class="line">S_ISBLK   （s3e）   是否为先进先出 </div><div class="line">S_ISSOCK   （st_mode）   是否为socket </div><div class="line">若一目录具有sticky   位（S_ISVTX），则表示在此目录下的文件只能被该文件所有者、此目录所有者或root来删除或改名。 </div><div class="line">  </div><div class="line">返回值     执行成功则返回0，失败返回-1，错误代码存于errno </div><div class="line">  </div><div class="line">错误代码     ENOENT   参数file_name指定的文件不存在 </div><div class="line">ENOTDIR   路径中的目录存在但却非真正的目录 </div><div class="line">ELOOP   欲打开的文件有过多符号连接问题，上限为16符号连接 </div><div class="line">EFAULT   参数buf为无效指针，指向无法存在的内存空间 </div><div class="line">EACCESS   存取文件时被拒绝 </div><div class="line">ENOMEM   核心内存不足 </div><div class="line">ENAMETOOLONG   参数file_name的路径名称太长</div></pre></td></tr></table></figure>
+            <p>不一样的就是id=1”<br>其余与第五篇一毛一样</p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-web-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/ctf-web-6/" itemprop="url">ctf.web.6</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cft-web/" itemprop="url" rel="index">
+                    <span itemprop="name">cft.web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>先挂网址：<a href="http://ctf5.shiyanbar.com/web/more.php" target="_blank" rel="external">http://ctf5.shiyanbar.com/web/more.php</a><br>进去只是要输入passwd这个值<br>一头雾水，然后点击看代码<br>&lt;?php<br>if (isset ($_GET[‘password’])) {<br>    if (ereg (“^[a-zA-Z0-9]+$”, $_GET[‘password’]) === FALSE)<br>    {<br>        echo ‘</p><p>You password must be alphanumeric</p>‘;<br>    }<br>    else if (strlen($_GET[‘password’]) &lt; 8 &amp;&amp; $_GET[‘password’] &gt; 9999999)<br>    {<br>        if (strpos ($_GET[‘password’], ‘<em>-</em>‘) !== FALSE)<br>        {<br>            die(‘Flag: ‘ . $flag);<br>        }<br>        else<br>        {<br>            echo(‘<p><em>-</em> have not been found</p>‘);<br>        }<br>    }<br>    else<br>    {<br>        echo ‘<p>Invalid password</p>‘;<br>    }<br>}<br>?&gt;<br>就是几个if-else ，重点是那些函数的漏洞<br>ereg,后一个参数按照前一个参数那样子的形式就对了，可知我们只能输入字母和数字，但是…<br>接着是字数小于8这个比较容易，&gt;999999..什么的就用科学计数法，1e什么的都有提示<p></p>
+<h2 id="再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…"><a href="#再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…" class="headerlink" title="再接着需要有-这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…"></a>再接着需要有<em>-</em>这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…</h2>
           
         
       
@@ -996,12 +1090,12 @@
   
   
 
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-web-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/linux-c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -1020,7 +1114,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/ctf-web-6/" itemprop="url">ctf.web.6</a></h1>
+                <a class="post-title-link" href="/2017/09/20/linux-c/" itemprop="url">linux c</a></h1>
         
 
         <div class="post-meta">
@@ -1055,8 +1149,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cft-web/" itemprop="url" rel="index">
-                    <span itemprop="name">cft.web</span>
+                  <a href="/categories/linuxc/" itemprop="url" rel="index">
+                    <span itemprop="name">linuxc</span>
                   </a>
                 </span>
 
@@ -1094,8 +1188,68 @@
       
         
           
-            <p>先挂网址：<a href="http://ctf5.shiyanbar.com/web/more.php" target="_blank" rel="external">http://ctf5.shiyanbar.com/web/more.php</a><br>进去只是要输入passwd这个值<br>一头雾水，然后点击看代码<br>&lt;?php<br>if (isset ($_GET[‘password’])) {<br>    if (ereg (“^[a-zA-Z0-9]+$”, $_GET[‘password’]) === FALSE)<br>    {<br>        echo ‘</p><p>You password must be alphanumeric</p>‘;<br>    }<br>    else if (strlen($_GET[‘password’]) &lt; 8 &amp;&amp; $_GET[‘password’] &gt; 9999999)<br>    {<br>        if (strpos ($_GET[‘password’], ‘<em>-</em>‘) !== FALSE)<br>        {<br>            die(‘Flag: ‘ . $flag);<br>        }<br>        else<br>        {<br>            echo(‘<p><em>-</em> have not been found</p>‘);<br>        }<br>    }<br>    else<br>    {<br>        echo ‘<p>Invalid password</p>‘;<br>    }<br>}<br>?&gt;<br>就是几个if-else ，重点是那些函数的漏洞<br>ereg,后一个参数按照前一个参数那样子的形式就对了，可知我们只能输入字母和数字，但是…<br>接着是字数小于8这个比较容易，&gt;999999..什么的就用科学计数法，1e什么的都有提示<p></p>
-<h2 id="再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…"><a href="#再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…" class="headerlink" title="再接着需要有-这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…"></a>再接着需要有<em>-</em>这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…</h2>
+            <blockquote>
+<p>gcc编译</p>
+</blockquote>
+<p>安装build-essential软件包<br>$sudo apt-get install build-essential</p>
+<p>编辑了一个c文件后，开始编译</p>
+<p>gcc 文件名 -o 执行名字</p>
+<p>./执行名字</p>
+<p><strong><em>gcc -c 表示只进行编译，不链接可执行</em></strong></p>
+<hr>
+<h2 id="例子，编写实验。"><a href="#例子，编写实验。" class="headerlink" title="例子，编写实验。"></a>例子，编写实验。</h2><blockquote>
+<p>c源码：</p>
+</blockquote>
+<p>shu.c<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include &quot;jisuan.h&quot;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[100];</div><div class="line">	int i,s=0,sum;</div><div class="line">	printf(&quot;please input tow numbers,first smaller than second:\n&quot;);</div><div class="line">	scanf(&quot;%s&quot;,a);</div><div class="line">	for(i=0;i&lt;strlen(a);i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==&apos; &apos;)</div><div class="line">			s++;</div><div class="line">		if(a[i]&lt;&apos;0&apos;||a[i]&gt;&apos;9&apos;)</div><div class="line">		&#123;</div><div class="line">			printf(&quot;输入的不为数字!bye!\n&quot;);</div><div class="line">			exit(0);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	if(s!=1)</div><div class="line">	&#123;</div><div class="line">		printf(&quot;输入太多了！猪头！\n&quot;);</div><div class="line">		exit(0);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		sum=jisuan(a);</div><div class="line">		printf(&quot;the sum is %d\n&quot;,sum);</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">jisuan.h</div><div class="line">int jisuan(char a[]);</div><div class="line"></div><div class="line"></div><div class="line">jisuan.c</div><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">int jisuan(char a[])</div><div class="line">&#123;</div><div class="line">	int i,flag,a1=0,a2=0;</div><div class="line">	for(i=0;i&lt;strlen(a);i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==&apos;/&apos;)</div><div class="line">			flag=i;</div><div class="line">	&#125;</div><div class="line">	for(i=0;i&lt;flag;i++)</div><div class="line">		a1=a1*10+a[i]-48;</div><div class="line">	for(i=flag+1;i&lt;strlen(a);i++)</div><div class="line">		a2=a2*10+a[i]-48;</div><div class="line">	return a1+a2;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p>make相关</p>
+</blockquote>
+<p>  <strong>被引用程序需要写.h文件。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">make -f makefile文件名 /指定makefile文件名 </div><div class="line">-i /忽略错误</div><div class="line">-s /表示执行但是不显示执行状况</div><div class="line">-d /Debug模式，显示文件详细信息和检测时间</div></pre></td></tr></table></figure>
+<blockquote>
+<p>makefile大致文件内容：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">shu:shu.o jisuan.o</div><div class="line">	gcc shu.o jisuan.o shu</div><div class="line">shu.o:shu.c jisuan.h</div><div class="line">	gcc -c shu.c</div><div class="line">jisuan.o:jisuan.c jisuan.h</div><div class="line">	gcc -c jisuan.c</div><div class="line">clean:</div><div class="line">	rm -f shu*.o</div></pre></td></tr></table></figure>
+<blockquote>
+<p>makefile规则：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1）如果这个工程没有编译过，那么我们的所有c文件都要编译并被链接。</div><div class="line"></div><div class="line">2）如果这个工程的某几个c文件被修改，那么我们只编译被修改的c文件，并链接目标程序。</div><div class="line"></div><div class="line">3）如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的c文件，并链接目标程序。</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>文件操作<br>文件描述符，文件的标识符。0表示标准输入文件，1表示标准输出文件，2表示标准错误输出文件。</p>
+</blockquote>
+<p>1、open函数<br> 三个参数：路径名或文件名；打开方式，包括O_RDONLY,O_WRONLY,O_RDWR；<br> 打开失败返回-1<br> 管道方法（个人认为比较有用的）：O_TRUNC、O_CREAT<br> 头文件：#include<sys types.h=""> #include<sys stat.h=""> #include<fcntl.h></fcntl.h></sys></sys></p>
+<p> 2、close函数<br> 参数为fd，文件描述符<br>关闭文件，成功返回0，失败返回-1<br>头文件：#include<unistd.h></unistd.h></p>
+<p> 3、read函数<br>第一个参数文件描述符，第二个参数输入缓冲区指针（将指定文件内容输出到这里）相当于一个char类型的数组，第三个参数要输入的字节数。<br>成功时返回读取的字节数，失败返回-1<br>头文件：#include<unistd.h></unistd.h></p>
+<p>4、write函数<br>第一个参数文件描述符，第二个参数（要写入文件的缓冲区），第三个参数一次写入的字节数。<br>成功时返回字节数，错误时返回-1<br>头文件：#include<unistd.h></unistd.h></p>
+<p>5、creat函数<br> 个人觉得并没有用…</p>
+<p>6、lseek函数<br>第一个参数文件描述符，第二个参数偏移量，第三个参数是当前位置的基点。<br>SEEK_SET：开头<br>SEEK_CUR：当前<br>SEEK_END：末尾<br>头文件：#include<sys types.h=""> #include<unistd.h><br>成功返回从文件开始到当前的偏移量，失败返回-1</unistd.h></sys></p>
+<p>7、ftruncate或者truncate函数<br>第一个参数文件名或路径或文件描述符（看是哪个函数）<br>成功返回0，失败返回-1<br>头文件：#include<unistd.h></unistd.h></p>
+<p>注：argc与argv[]是有关命令行参数</p>
+<blockquote>
+<p>以下是有关stat的详细信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">stat（取得文件状态）     </div><div class="line">相关函数     fstat，lstat，chmod，chown，readlink，utime </div><div class="line">  </div><div class="line">表头文件     #include &lt;sys/stat.h&gt; </div><div class="line">#include &lt;unistd.h&gt; </div><div class="line">  </div><div class="line">定义函数     int   stat(const   char   *   file_name,struct   stat   *buf); </div><div class="line">  </div><div class="line">函数说明     stat()用来将参数file_name所指的文件状态，复制到参数buf所指的结构中。 </div><div class="line">下面是struct   stat内各参数的说明 </div><div class="line">struct   stat </div><div class="line">&#123; </div><div class="line">dev_t   st_dev;   /*device*/ </div><div class="line">ino_t   st_ino;   /*inode*/ </div><div class="line">mode_t   st_mode;   /*protection*/ </div><div class="line">nlink_t   st_nlink;   /*number   of   hard   links   */ </div><div class="line">uid_t   st_uid;   /*user   ID   of   owner*/ </div><div class="line">gid_t   st_gid;   /*group   ID   of   owner*/ </div><div class="line">dev_t   st_rdev;   /*device   type   */ </div><div class="line">off_t   st_size;   /*total   size,   in   bytes*/ </div><div class="line">unsigned   long   st_blksize;   /*blocksize   for   filesystem   I/O   */ </div><div class="line">unsigned   long   st_blocks;   /*number   of   blocks   allocated*/ </div><div class="line">time_t   st_atime;   /*   time   of   lastaccess*/ </div><div class="line">time_t   st_mtime;   /*   time   of   last   modification   */ </div><div class="line">time_t   st_ctime;   /*   time   of   last   change   */ </div><div class="line">&#125;; </div><div class="line">st_dev   文件的设备编号 </div><div class="line">st_ino   文件的i-node </div><div class="line">st_mode   文件的类型和存取的权限 </div><div class="line">st_nlink   连到该文件的硬连接数目，刚建立的文件值为1。 </div><div class="line">st_uid   文件所有者的用户识别码 </div><div class="line">st_gid   文件所有者的组识别码 </div><div class="line">st_rdev   若此文件为装置设备文件，则为其设备编号 </div><div class="line">st_size   文件大小，以字节计算 </div><div class="line">st_blksize   文件系统的I/O   缓冲区大小。 </div><div class="line">st_blcoks   占用文件区块的个数，每一区块大小为512   个字节。 </div><div class="line">st_atime   文件最近一次被存取或被执行的时间，一般只有在用mknod、utime、read、write与tructate时改变。 </div><div class="line">st_mtime   文件最后一次被修改的时间，一般只有在用mknod、utime和write时才会改变 </div><div class="line">st_ctime   i-node最近一次被更改的时间，此参数会在文件所有者、组、权限被更改时更新先前所描述的st_mode   则定义了下列数种情况 </div><div class="line">S_IFMT   0170000   文件类型的位遮罩 </div><div class="line">S_IFSOCK   0140000   scoket </div><div class="line">S_IFLNK   0120000   符号连接 </div><div class="line">S_IFREG   0100000   一般文件 </div><div class="line">S_IFBLK   0060000   区块装置 </div><div class="line">S_IFDIR   0040000   目录 </div><div class="line">S_IFCHR   0020000   字符装置 </div><div class="line">S_IFIFO   0010000   先进先出 </div><div class="line">S_ISUID   04000   文件的（set   user-id   on   execution）位 </div><div class="line">S_ISGID   02000   文件的（set   group-id   on   execution）位 </div><div class="line">S_ISVTX   01000   文件的sticky位 </div><div class="line">S_IRUSR（S_IREAD）   00400   文件所有者具可读取权限 </div><div class="line">S_IWUSR（S_IWRITE）00200   文件所有者具可写入权限 </div><div class="line">S_IXUSR（S_IEXEC）   00100   文件所有者具可执行权限 </div><div class="line">S_IRGRP   00040   用户组具可读取权限 </div><div class="line">S_IWGRP   00020   用户组具可写入权限 </div><div class="line">S_IXGRP   00010   用户组具可执行权限 </div><div class="line">S_IROTH   00004   其他用户具可读取权限 </div><div class="line">S_IWOTH   00002   其他用户具可写入权限 </div><div class="line">S_IXOTH   00001   其他用户具可执行权限 </div><div class="line">上述的文件类型在POSIX   中定义了检查这些类型的宏定义 </div><div class="line">S_ISLNK   （st_mode）   判断是否为符号连接 </div><div class="line">S_ISREG   （st_mode）   是否为一般文件 </div><div class="line">S_ISDIR   （st_mode）是否为目录 </div><div class="line">S_ISCHR   （st_mode）是否为字符装置文件 </div><div class="line">S_ISBLK   （s3e）   是否为先进先出 </div><div class="line">S_ISSOCK   （st_mode）   是否为socket </div><div class="line">若一目录具有sticky   位（S_ISVTX），则表示在此目录下的文件只能被该文件所有者、此目录所有者或root来删除或改名。 </div><div class="line">  </div><div class="line">返回值     执行成功则返回0，失败返回-1，错误代码存于errno </div><div class="line">  </div><div class="line">错误代码     ENOENT   参数file_name指定的文件不存在 </div><div class="line">ENOTDIR   路径中的目录存在但却非真正的目录 </div><div class="line">ELOOP   欲打开的文件有过多符号连接问题，上限为16符号连接 </div><div class="line">EFAULT   参数buf为无效指针，指向无法存在的内存空间 </div><div class="line">EACCESS   存取文件时被拒绝 </div><div class="line">ENOMEM   核心内存不足 </div><div class="line">ENAMETOOLONG   参数file_name的路径名称太长</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><blockquote>
+<p>进程的概念</p>
+</blockquote>
+<p>具有一定功能的关于一个数据集合的一次运行活动，是处于活动状态的计算机程序。</p>
+<blockquote>
+<p>linux的进程</p>
+</blockquote>
+<p>每个进程用一个task_struct数据结构来表示，数组task包含指向系统所有task_struct结构的指针。最大512个。当前进程用current指针来指示。<br>每一个进程都要唯一的进程的识别号。（暂时不讲）关于进程调度我不知道有没有学的必要，先放一边。</p>
+<blockquote>
+<p>进程控制</p>
+</blockquote>
+<p>内核创建新进程：并不用fork,vfork调用，属于系统启动一部分。<br>一般来说，创建新进程，调用fork，vfork函数。</p>
+<ol>
+<li>fork函数<br>创建子进程，完全复制父进程，与其共享数据段和堆栈区域。创建成功返回0，失败返回-1.<br>需要sys/types.h与unistd.h<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	pid_t pid;</div><div class="line">	printf(&quot;start the testing&quot;);</div><div class="line">	pid=fork();</div><div class="line">	printf(&quot;create successfully!pid=%d&quot;,pid);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上例子创建了一个新的进程，并可看出，成功则返回0。pid是专门的 <strong><em>pid_t</em></strong> 类型，fork的返回值是 <strong><em>pid</em></strong> ，fork <strong><em>无需参数</em></strong> 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line">#include&lt;sys/ipc.h&gt;</div><div class="line">#include&lt;sys/shm.h&gt;</div><div class="line">#define size 1024</div><div class="line">#define key 99</div><div class="line">int shmid;</div><div class="line">int j=5;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int i,*pint;</div><div class="line">	pid_t pid;</div><div class="line">	char *addr;</div><div class="line">	</div><div class="line">	i=10;</div><div class="line">	shmid=shmget(size,key,	ipc_creat|0777);</div><div class="line">	pint=shmat(shmid,0,0);</div><div class="line">	*pint=100;</div><div class="line">	printf(&quot;start the test!\n&quot;);</div><div class="line">	pid=fork();</div><div class="line">	i++;</div><div class="line">	j++;</div><div class="line">	*pint+=1;</div><div class="line">	printf(&quot;pid=%d\n&quot;,pif);</div><div class="line">	printf(&quot;i=%d,j=%d\n&quot;,i,j);</div><div class="line">	printf(&quot;*pint=%d&quot;,*pint);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           
         
       
@@ -1292,148 +1446,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-6/" itemprop="url">好玩的sql第六篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>不一样的就是id=1”<br>其余与第五篇一毛一样</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1578,7 +1590,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/pwn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-逆向-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -1597,7 +1609,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/pwn/" itemprop="url">pwn学习</a></h1>
+                <a class="post-title-link" href="/2017/09/20/ctf-逆向-1/" itemprop="url">ctf.逆向.1</a></h1>
         
 
         <div class="post-meta">
@@ -1632,8 +1644,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pwn/" itemprop="url" rel="index">
-                    <span itemprop="name">pwn</span>
+                  <a href="/categories/ctf-逆向/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf.逆向</span>
                   </a>
                 </span>
 
@@ -1671,30 +1683,16 @@
       
         
           
-            <h2 id="C与C-安全编码"><a href="#C与C-安全编码" class="headerlink" title="C与C++安全编码"></a>C与C++安全编码</h2><blockquote>
-<p>有关字符串的一些概念</p>
-</blockquote>
-<p><strong>字符串</strong><br>c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。<br><em>sizeof</em>  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。</p>
-<p><strong>宽字节</strong>简单来说就是大一点的字符，需要更多空间。</p>
-<p><strong>字符串字面值</strong>就是这个字符串的值，宽字符串前缀是L</p>
-<p><strong>字符串类型</strong>：C语言中字符串常量类型为int<br>以下结果是4,1.告诉我们C语言中神奇的存储，我以前都没怎么注意说实话…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#define  x &apos;a&apos;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[1];</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(x));</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(a));</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>计算字符串大小</strong><br>strlen函数是我们经常用来计算字符串元素个数的，但是如果应用于宽字节，就会导致错误。strlen函数一旦遇到空字节就判断字符串结束，但是宽字符包含空字节。所以会产生错误。</p>
+            <p> 这次是对上次某被日平台未继续的比赛的总结。</p>
 <blockquote>
-<p>字符串的常见错误</p>
+<p>简单apk逆向</p>
 </blockquote>
-<p>最常见的字符串错误：无界字符串复制错误，差一错误，空结尾错误，字符串截断错误。</p>
-<p>一、无界字符串复制<br>例如gets就是一个很麻烦的例子。<br>当定义数组小于输入字符串时，就会发生错误。<br>同样的，命令行参数输入，如果复制进定义的数组，但是定义数组空间不够的话，就会发生错误。</p>
-<p>二、差一错误<br>与数组越界类似，预定数组长度不够的情况下会发生。</p>
-<p>三、空字符结尾错误<br>指的是字符串数组没有以正确的空字符结尾。<br>比如，strncpy复制不超过n个字符，很可能为复制进空字符结尾，这样会导致数组很大很大，超过想象，那么对另一个数组进行操作时，就会发生错误。有时候编译器不会告诉你错误，但是漏洞就会存在。</p>
-<p>四、字符串截断<br>数组长度不足以容纳一个字符串的内容时，会发生字符串截取，程序员为了防止缓冲区溢出，可能会用到字符串截取，有可能会导致丢失数据或者出现漏洞。</p>
-<p>五、与函数无关的字符串错误<br>这个我感觉发生的概率比前几个高。<br>简略版代码：（略略略）buff[128] buff[i]=a[i] buff[i]=’\0’</p>
+<p>做题的时候，对逆向完全不懂的我，打开了IDA然后一脸懵逼。<br>学长提示用 <strong><em>jadX.jar</em></strong> ,然后打开了flag.apk。<br>在目录中看到这个包： <strong><em>com.example.administrator.flag</em></strong><br>这直接告诉我们看这个包就能找到flag。</p>
 <blockquote>
-<p>字符串漏洞及其利用</p>
+<p>以下列出重点代码</p>
 </blockquote>
-<p><strong>一、缓冲区溢出</strong><br>名字虽然很高深的样子，其实就是数组或者特定分配的内存空间外写进数据，就称为缓冲区溢出。未进行隐式的边界检查。</p>
-<p><strong>二、栈管理及栈溢出</strong><br><em>基本概念</em>：从C语言来说就是 <em>先进后出</em> 的某个对内存的操作后的内存（= =）<br>一般来说，弹 <em>出栈</em> 意味着栈指针需要 <em>递增</em> 。栈在压入变量之后一般还会在最后压入返回地址，这意味着一旦这一段结束即可返回。（可能是错的，只是暂时的总结）<br><em>栈溢出</em>：由于栈在内存中按顺序存储，一个栈可能存储许多不同类型的数据，包括变量，指针，地址等等。如果用户恶意输入，很可能使得数据泄露或者越过某些数据检验。比如，简单的弧注入攻击。<br><em>代码注入</em>：被恶意注入的代码也叫外壳代码，攻击者往往利用某个子例程的返回地址导致栈混乱，从而获取该程序相同的权限，如果是root权限，即是开一个远程shell，获取最高权限。<br>恶意参数的特征：（感觉很有趣）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">有漏洞的程序必须接受它作为合法的输入</div><div class="line">参数，以及其他可控制的输入，必须导致有漏洞的代码路径得到执行</div><div class="line">参数不能在程序将控制权转移到shellcode之前导致程序异常中止</div></pre></td></tr></table></figure>
-<p>个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">if (MainActivity.this.check(&quot;***admin***&quot;.trim(), MainActivity.this.pas.getText().toString().trim()))</div><div class="line"></div><div class="line">private boolean check(String user, String pass) throws NoSuchAlgorithmException &#123;</div><div class="line">        MessageDigest md5 = MessageDigest.getInstance(&quot;MD5&quot;);</div><div class="line">        md5.reset();</div><div class="line">        md5.update(user.getBytes());</div><div class="line">        String hexstr = bytes2hexstr(***md5***.digest());</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 0; i &lt; hexstr.length(); ***i += 2***) &#123;</div><div class="line">            sb.append(hexstr.charAt(i));</div><div class="line">        &#125;</div><div class="line">        return sb.toString().equals(pass);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>以上三个加粗的地方就是核心，告诉我们需要将<strong><em>admin</em></strong> <strong><em>MD5加密</em></strong>，然后<strong><em>再隔一位取</em></strong>就是flag。</p>
 
           
         

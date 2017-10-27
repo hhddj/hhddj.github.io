@@ -746,6 +746,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf-杂项/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/ctf-杂项/" itemprop="url">ctf.杂项.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf-杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf.杂项</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这次是对上次某被日平台未继续的比赛的总结。</p>
+<blockquote>
+<p>第一题：base base base</p>
+</blockquote>
+<p>想到了三次base，发现没出来，然后队友解出是 <strong><em>base64 base32 base16</em></strong></p>
+<blockquote>
+<p>第二题：颜文字</p>
+</blockquote>
+<p>根据以前做题经验，是一段 <strong><em>Js代码</em></strong> ，放入 <strong><em>控制器</em></strong> 里面就可以运行。</p>
+<blockquote>
+<p>第三题：压缩文件</p>
+</blockquote>
+<p>反正是 <strong><em>真加密</em></strong> ，暂时未解。</p>
+<blockquote>
+<p>第四题：忘记了</p>
+</blockquote>
+<p>关于解密，-&gt;莫尔斯密码-&gt;ascii码-&gt;颠倒-&gt;栅栏密码（2位）-&gt;凯撒密码</p>
+<blockquote>
+<p>第五题：flag</p>
+</blockquote>
+<p>下载了压缩文件发现只有sounds.mp3，用 <strong>mp3stego</strong> 解析需要密码。我们想到有可能是那只小狗 <strong><em>图片隐写</em></strong> ，果然…而且看题目weborstega，我选择隐写。然后用 <strong><em>winhex</em></strong> 截取了一个password.txt,结果密码不知道到哪里结束，所以输入到mp3stego里面密码错误。后来用 <strong><em>kali</em></strong> 的 <strong><em>foremost</em></strong> 功能，需要加 <strong><em>-T</em></strong> ，然后分离出来了真正的password.txt文件，最后成功。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf中的编码与加密/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -880,168 +1042,6 @@ ROT18：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起
 ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符，例如当前为小写字母z，编码后变成大写字母K，当前为数字0，编码后变成符号_。用于ROT47编码的字符其ASCII值范围是33－126，具体可参考ASCII编码，下面以rot13以例。
 </code></pre><p>20.简单替换密码<br><a href="https://quipqiup.com/" target="_blank" rel="external">https://quipqiup.com/</a><br>简单换位密码(Simple Substitution Cipher)加密方式是以每个明文字母被与之唯一对应且不同的字母替换的方式实现的，它不同于恺撒密码，因为密码字母表的字母不是简单的移位，而是完全是混乱的。</p>
 <p>21.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf-杂项/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/ctf-杂项/" itemprop="url">ctf.杂项.1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ctf-杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">ctf.杂项</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这次是对上次某被日平台未继续的比赛的总结。</p>
-<blockquote>
-<p>第一题：base base base</p>
-</blockquote>
-<p>想到了三次base，发现没出来，然后队友解出是 <strong><em>base64 base32 base16</em></strong></p>
-<blockquote>
-<p>第二题：颜文字</p>
-</blockquote>
-<p>根据以前做题经验，是一段 <strong><em>Js代码</em></strong> ，放入 <strong><em>控制器</em></strong> 里面就可以运行。</p>
-<blockquote>
-<p>第三题：压缩文件</p>
-</blockquote>
-<p>反正是 <strong><em>真加密</em></strong> ，暂时未解。</p>
-<blockquote>
-<p>第四题：忘记了</p>
-</blockquote>
-<p>关于解密，-&gt;莫尔斯密码-&gt;ascii码-&gt;颠倒-&gt;栅栏密码（2位）-&gt;凯撒密码</p>
-<blockquote>
-<p>第五题：flag</p>
-</blockquote>
-<p>下载了压缩文件发现只有sounds.mp3，用 <strong>mp3stego</strong> 解析需要密码。我们想到有可能是那只小狗 <strong><em>图片隐写</em></strong> ，果然…而且看题目weborstega，我选择隐写。然后用 <strong><em>winhex</em></strong> 截取了一个password.txt,结果密码不知道到哪里结束，所以输入到mp3stego里面密码错误。后来用 <strong><em>kali</em></strong> 的 <strong><em>foremost</em></strong> 功能，需要加 <strong><em>-T</em></strong> ，然后分离出来了真正的password.txt文件，最后成功。</p>
 
           
         
