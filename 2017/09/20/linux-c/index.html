@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="hhd">
 <meta property="og:description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-27T12:59:12.828Z">
+<meta property="og:updated_time" content="2017-11-02T09:16:07.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux c">
 <meta name="twitter:description" content="gcc编译  安装build-essential软件包$sudo apt-get install build-essential 编辑了一个c文件后，开始编译 gcc 文件名 -o 执行名字 ./执行名字 gcc -c 表示只进行编译，不链接可执行  例子，编写实验。 c源码：  shu.c12345678910111213141516171819202122232425262728293031">
@@ -395,12 +395,55 @@
 <p>进程控制</p>
 </blockquote>
 <p>内核创建新进程：并不用fork,vfork调用，属于系统启动一部分。<br>一般来说，创建新进程，调用fork，vfork函数。</p>
-<ol>
-<li>fork函数<br>创建子进程，完全复制父进程，与其共享数据段和堆栈区域。创建成功返回0，失败返回-1.<br>需要sys/types.h与unistd.h<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	pid_t pid;</div><div class="line">	printf(&quot;start the testing&quot;);</div><div class="line">	pid=fork();</div><div class="line">	printf(&quot;create successfully!pid=%d&quot;,pid);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>fork函数</strong></p>
+<p>创建子进程，完全复制父进程，与其共享数据段和堆栈区域。创建成功返回0，失败返回-1.<br>需要sys/types.h与unistd.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	pid_t pid;</div><div class="line">	printf(&quot;start the testing&quot;);</div><div class="line">	pid=fork();</div><div class="line">	printf(&quot;create successfully!pid=%d&quot;,pid);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-</ol>
+</ul>
 <p>以上例子创建了一个新的进程，并可看出，成功则返回0。pid是专门的 <strong><em>pid_t</em></strong> 类型，fork的返回值是 <strong><em>pid</em></strong> ，fork <strong><em>无需参数</em></strong> 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line">#include&lt;sys/ipc.h&gt;</div><div class="line">#include&lt;sys/shm.h&gt;</div><div class="line">#define size 1024</div><div class="line">#define key 99</div><div class="line">int shmid;</div><div class="line">int j=5;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int i,*pint;</div><div class="line">	pid_t pid;</div><div class="line">	char *addr;</div><div class="line">	</div><div class="line">	i=10;</div><div class="line">	shmid=shmget(size,key,	ipc_creat|0777);</div><div class="line">	pint=shmat(shmid,0,0);</div><div class="line">	*pint=100;</div><div class="line">	printf(&quot;start the test!\n&quot;);</div><div class="line">	pid=fork();</div><div class="line">	i++;</div><div class="line">	j++;</div><div class="line">	*pint+=1;</div><div class="line">	printf(&quot;pid=%d\n&quot;,pif);</div><div class="line">	printf(&quot;i=%d,j=%d\n&quot;,i,j);</div><div class="line">	printf(&quot;*pint=%d&quot;,*pint);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>子进程执行完之后pid返回0，接着执行父进程返回pid。</p>
+<ul>
+<li><strong>vfork函数</strong><br>也是创建新的子进程。不过主要目的就是用exec调用<strong>另外的程序</strong>。在vfork使用<strong>exec</strong>或<strong>exit</strong>函数之前，子进程与父进程是<strong>共享数据段</strong>的。而fork是复制父进程。vfork调用exec或exit之前，子进程先运行，<strong>父进程挂起</strong>，如果需要父进程的进一步活动，则会造成<strong>死锁</strong>。</li>
+</ul>
+<p>我感觉书上那个代码很弱智，就不写了。</p>
+<ul>
+<li><strong>exec函数</strong><br>用于系统调用，对进程执行新的目标程序。<br>exec函数会<strong>取代</strong>执行它的进程,  也就是说, 一旦exec函数执行成功, 它就<strong>不会返回</strong>了, 进程结束.   但是如果exec函数执行失败, 它会<strong>返回失败</strong>的信息（即-1）,  而且进程<strong>继续执行</strong>后面的代码!</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;  </div><div class="line">  </div><div class="line">int execl(const char *path, const char *arg, ...);  </div><div class="line">  </div><div class="line">int execlp(const char *file, const char *arg, ...);  </div><div class="line">  </div><div class="line">int execle(const char *path, const char *arg, ..., char *const envp[]);  </div><div class="line">  </div><div class="line">int execv(const char *path, char *const argv[]);  </div><div class="line">  </div><div class="line">int execvp(const char *file, char *const argv[]);  </div><div class="line">  </div><div class="line">int execve(const char *path, char *const argv[], char *const envp[]);</div></pre></td></tr></table></figure>
+<p> exec函数分为三个部分，文件名或者文件路径部分，参数部分，环境变量部分。<br> 以上的函数定义是不是看起来很烦，我找到有个大佬总结了下，还挺舒服。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">e后续,参数必须带环境变量部分,环境变零部分参数会成为执行exec函数期间的环境变量, 比较少用</div><div class="line"></div><div class="line">l 后续,命令参数部分必须以&quot;,&quot; 相隔,最后1个命令参数必须是NULL</div><div class="line"></div><div class="line">v 后续,命令参数部分必须是1个以NULL结尾的字符串指针数组的头部指针.例如char * pstr就是1个字符串的指针,char * pstr[] 就是数组了,分别指向各个字符串.</div><div class="line"></div><div class="line">p后续,执行文件部分可以不带路径, exec函数会在$PATH中找</div></pre></td></tr></table></figure>
+<p>如果还是看着烦，就看例子吧。</p>
+<p><strong>execv()</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">int childpid;  </div><div class="line">int i;  </div><div class="line">      </div><div class="line">if (fork() == 0)</div><div class="line">&#123;  </div><div class="line">	//child process  </div><div class="line">	char * execv_str[] = &#123;&quot;echo&quot;, &quot;executed by execv&quot;,NULL&#125;;  </div><div class="line">	if (execv(&quot;/usr/bin/echo&quot;,execv_str) &lt;0 )</div><div class="line">	&#123;  </div><div class="line">		perror(&quot;error on exec&quot;);  </div><div class="line">		exit(0);  </div><div class="line">	&#125;  </div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;  </div><div class="line">		/parent process  </div><div class="line">		wait(&amp;childpid);  </div><div class="line">		printf(&quot;execv done\n\n&quot;);  </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>execv(“/usr/bin/echo”,execv_str)</strong>可以看出只需要<strong>两个参数</strong>，一个<strong>路径名</strong>，一个<strong>数组</strong>，但是这个程序不要轻易尝试，原因试试就知道了。</p>
+<p><strong>execvp()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">if (fork() == 0)</div><div class="line">&#123;  </div><div class="line">        //child process  </div><div class="line">        char * execvp_str[] = &#123;&quot;echo&quot;, &quot;executed by execvp&quot;,&quot;&gt;&gt;&quot;, &quot;~/abc.txt&quot;,NULL&#125;;  </div><div class="line">        if (execvp(&quot;echo&quot;,execvp_str) &lt;0 )</div><div class="line">        &#123;  </div><div class="line">            perror(&quot;error on exec&quot;);  </div><div class="line">            exit(0);  </div><div class="line">        &#125;  </div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;  </div><div class="line">        //parent process  </div><div class="line">        wait(&amp;childpid);  </div><div class="line">        printf(&quot;execvp done\n\n&quot;);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>execvp(“echo”,execvp_str)</strong> 文件名加数组</p>
+<p>举两个例子吧，大概能记住了吧。</p>
+<hr>
+<blockquote>
+<p>fork()函数与exec()函数的联合使用</p>
+</blockquote>
+<p>这个书上的例子还不错，我就把他打印下来。这是一个文件监控程序，修改后就建立一个副本，我觉得还是可以的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line">#include&lt;fcntl.h&gt;</div><div class="line">#include&lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">int main(int argc,char *argv[])</div><div class="line">&#123;</div><div class="line">	int fd;</div><div class="line">	int stat,pid;</div><div class="line">	struct stat stbuf;</div><div class="line">	time_t old time=0;</div><div class="line">	if(argc!=3)</div><div class="line">	&#123;</div><div class="line">		fprintf(stderr,&quot;参数错误！&quot;);</div><div class="line">		return 1;</div><div class="line">	&#125;</div><div class="line">	if((fd=open(argv[1],O_RDONLY))==-1)</div><div class="line">	&#123;</div><div class="line">		fprintf(stderr,&quot;无法打开文件！&quot;);</div><div class="line">	&#125;</div><div class="line">	fstat(fd,&amp;stbuf);</div><div class="line">	old_time=stbuf.st_mtime;</div><div class="line">	for(;;)</div><div class="line">	&#123;</div><div class="line">		fstat(fd,&amp;stbuf);</div><div class="line">		if(old_time!=stbuf.st_mtime)</div><div class="line">		&#123;</div><div class="line">			while(pid=fork()==-1);</div><div class="line">		if(pid==0)</div><div class="line">		&#123;</div><div class="line">			execl(&quot;/bin/cp&quot;,&quot;/bin/cp&quot;,argv[1],argv[2],0);</div><div class="line">			return 3;</div><div class="line">		&#125;</div><div class="line">		wait(&amp;stat);</div><div class="line">		old_time=stbuf.st_mtime;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">			sleep(30);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">后台执行：./文件名 file file.bak&amp;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>system()函数</p>
+<p>参数为一个指针。<br>指针为空返回1；<br>exec错误返回退出时的返回值；<br>调用成功返回shell的结束状态。</p>
+</li>
+</ul>
+<p>例子不举了，因为我要去洗头了。。</p>
+<hr>
+<blockquote>
+<p>进程结束</p>
+</blockquote>
+<p>三种正常结束：return exit _exit<br>两种异常结束</p>
+<blockquote>
+<p>进程等待</p>
+</blockquote>
+<p>就是将子进程挂起或者立即结束返回状态，若无子进程返回-1。</p>
+<p>进程的用户标识号和进程标识号等之后再看吧，内容不多，暂时搁浅。</p>
+
       
     </div>
     
@@ -430,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/20/汇编语言学习/" rel="next" title="汇编语言学习">
-                <i class="fa fa-chevron-left"></i> 汇编语言学习
+              <a href="/2017/09/20/sql-6/" rel="next" title="好玩的sql第六篇">
+                <i class="fa fa-chevron-left"></i> 好玩的sql第六篇
               </a>
             
           </div>
@@ -440,8 +483,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/sql-5/" rel="prev" title="好玩的sql第五篇">
-                好玩的sql第五篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/20/ctf-web-6/" rel="prev" title="ctf.web.6">
+                ctf.web.6 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

