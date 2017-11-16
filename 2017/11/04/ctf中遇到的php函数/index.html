@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="hhd">
 <meta property="og:description" content="最近写web题目，对php又感觉生疏了。php函数是web题目的重点，所以我打算记录下每次的函数。 1.implode(separator,array)返回由数组元素组合成的字符串separator 可选。规定数组元素之间放置的内容。默认是 “”（空字符串)array 必需。要组合为字符串的数组 2.preg_match ( string $pattern , string $subject [,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-04T12:20:11.007Z">
+<meta property="og:updated_time" content="2017-11-12T06:55:38.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ctf中遇到的php函数">
 <meta name="twitter:description" content="最近写web题目，对php又感觉生疏了。php函数是web题目的重点，所以我打算记录下每次的函数。 1.implode(separator,array)返回由数组元素组合成的字符串separator 可选。规定数组元素之间放置的内容。默认是 “”（空字符串)array 必需。要组合为字符串的数组 2.preg_match ( string $pattern , string $subject [,">
@@ -289,6 +289,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -319,6 +341,7 @@
         <p>最近写web题目，对php又感觉生疏了。<br>php函数是web题目的重点，所以我打算记录下每次的函数。</p>
 <p>1.implode(separator,array)<br>返回由数组元素组合成的字符串<br>separator 可选。规定数组元素之间放置的内容。默认是 “”（空字符串)<br>array 必需。要组合为字符串的数组</p>
 <p>2.preg_match ( string $pattern , string $subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )<br>搜索subject与pattern给定的正则表达式的一个匹配，前两个参数比较重要<br>pattern：要搜索的模式，字符串类型<br>subject：输入字符串<br>matches：如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推<br>。。</p>
+<p>3.shell_exec<br>当php源码里面有这个服务，可以试着注入。<br>; &amp;&amp; || |<br>;表示先后执行  &amp;&amp;表示先</p>
 
       
     </div>
@@ -343,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/15/ctf-web-7/" rel="next" title="ctf.web.7">
-                <i class="fa fa-chevron-left"></i> ctf.web.7
+              <a href="/2017/09/20/sql-2/" rel="next" title="好玩的sql第二篇">
+                <i class="fa fa-chevron-left"></i> 好玩的sql第二篇
               </a>
             
           </div>
@@ -352,6 +375,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/16/平台题目wp/" rel="prev" title="平台题目wp">
+                平台题目wp <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -421,7 +448,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -432,7 +459,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -443,7 +470,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/tags.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
