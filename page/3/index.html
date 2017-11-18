@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf工具寻址/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -269,149 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/07/ctf工具寻址/" itemprop="url">ctf工具寻址</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ctf工具/" itemprop="url" rel="index">
-                    <span itemprop="name">ctf工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>常用web工具：<br>python运行—虚拟机中的lhy<br>sqlmap—d盘</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/盲注小解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/盲注小解/" itemprop="url">盲注小解</a></h1>
+                <a class="post-title-link" href="/2017/09/07/sql注入小技巧/" itemprop="url">sql注入小技巧</a></h1>
         
 
         <div class="post-meta">
@@ -485,33 +343,152 @@
       
         
           
-            <blockquote>
-<p>一.基于布尔的SQL注入</p>
-</blockquote>
-<ol>
-<li><p>left(database(),1) 截取该数据库前1位。</p>
-</li>
-<li><p>ascii(substr((select table_name information_schema.tables where tables_schema =database()limit 0,1),1,1))  substr表示从第几位截取多少长度</p>
-</li>
-<li><p>ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id limit 0,1),1,1))   mid表示从第几位截取到第几位 ord=ascii</p>
-</li>
-<li><p>正则暂时不介绍。</p>
-</li>
-<li><p>select user() like ‘ro%’   like表示模糊匹配</p>
-</li>
-</ol>
-<blockquote>
-<p>基于时间的SQL盲注</p>
-</blockquote>
-<ol>
-<li><p>If(ascii(substr(database(),1,1))&gt;115,0,sleep(5)) 如果错误延时五秒。</p>
-</li>
-<li><p>BENCHMARK(100000,MD5(1))可以代替sleep(5)，不过需要占用很多的cpu资源。</p>
-</li>
-</ol>
-<blockquote>
-<p>基于报错的SQL注入（暂时不讲）</p>
-</blockquote>
+            <p>1.group by pwd with rollup limit 1 offset 2 #<br>2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #<br>3.绕过引号：利用十六进制，如”user”=0x750x730x650x72<br>4.大于小于绕过：greatest(n1,n2,n3,等)函数返回输入参数(n1,n2,n3,等)的最大值，如：greatest(ascii(substr(database(),0,1)),64)=64</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入的类型及漏洞原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/sql注入的类型及漏洞原理/" itemprop="url">sql注入的部分漏洞原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql注入/" itemprop="url" rel="index">
+                    <span itemprop="name">sql注入</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一大类：整数注入<br>例如：id=-1 union select 1,database(),user()<br>这种漏洞比较好理解，只是运用起来需要考虑全面一点。</p>
+<p>第二大类：编码注入<br>首先是宽字节注入<br>一般来说网站都会有addslashes来躲避一些简单的注入，但是如果该网站是使用gbk编码的，那么漏洞又来了。<br>mysql在使用GBK编码的时候，会认为两个字符是一个汉字（前一个ascii码要大于128，才到汉字的范围）<br>看例子：<br>id=1’ 一般来说你都不会得到什么信息，只要这个php文件不是随堂练习<br>id=1%df%27 ，你会发现有错误反馈，这就是注入的曙光。%df与函数代入的%5c形成了两个字节，gbk认为他是汉字。<br>接着我们就可以利用 union select来注入了。</p>
+<p>iconv同样存在致命的漏洞，虽然避免了宽字节，但是錦‘刚好可以逃出，原理与上述类似。</p>
+<p>接着是二次urldecode注入<br>这也比较好玩，最常见的就是%2527二次转码后变成我们想要的，然后进行注入。</p>
 
           
         
