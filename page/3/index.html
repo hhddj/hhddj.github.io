@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf-杂项/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hhd">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/07/ctf-杂项/" itemprop="url">ctf.杂项.1</a></h1>
+                <a class="post-title-link" href="/2017/09/07/sql注入小技巧/" itemprop="url">sql注入小技巧</a></h1>
         
 
         <div class="post-meta">
@@ -281,7 +281,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
                 2017-09-07
               </time>
             
@@ -304,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ctf-杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">ctf.杂项</span>
+                  <a href="/categories/sql注入/" itemprop="url" rel="index">
+                    <span itemprop="name">sql注入</span>
                   </a>
                 </span>
 
@@ -343,27 +343,176 @@
       
         
           
-            <p>这次是对上次某被日平台未继续的比赛的总结。</p>
+            <p>1.with rollup limit<br>2.如果需要绕过逗号：’ union select case when substring((select xx from xx where xx) from 1 for 1)=’x’ then sleep(5) else 0 end #<br>3.绕过引号：利用十六进制，如”user”=0x750x730x650x72<br>4.大于小于绕过：greatest(n1,n2,n3,等)函数返回输入参数(n1,n2,n3,等)的最大值，如：greatest(ascii(substr(database(),0,1)),64)=64</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/sql注入总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/sql注入总结/" itemprop="url">sql注入总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:04:30+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql注入/" itemprop="url" rel="index">
+                    <span itemprop="name">sql注入</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>重新来写这个总结。<br>发现以前写的太机械，其实在做题过程中，很多种情况有不同的方法。<br>我之前写的感觉不像ctf方向，这次就从 <strong><em>ctf方向</em></strong> 写起。</p>
+<hr>
 <blockquote>
-<p>第一题：base base base</p>
+<p><strong><em>一些心得</em></strong>（无前后顺序）</p>
 </blockquote>
-<p>想到了三次base，发现没出来，然后队友解出是 <strong><em>base64 base32 base16</em></strong></p>
+<p>1.看<strong>页面代码</strong>，一般里面会有一些特殊的信息。</p>
+<p>2.判断是否直接打印出<strong>query结果</strong>，这很重要，在我看来，如果直接打印就比较方便，可以很快得出你想要的结果。但是如果不是，可能需要通过盲注等方法获取</p>
+<p>3.一些存着的语句，其实每次sql打字都很费时啊，要是直接可以复制粘贴岂不是美滋滋。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">判断字段数：?id=0&apos; union select * from 表名 order by 数字 #</div><div class="line"></div><div class="line">判断字段数：?id=0&apos; union select 1,2,3--+</div><div class="line"></div><div class="line">得出数据库等信息：?id=0&apos; union select 1,group_concat(schema_name),3 from information_schema.schemata--+</div><div class="line"></div><div class="line">判断数据库版本：?id=1&apos; and left(select version(),1)=4--+</div><div class="line"></div><div class="line">判断数</div><div class="line">据库名：?id=1&apos; and left(database(),1)=&apos;u&apos;--+</div><div class="line"></div><div class="line">判断表名：?id=1&apos; and ascii(substr((select table_name from information_schema.tables where table_schema=database()limit 0,1),1,1)))=数字（这些盲注很多可以利用burpsuite）</div><div class="line"></div><div class="line">判断库名：?id=1&apos; and if(ascii(substr(database(),1,1))=115,1,sleep(5))</div><div class="line">利用时间盲注</div></pre></td></tr></table></figure>
+<p>其实以上语句只是为了给我方便，但很多时候他都需要有一些灵活的改变，比如id那里可能本身他就是整数类型，也可能这个程序他过滤了引号等等等等。所以还是需要根本情况而定，耐心很重要。</p>
+<p>4.一些注意点，关于url及其他语言的小知识<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">若空格被过滤，可以用%a0或者/**/代替，注释--+也可以用%23代替</div><div class="line">我们通常需要在尾部加注释，平常的注释用的是#或者是-- 但是在url里面使用--+</div></pre></td></tr></table></figure></p>
+<hr>
 <blockquote>
-<p>第二题：颜文字</p>
+<p><strong><em>一些书本知识</em></strong></p>
 </blockquote>
-<p>根据以前做题经验，是一段 <strong><em>Js代码</em></strong> ，放入 <strong><em>控制器</em></strong> 里面就可以运行。</p>
+<p>一.识别数据库<br>识别DBMS是很重要的，因为不同的系统注入还是有差别的。<br>asp和.net一般用sql server 做后台数据库；php很可能是mysql；应用如果是java写的，一般是oracle或者mysql；安装IIS的很可能是sql server；运行apache和php的linux服务器很可能是开源的mysql。<br>如果DBMS处于非盲态，那通过错误反馈一般可以知道DBMS的类型，但是如果处于盲态，必须通过一些查询注入才能得知。<br>1.非盲态跟踪<br>加引号，sqlserver和mysql都会在错误反馈中直接显示，oracle则会显示ORA，因为oracle有一个oracle错误消息库<br>关于sql server的几个内置变量：<br>@@version 数据库版本  @@servername 安装sql server的服务器名称   @@language 当前所使用语言的名称   @@spid 当前用户的进程ID（记住这个我也不懂怎么注入sql server呀！）<br>2.盲跟踪<br>一些简单的语法知识就不讲了<br>详细讲一下union查询<br>用union查询最重要的一点就是必须要两条语句列数相同，从本篇最上面的猜解字段我们可以判断列数,easy~接着就是类型相同，大多是字符串类型，所以一般不需要太注意<br>三种DBMS都可使用order by,也可以使用select 1,2,3…不过前者速度更快，而且在数据库日志中留下的痕迹少…<br>哦，对了，%2B是加好的意思，因为加号在html里面会被注释<br>有些时候你必须保证这个数据是字符串类型，需要用到强制转换，虽然我觉得不怎么用到，反正我做了一点点注入是没遇到过，但是还是记录下。<br>sql server:select cast(‘123’,varchar)<br>mysql:select cast(‘123’,char)<br>oracle:select cast(1,varchar) from dual<br>还有一个注意点，就是如果是返回几行数据的，你需要注意,union前面的条件需要为假才能使你这个查询有效。</p>
+<hr>
 <blockquote>
-<p>第三题：压缩文件</p>
+<p><strong><em>基于时间的盲注</em></strong></p>
 </blockquote>
-<p>反正是 <strong><em>真加密</em></strong> ，暂时未解。</p>
+<p><em>基本套路</em>：if(条件，ture怎么办，false怎么办)<br>sleep()：从时间长度判断是否正确，一般加在false里面<br>无法基于布尔盲注的情况下采用时间盲注</p>
+<hr>
 <blockquote>
-<p>第四题：忘记了</p>
+<p><strong><em>burpsuite下的sql注入</em></strong></p>
 </blockquote>
-<p>关于解密，-&gt;莫尔斯密码-&gt;ascii码-&gt;颠倒-&gt;栅栏密码（2位）-&gt;凯撒密码</p>
-<blockquote>
-<p>第五题：flag</p>
-</blockquote>
-<p>下载了压缩文件发现只有sounds.mp3，用 <strong>mp3stego</strong> 解析需要密码。我们想到有可能是那只小狗 <strong><em>图片隐写</em></strong> ，果然…而且看题目weborstega，我选择隐写。然后用 <strong><em>winhex</em></strong> 截取了一个password.txt,结果密码不知道到哪里结束，所以输入到mp3stego里面密码错误。后来用 <strong><em>kali</em></strong> 的 <strong><em>foremost</em></strong> 功能，需要加 <strong><em>-T</em></strong> ，然后分离出来了真正的password.txt文件，最后成功。</p>
+<p>burpsuite中的intruder：手工帮你爆破，在猜解数据库名，表名，字段数时尤为有用，不过便捷程度小于sqlmap</p>
+<hr>
+<p>还有一些要补充的，比如绕过之类的，晚上回来重点学文件包含和sql注入绕过以及sqlmap的使用。</p>
 
           
         
@@ -545,6 +694,168 @@ ROT18：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起
 
 ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符，例如当前为小写字母z，编码后变成大写字母K，当前为数字0，编码后变成符号_。用于ROT47编码的字符其ASCII值范围是33－126，具体可参考ASCII编码，下面以rot13以例。
 </code></pre><p>20.简单替换密码<br><a href="https://quipqiup.com/" target="_blank" rel="external">https://quipqiup.com/</a><br>简单换位密码(Simple Substitution Cipher)加密方式是以每个明文字母被与之唯一对应且不同的字母替换的方式实现的，它不同于恺撒密码，因为密码字母表的字母不是简单的移位，而是完全是混乱的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ctf-杂项/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hhd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hhd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/ctf-杂项/" itemprop="url">ctf.杂项.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf-杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf.杂项</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这次是对上次某被日平台未继续的比赛的总结。</p>
+<blockquote>
+<p>第一题：base base base</p>
+</blockquote>
+<p>想到了三次base，发现没出来，然后队友解出是 <strong><em>base64 base32 base16</em></strong></p>
+<blockquote>
+<p>第二题：颜文字</p>
+</blockquote>
+<p>根据以前做题经验，是一段 <strong><em>Js代码</em></strong> ，放入 <strong><em>控制器</em></strong> 里面就可以运行。</p>
+<blockquote>
+<p>第三题：压缩文件</p>
+</blockquote>
+<p>反正是 <strong><em>真加密</em></strong> ，暂时未解。</p>
+<blockquote>
+<p>第四题：忘记了</p>
+</blockquote>
+<p>关于解密，-&gt;莫尔斯密码-&gt;ascii码-&gt;颠倒-&gt;栅栏密码（2位）-&gt;凯撒密码</p>
+<blockquote>
+<p>第五题：flag</p>
+</blockquote>
+<p>下载了压缩文件发现只有sounds.mp3，用 <strong>mp3stego</strong> 解析需要密码。我们想到有可能是那只小狗 <strong><em>图片隐写</em></strong> ，果然…而且看题目weborstega，我选择隐写。然后用 <strong><em>winhex</em></strong> 截取了一个password.txt,结果密码不知道到哪里结束，所以输入到mp3stego里面密码错误。后来用 <strong><em>kali</em></strong> 的 <strong><em>foremost</em></strong> 功能，需要加 <strong><em>-T</em></strong> ，然后分离出来了真正的password.txt文件，最后成功。</p>
 
           
         
@@ -1086,7 +1397,7 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
             
               <a href="/archives">
             
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1097,7 +1408,7 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1108,7 +1419,7 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/tags.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
